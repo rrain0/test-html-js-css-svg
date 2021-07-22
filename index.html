@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+
+		<!-- stylesheet указывает на то, что это стиль css -->
+		<link rel="stylesheet" type="text/css" href="res/style.css">
+
+		<!-- подключение JavaScript -->
+		<script src="res/script.js"></script>
+		<script src="res/scriptBrowserInteraction.js"></script>
+
+		<title>Test</title>
+	</head>
+	<body>
+
+		<!-- Если перенести в коде span на новую строку, то между ними вставится пробел -->
+		<span>Строчный элемент - span<span/>
+		<span>Второй span<span/><span>Третий span<span/>
+
+		<div>Блочный элемент - div<div/>
+		<div>Второй div<div/>
+
+
+		<!-- маркированный список -->
+		<ul id="bulleted-list">
+			<li>Item</li>
+        	<li>css</li>
+        	<li>html</li>
+        	<li>js</li>
+        	<li>jsx</li>
+        	<li>React</li>
+        	<li><a href="second-page.html">Go to second page</a></li>
+		</ul>
+
+		<textarea id="text-area" placeholder="I am textarea to alert by button"></textarea>
+		<button onclick="clickMeBtnAction()">Click me to alert</button>
+
+		<div>
+			<button onclick="testAsyncAndPromises()">async and promises</button>
+		</div>
+		<div>
+			<button onclick="testAsyncAndPromises2()">async and promises 2</button>
+		</div>
+		<div>
+			<button onclick="macroMicroTasksTest()">Macro/Micro Tasks</button>
+		</div>
+
+
+		<div>
+			<button onclick="setAndMapTest()">Test Set Map</button>
+		</div>
+
+		<div>
+			<button onclick="numbers()">Numbers</button>
+		</div>
+		<div>
+			<button onclick="stringTest()">String</button>
+		</div>
+		<div>
+			<button onclick="symbolsTest()">Symbol</button>
+		</div>
+		<div>
+			<button onclick="arrayTest()">Array</button>
+		</div>
+
+
+
+		<!-- чтобы найти элемент по id, надо сначала обработать его html -->
+		<script src="res/script2.js"></script>
+
+		<script src="res/array.js"></script>
+		<script src="res/string.js"></script>
+		<script src="res/functions.js"></script>
+		<script src="res/objects.js"></script>
+		<script src="res/classes.js"></script>
+		<script src="res/typeCasting.js"></script>
+		<script src="res/asyncAndPromises.js"></script>
+		<script src="res/asyncAndPromises2.js"></script>
+		<script src="res/macroAndMicroTasks.js"></script>
+		<script src="res/setAndMap.js"></script>
+		<script src="res/numbers.js"></script>
+		<script src="res/symbols.js"></script>
+
+	</body>
