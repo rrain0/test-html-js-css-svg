@@ -8,7 +8,7 @@
 	const errIntoConsole = () => console.error("err into consle: AAAAAAAA");
 
 	const alertNotification = () => alert("deafault alert browser notification");
-	
+
 
 
 	// имеет глобальную область видимости
