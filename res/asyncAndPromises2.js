@@ -66,7 +66,7 @@ function testAsyncAndPromises2(){
 	либо если внутри не создан промис, она создаст Promise.resolve(undefined)
 	await - возвращает переданный ему промис и вызывает у него then чтобы достать onResolvedValue
 	+ вся остальная часть кода помещается следующий в then для этого промиса
-	если промис в await не передан, то моздаётся Promise.resolve(undefined)
+	если промис в await не передан, то создаётся Promise.resolve(undefined)
 	*/
 
 	/*

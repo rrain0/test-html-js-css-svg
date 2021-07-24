@@ -57,7 +57,7 @@ function testAsyncAndPromises(){
 
 
 	THEN:
-	Принимает resolved промис, и, если указан колбэк onRejectFunc, то rejected промис тоже
+	Принимает resolved промис, и, если указан колбэк onRejectFunc, то rejected промис тоже.
 	promise.then(onResolveFunc) или promise.then(onResolveFunc, onRejectFunc) - возвращает новый промис
 	Если onRejectFunc пропущен, то при возникновении отклонения промиса, 
 	новый промис пойдёт по цепочке, пока не встретит then с onRejectFunc или catch.
