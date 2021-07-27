@@ -105,6 +105,28 @@ function objectsTest(){
 
 
 
+	// for..in
+	// for..in покажет только обычные свойства объекта
+	// (без прототипа, символов)
+	{
+		let obj = {
+			id: 78,
+			param: "asd"
+		}
+
+		console.log(obj)
+		console.log("for..in obj:")
+		for (let key in obj){
+			console.log(`${key}: ${obj[key]}`)
+		}
+		console.log("end of for..in")
+	}
+
+
+
+
+
+
 	// короткое именование
 	// a: a  ->  a
 	{
