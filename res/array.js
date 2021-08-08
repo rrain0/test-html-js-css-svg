@@ -13,7 +13,7 @@ function arrayTest(){
 		console.log(arr.map(elem => elem+" ABC"));
 		console.log(arr.map((elem,idx) => elem+" ABC "+idx));
 
-		//push(elem) - добавить в конец, возвращает длину массива (после добавления)
+		//push(elem...) - добавить в конец, возвращает длину массива (после добавления)
 		console.log("new arr len: " + arr.push("appended"));
 		console.log(arr);
 
@@ -66,44 +66,68 @@ function arrayTest(){
 	}
 	
 	{
+		//shift() - извлечь первый элемент массива
 		let arr = ["str1", "adsflkl", "string 3"];
 
-		//shift() - извлечь первый элемент массива
 		console.log("7:")
 		console.log(arr.shift());
 		console.log(arr);
 	}
 	{
+		//slice(s, e) - создать новый массив начиная с s по e (e можно не писать, тогда до конца массива)
 		let arr = ["str1", "adsflkl", "string 3"];
 
-		//slice(s, e) - создать новый массив начиная с s по e (e можно не писать, тогда до конца массива)
 		console.log("8:")
 		console.log(arr.slice(1,2));
 		console.log(arr.slice(1,10)); //если коненый индекс за границей, то просто берутся элементы до конца массива
 		console.log(arr);
 	}
 	{
+		//length - узнать длину массива
 		let arr = ["str1", "adsflkl", "string 3"];
 
-		//length - узнать длину массива
 		console.log("9:")
 		console.log(arr.length);
 	}
 	{
+		// CONTAINS
+		// includes - узнать, содержит ли массив элемент
 		let arr = ["str1", "adsflkl", "string 3"];
 
+		console.log("CONTAINS (INCLUDES):")
+		console.log(arr.includes("str"));
+		console.log(arr.includes("str1"));
+		console.log(arr.includes(undefined));
+	}
+	{
 		//some - вернуть true, если условие удовлетворено хоть раз
+		let arr = ["str1", "adsflkl", "string 3"];
+
 		console.log("10:")
 		console.log(arr.some( el => el === "adsflkl")); // => true
 		console.log(arr.some( el => el === "")); // => false
 	}
 	{
+		//every - вернуть true, если условие удовлетворено для всех элементов
 		let arr = ["str1", "adsflkl", "string 3"];
 
-		//every - вернуть true, если условие удовлетворено для всех элементов
 		console.log("11:")
 		console.log(arr.every( el => el.length > 2)); // => true
 		console.log(arr.every( el => el.length > 4)); // => false
+	}
+	{
+		// flat(depth = 1) - возвращает новый массив, 
+		// в котором все элементы вложенных подмассивов были рекурсивно "подняты" на указанный уровень depth.
+		// depth - максимальное количество подъёмов элементов вверх по вложенности
+		// дополнительно flat удаляет пустые (empty, но не undefined) ячейки
+		let arr = [1, 2, [3, 4, [5, 6], 7, undefined, , [8, 9]]]; // после undef идёт empty
+
+		console.log("FLAT:")
+		console.log(arr)
+
+		console.log(arr.flat()); // => [1, 2, 3, 4, [5, 6], 7, undefined, [8, 9]]
+		console.log(arr.flat(2)); // => [1, 2, 3, 4, 5, 6, 7, undefined, 8, 9]
+		console.log(arr.flat(Infinity)); // => [1, 2, 3, 4, 5, 6, 7, undefined, 8, 9]
 	}
 	{
 		let arr = ["str1", "adsflkl", "string 3", "black hole", "neutron star"];
