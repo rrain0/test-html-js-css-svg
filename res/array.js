@@ -116,6 +116,15 @@ function arrayTest(){
 		console.log(arr.every( el => el.length > 4)); // => false
 	}
 	{
+		// unshift - добавить элементы в начало
+		// unshift: (...items) => new length
+		let arr = ["str1", "adsflkl", "string 3"];
+
+		console.log("11:")
+		console.log(arr.every( el => el.length > 2)); // => true
+		console.log(arr.every( el => el.length > 4)); // => false
+	}
+	{
 		// flat(depth = 1) - возвращает новый массив, 
 		// в котором все элементы вложенных подмассивов были рекурсивно "подняты" на указанный уровень depth.
 		// depth - максимальное количество подъёмов элементов вверх по вложенности
