@@ -6,6 +6,19 @@ function arrayTest(){
 	console.log("-----------------------------------------------ARRAY");
 
 	{
+		/*
+		Array is: [<empty>, <empty>, undefinded, undefined, null, null, 123]
+		*/
+		let arr = [, , undefined, undefined, null, null, 123]
+		console.log("first arr: [<empty>, <empty>, undefinded, undefined, null, null, 123]:")
+		console.log(arr)
+
+		arr = arr.map((val,idx)=>idx)
+		console.log("mapped arr: empties doesn't participate in mapping:")
+		console.log(arr)
+	}
+
+	{
 		let arr = ["str1", "adsflkl", "string 3"];
 
 
