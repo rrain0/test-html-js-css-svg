@@ -47,4 +47,21 @@ function RegExpTest() {
 	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match
 	// https://tuhub.ru/frontend/js-regexp
 
+
+	{
+		// check if matches only
+
+		console.log("check if matches only:")
+
+		console.log("/\d/.test(123):")
+		console.log(/\d/.test("123"))
+
+		console.log("/\d/.test(1f23):")
+		console.log(/\d/.test("1f23"))
+
+		console.log("/^\d$/.test(1f23):")
+		console.log(/^\d$/.test("1f23"))
+
+	}
+
 }
