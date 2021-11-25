@@ -20,6 +20,31 @@ function objectsTest(){
 		console.log(obj)
 	}
 
+
+	// У объекта все свойства - строки
+	{
+		let obj = {"0": 1, "00":2 , x: 3, true: 4, undefined: 5}
+		console.log(obj)
+		console.log(obj[0]) // => 1
+		console.log(obj["0"]) // => 1
+		console.log(obj["00"]) // => 2
+		console.log(obj[true]) // => 4
+		console.log(obj["true"]) // => 4
+		console.log(obj[undefined]) // => 5
+		console.log(obj["undefined"]) // => 5
+
+		obj = [1]
+		obj["00"] = 2 // длина массива не увеличилась
+		obj[1] = 3 // длина массива увеличилась
+		obj["2"] = 4 // длина массива увеличилась (считается как индекс 2)
+		obj[3.5] = 5 // длина массива не увеличилась, видимо он воспринимает только целые числа как индексы (и строковые представления целых чисел)
+		console.log(obj)
+		console.log(obj[0]) // => 1
+		console.log(obj["0"]) // => 1
+		console.log(obj["00"]) // => 2
+	}
+
+
 	//spread operator - можно раскукожить объект или что-то итерируемое, например массив
 	{
 		let obj = {
@@ -230,7 +255,6 @@ function objectsTest(){
 
 		console.log(b);
 	}
-
 
 
 
