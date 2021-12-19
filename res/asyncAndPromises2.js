@@ -52,6 +52,10 @@ function testAsyncAndPromises2(){
 
 
 
+	Promise.resolve("resolved").then(resolvedValue=>{
+		console.log(resolvedValue) // => resolved
+		return Promise.reject("rejected")
+	}).catch(err=>console.log(err)); // => rejected
 
 
 
