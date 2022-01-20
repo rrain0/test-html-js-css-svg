@@ -7,10 +7,10 @@ function arrayTest(){
 
 	{
 		/*
-		Array is: [<empty>, <empty>, undefinded, undefined, null, null, 123]
+		Array is: [<empty>, <empty>, undefined, undefined, null, null, 123]
 		*/
 		let arr = [, , undefined, undefined, null, null, 123]
-		console.log("first arr: [<empty>, <empty>, undefinded, undefined, null, null, 123]:")
+		console.log("first arr: [<empty>, <empty>, undefined, undefined, null, null, 123]:")
 		console.log(arr)
 
 		arr = arr.map((val,idx)=>idx)
