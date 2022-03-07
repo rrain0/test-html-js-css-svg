@@ -12,106 +12,112 @@
 
 		<title>Test</title>
 	</head>
-	<body>
+<body>
 
-		<!-- Если перенести в коде span на новую строку, то между ними вставится пробел -->
-		<span>Строчный элемент - span<span/>
-		<span>Второй span<span/><span>Третий span<span/>
+	<!-- Если перенести в коде span на новую строку, то между ними вставится пробел -->
+	<span>Строчный элемент - span</span>
+	<span>Второй span</span><span>Третий span</span>
 
-		<div>Блочный элемент - div<div/>
-		<div>Второй div<div/>
-
-
-		<!-- маркированный список -->
-		<ul id="bulleted-list">
-			<li>Item</li>
-        	<li>css</li>
-        	<li>html</li>
-        	<li>js</li>
-        	<li>jsx</li>
-        	<li>React</li>
-        	<li><a href="second-page.html">Go to second page</a></li>
-		</ul>
-
-		<textarea id="text-area" placeholder="I am textarea to alert by button"></textarea>
-		<button onclick="clickMeBtnAction()">Click me to alert</button>
-
-		<div>
-			<button onclick="testAsyncAndPromises()">async and promises</button>
-		</div>
-		<div>
-			<button onclick="testAsyncAndPromises2()">async and promises 2</button>
-		</div>
-		<div>
-			<button onclick="macroMicroTasksTest()">Macro/Micro Tasks</button>
-		</div>
+	<div>Блочный элемент - div</div>
+	<div>Второй div</div>
 
 
-		<div>
-			<button onclick="setAndMapTest()">Test Set Map</button>
-		</div>
+	<!-- маркированный список -->
+	<ul id="bulleted-list">
+		<li>Item</li>
+		<li>css</li>
+		<li>html</li>
+		<li>js</li>
+		<li>jsx</li>
+		<li>React</li>
+		<li><a href="second-page.html">Go to second page</a></li>
+	</ul>
 
-		<div>
-			<button onclick="numbers()">Numbers</button>
-		</div>
-		<div>
-			<button onclick="stringTest()">String</button>
-		</div>
-		<div>
-			<button onclick="symbolsTest()">Symbol</button>
-		</div>
-		<div>
-			<button onclick="arrayTest()">Array</button>
-		</div>
-		<div>
-			<button onclick="objectsTest()">Objects</button>
-		</div>
-		<div>
-			<button onclick="JSONTest()">JSONTest</button>
-		</div>
-		<div>
-			<button onclick="RegExpTest()">RegExpTest</button>
-		</div>
-		<div>
-			<button onclick="typesTest()">types</button>
-		</div>
-		<div>
-			<button onclick="generatorTest()">Generators</button>
-		</div>
-		<div>
-			<button onclick="switchTest()">Switch</button>
-		</div>
+	<textarea id="text-area" placeholder="I am textarea to alert by button"></textarea>
+	<button onclick="clickMeBtnAction()">Click me to alert</button>
+
+	<div>
+		<button onclick="testAsyncAndPromises()">async and promises</button>
+	</div>
+	<div>
+		<button onclick="testAsyncAndPromises2()">async and promises 2</button>
+	</div>
+	<div>
+		<button onclick="macroMicroTasksTest()">Macro/Micro Tasks</button>
+	</div>
 
 
-			<!-- Blur effect  -->
-		<div style="position: relative">
-			<img src="res/NEXT%20UP.jpg">
-			<div style="position: absolute; top: 0; right:0; bottom: 0; left: 0; backdrop-filter: blur(5px)/*background: #4fc3f766*/"></div>
-		</div>
+	<div>
+		<button onclick="setAndMapTest()">Test Set Map</button>
+	</div>
 
-			
+	<div>
+		<button onclick="numbers()">Numbers</button>
+	</div>
+	<div>
+		<button onclick="stringTest()">String</button>
+	</div>
+	<div>
+		<button onclick="symbolsTest()">Symbol</button>
+	</div>
+	<div>
+		<button onclick="arrayTest()">Array</button>
+	</div>
+	<div>
+		<button onclick="objectsTest()">Objects</button>
+	</div>
+	<div>
+		<button onclick="JSONTest()">JSONTest</button>
+	</div>
+	<div>
+		<button onclick="RegExpTest()">RegExpTest</button>
+	</div>
+	<div>
+		<button onclick="typesTest()">types</button>
+	</div>
+	<div>
+		<button onclick="generatorTest()">Generators</button>
+	</div>
+	<div>
+		<button onclick="switchTest()">Switch</button>
+	</div>
+
+
+	
+	<div>
+		<code>This is code style</code>
+	</div>
+
+		<!-- Blur effect  -->
+	<div style="position: relative">
+		<img src="res/NEXT%20UP.jpg">
+		<div style="position: absolute; top: 0; right:0; bottom: 0; left: 0; backdrop-filter: blur(5px)/*background: #4fc3f766*/"></div>
+	</div>
 
 
 
-		<!-- чтобы найти элемент по id, надо сначала обработать его html -->
-		<script src="res/script2.js"></script>
 
-		<script src="res/functions.js"></script>
-		<script src="res/array.js"></script>
-		<script src="res/string.js"></script>
-		<script src="res/objects.js"></script>
-		<script src="res/classes.js"></script>
-		<script src="res/typeCasting.js"></script>
-		<script src="res/asyncAndPromises.js"></script>
-		<script src="res/asyncAndPromises2.js"></script>
-		<script src="res/macroAndMicroTasks.js"></script>
-		<script src="res/setAndMap.js"></script>
-		<script src="res/numbers.js"></script>
-		<script src="res/symbols.js"></script>
-		<script src="res/json.js"></script>
-		<script src="res/regexpr.js"></script>
-		<script src="res/types.js"></script>
-		<script src="res/generator.js"></script>
-		<script src="res/switch-test.js"></script>
 
-	</body>
+	<!-- чтобы найти элемент по id, надо сначала обработать его html -->
+	<script src="res/script2.js"></script>
+
+	<script src="res/functions.js"></script>
+	<script src="res/array.js"></script>
+	<script src="res/string.js"></script>
+	<script src="res/objects.js"></script>
+	<script src="res/classes.js"></script>
+	<script src="res/typeCasting.js"></script>
+	<script src="res/asyncAndPromises.js"></script>
+	<script src="res/asyncAndPromises2.js"></script>
+	<script src="res/macroAndMicroTasks.js"></script>
+	<script src="res/setAndMap.js"></script>
+	<script src="res/numbers.js"></script>
+	<script src="res/symbols.js"></script>
+	<script src="res/json.js"></script>
+	<script src="res/regexpr.js"></script>
+	<script src="res/types.js"></script>
+	<script src="res/generator.js"></script>
+	<script src="res/switch-test.js"></script>
+
+</body>
+</html>
