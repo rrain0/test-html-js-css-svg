@@ -1,11 +1,12 @@
 
-console.log("-----------------------------------------------FUNCTIONS");
+
+console.log("-------------------------FUNCTIONS");
 
 // TODO check visibility of function
 
 // объявление function - функциональная область видимости - видно в текущей функции
 
-console.log("----------------");
+console.log("-------------------------");
 console.log("fun 1")
 //fun122(); // fun122 is not defined
 //fun120(); // fun120 is not defined
@@ -75,7 +76,7 @@ function funnn1() {
 console.log("fun 10")
 //fun122(); // fun122 is not defined
 //fun120(); // fun120 is not defined
-console.log("----------------");
+console.log("-------------------------");
 
 
 
@@ -96,7 +97,7 @@ function func(argument) { //ФУНКЦИЯ БЫЛА ПЕРЕОПРЕДЕЛЕНА
 	console.log(argument);
 }
 
-console.log("-----------------------------------------------------");
+console.log("-------------------------");
 
 
 
@@ -114,7 +115,7 @@ const oldStyleFunc = function() {return "oldStyleFunc";} // нельзя сок�
 console.log(oldStyleFunc());
 console.log(oldStyleFunc); // просто выведет код функции
 
-console.log("-----------------------------------------------------");
+console.log("-------------------------");
 
 
 
@@ -162,5 +163,7 @@ console.log("-----------------------------------------------------");
 
 
 
-	console.log("------------------------------------------------------------");
+	console.log("-------------------------");
 }
+
+console.log("-------------------------FUNCTIONS END");

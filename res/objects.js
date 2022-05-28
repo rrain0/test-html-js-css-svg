@@ -4,6 +4,16 @@ function objectsTest(){
 
 	console.log("-----------------------------------------------OBJECTS");
 
+	// Object from Map
+	{
+		const entries = new Map([
+			["id", 8],
+			["name", "some object"]
+		])
+		const obj = Object.fromEntries(entries)
+		console.log("Object from entries:",obj) // Object from entries: {id: 8, name: 'some object'}
+	}
+
 	// Динамическое добавление/удаление свойств
 	{
 		console.log("Динамическое добавление/удаление свойств:")
