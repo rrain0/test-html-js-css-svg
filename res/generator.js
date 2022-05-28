@@ -1,4 +1,5 @@
 
+// ES6 Generators
 
 function generatorTest(){
 

@@ -12,9 +12,43 @@ function stringTest(){
 		console.log(str + " is number " + str2); //обычная строка
 		console.log(`${str} is number ${str2}`); //ШАБЛОННАЯ СТРОКА
 
+		// \ at the end of line escapes newline (but all indents are saved)
+		// \` escapes backtick
+		console.log(`\
+			dskljfkdsjf\
+			12345\
+			\`\`\
+		`)
 
+		// TAGGED TEMPLATES
+		console.log("TAGGED TEMPLATES:")
+		const personOldTag = (strings, nameExp, ageExp, genderExp) => { // after strings array, there is string template argument values
+			let s0 = strings[0] // ""
+			let s1 = strings[1] // " is a "
+			let s2 = strings[2] // " year old "
+			let s3 = strings[3] // ""
 
+			let oldStr = ageExp>75 ? 'senior' : 'young'
 
+			console.log(strings) // Array(4) [ "", " is a ", " year old\t", "" ]
+			console.log(strings.raw) // Array(4) [ "", " is a ", " year old\\t", "" ] // returns string[] without escaping special chars
+
+			// We can even return a string built using a template literal
+			return `${nameExp}${s1}${oldStr}${genderExp}.`
+		}
+
+		const name = 'Bob'
+		const age = 80
+		const gender = 'male'
+		const result = personOldTag`${name} is a ${age} year old\t${gender}`
+		console.log(result)
+
+		console.log(
+			String.raw`Hello\n${'world'}` // Hello\nworld
+		)
+
+	}
+	{
 		// slice(s) - получить подстроку из символов начиная с s и до конца строки
 		// slice(s, e) - получить подстроку из символов начиная с s до e
 		// s - inclusive, e - exclusive

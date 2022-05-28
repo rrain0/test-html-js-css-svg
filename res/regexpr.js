@@ -2,6 +2,10 @@
 
 function RegExpTest() {
 
+	{
+		const regexp = /^\w*$/
+	}
+
 // RegExp = Regular Expression
 // const regExpSyntax = /<regExp>/<flags>
 

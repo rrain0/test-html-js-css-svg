@@ -245,9 +245,10 @@ function testAsyncAndPromises(){
 
 	
 	// Запланировать создание промиса
-	//export const wait = async <T>(delay:number, value:T) => new Promise<T>(resolve => setTimeout(resolve,delay,value))
 	// Будет синхронно возвращён новый промис, который асинхронно зарезолвится value через delay миллисекунд
 	const wait = async (delay, value) => new Promise(resolve => setTimeout(resolve,delay,value))
+	// In TypeScript:
+	//export const wait = async <T>(delay:number, value:T) => new Promise<T>(resolve => setTimeout(resolve,delay,value))
 
 
 
