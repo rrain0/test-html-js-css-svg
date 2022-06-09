@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 	<head>
 		<meta charset="utf-8">
 
 		<!-- stylesheet указывает на то, что это стиль css -->
-		<link rel="stylesheet" type="text/css" href="res/style.css">
+		<link rel="stylesheet" type="text/css" href="res/styles/index-reset-css.css">
+		<link rel="stylesheet" type="text/css" href="res/styles/style.css">
 
 		<!-- подключение JavaScript -->
 		<script src="res/script.js"></script>
@@ -14,14 +15,6 @@
 	</head>
 <body>
 
-	<!-- Если перенести в коде span на новую строку, то между ними вставится пробел -->
-	<span>Строчный элемент - span</span>
-	<span>Второй span</span><span>Третий span</span>
-
-	<div>Блочный элемент - div</div>
-	<div>Второй div</div>
-
-
 	<!-- маркированный список -->
 	<ul id="bulleted-list">
 		<li>Item</li>
@@ -30,7 +23,10 @@
 		<li>js</li>
 		<li>jsx</li>
 		<li>React</li>
-		<li><a href="second-page.html">Go to second page</a></li>
+		<li><a href="basic-html-test.html">Basic HTML test</a></li>
+		<li><a href="point-on-field.html">Point on field</a></li>
+		<li><a href="blurred-image.html">Blurred image</a></li>
+		<li><a href="fullscreen-background.html">Fullscreen background</a></li>
 	</ul>
 
 	<textarea id="text-area" placeholder="I am textarea to alert by button"></textarea>
@@ -86,41 +82,28 @@
 	</div>
 
 
-	
-	<div>
-		<code>This is code style</code>
-	</div>
-
-		<!-- Blur effect  -->
-	<div style="position: relative">
-		<img src="res/NEXT%20UP.jpg">
-		<div style="position: absolute; top: 0; right:0; bottom: 0; left: 0; backdrop-filter: blur(5px)/*background: #4fc3f766*/"></div>
-	</div>
-
-
-
 
 
 	<!-- чтобы найти элемент по id, надо сначала обработать его html -->
 	<script src="res/script2.js"></script>
 
-	<script src="res/functions.js"></script>
-	<script src="res/array.js"></script>
-	<script src="res/string.js"></script>
-	<script src="res/objects.js"></script>
-	<script src="res/classes.js"></script>
-	<script src="res/typeCasting.js"></script>
-	<script src="res/asyncAndPromises.js"></script>
-	<script src="res/asyncAndPromises2.js"></script>
-	<script src="res/macroAndMicroTasks.js"></script>
-	<script src="res/setAndMap.js"></script>
-	<script src="res/numbers.js"></script>
-	<script src="res/symbols.js"></script>
-	<script src="res/json.js"></script>
-	<script src="res/regexpr.js"></script>
-	<script src="res/types.js"></script>
-	<script src="res/generator.js"></script>
-	<script src="res/switch-test.js"></script>
+	<script src="res/js-examples/functions.js"></script>
+	<script src="res/js-examples/array.js"></script>
+	<script src="res/js-examples/string.js"></script>
+	<script src="res/js-examples/objects.js"></script>
+	<script src="res/js-examples/classes.js"></script>
+	<script src="res/js-examples/typeCasting.js"></script>
+	<script src="res/js-examples/asyncAndPromises.js"></script>
+	<script src="res/js-examples/asyncAndPromises2.js"></script>
+	<script src="res/js-examples/macroAndMicroTasks.js"></script>
+	<script src="res/js-examples/setAndMap.js"></script>
+	<script src="res/js-examples/numbers.js"></script>
+	<script src="res/js-examples/symbols.js"></script>
+	<script src="res/js-examples/json.js"></script>
+	<script src="res/js-examples/regexpr.js"></script>
+	<script src="res/js-examples/types.js"></script>
+	<script src="res/js-examples/generator.js"></script>
+	<script src="res/js-examples/switch-test.js"></script>
 
 </body>
 </html>
