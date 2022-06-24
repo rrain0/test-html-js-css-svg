@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+	width="1000" height="1000">
+
+
+	<line x1="60" y1="60" x2="60" y2="300" stroke="red" stroke-width="2" />
+	<line x1="380" y1="300" x2="380" y2="60" stroke="red" stroke-width="2" />
+
+	<!-- точка P0 кривой Безье -->
+	<circle cx="60" cy="60" r="4" fill="red" /> 
+	<!-- точка P1 кривой Безье -->
+	<circle cx="60" cy="300" r="4" fill="green" />
+	<!-- точка P2 кривой Безье -->
+	<circle cx="380" cy="300" r="4" fill="blue" />
+	<!-- точка P3 кривой Безье -->
+	<circle cx="380" cy="60" r="4" fill="aqua" />
+
+
+	<!-- M P0(x,y) C P1(x,y) P2(x,y) P3(x,y) -->
+	<!-- C x1 y1 x2 y2 x3 y3 -->
+	<path d="M60 60 C60 300 380 300 380 60" stroke="black" stroke-width="2" fill="none" />
+
+
+	
+
+
+
+
+
+	<line x1="60" y1="580" x2="180" y2="360" stroke="red" stroke-width="2" />
+	<line x1="280" y1="360" x2="400" y2="580" stroke="red" stroke-width="2" />
+
+	<!-- отзеркаленная прямая -->
+	<line x1="400" y1="580" x2="520" y2="800" stroke="blue" stroke-width="2" />
+
+	<line x1="620" y1="800" x2="740" y2="580" stroke="red" stroke-width="2" />
+
+
+	<!-- точка P0 кривой Безье -->
+	<circle cx="60" cy="580" r="4" fill="red" /> 
+	<!-- точка P1 кривой Безье -->
+	<circle cx="180" cy="360" r="4" fill="green" />
+	<!-- точка P2 кривой Безье -->
+	<circle cx="280" cy="360" r="4" fill="blue" />
+
+	<!-- точка P3 кривой Безье и P1 второй кривой-->
+	<circle cx="400" cy="580" r="4" fill="aqua" />
+
+
+	<!-- точка P1 второй кривой Безье -->
+	<!-- получена автоматическим отзеркаливанием 
+	P2 относительно P3 у первой кривой -->
+	<circle cx="520" cy="800" r="4" fill="green" />
+	<!-- точка P2 второй кривой Безье -->
+	<circle cx="620" cy="800" r="4" fill="blue" />
+	<!-- точка P3 второй кривой Безье -->
+	<circle cx="740" cy="580" r="4" fill="aqua" />
+
+
+	<!-- ...инфа о 2 точках из S или C... S P3(x,y) P4(x,y) -->
+	<!-- S x2 y2 x3 y3 -->
+	<path d="M60 580 C180 360 280 360 400 580 S620 800 740 580" 
+		stroke="black" stroke-width="2" fill="none" />
+
+
+	<!-- ...если не C или S, то предыдущая точка считается двумя... 
+	S P3(x,y) P4(x,y) -->
+	<path d="M400 580 S620 800 740 580" 
+		stroke="orange" stroke-width="6" fill="none" />
+	<!-- то же самое, что сверху, только без S -->
+	<path d="M400 580 C400 580 620 800 740 580" 
+		stroke="black" stroke-width="2" fill="none" />
+
+</svg>

@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+	width="500" height="500">
+
+
+
+
+
+	<line x1="60" y1="60" x2="60" y2="300" stroke="red" stroke-width="10" />
+
+
+
+
+	<!-- задание непрозрачности fill/stroke-->
+	<rect x="10" y="10" width="200" height="200"
+		stroke="blue" stroke-width="10" stroke-opacity="0.5"
+		fill="purple" fill-opacity="0.5" />
+
+
+
+	<!-- 
+		КОНЦЫ ЛИНИЙ
+		stroke-linecap="butt"|"square"|"round" => нет|квадрат|круг
+	 -->
+	<line x1="380" y1="300" x2="380" y2="60" stroke="red" stroke-width="10" stroke-linecap="butt" />
+	<line x1="400" y1="300" x2="400" y2="60" stroke="red" stroke-width="10" stroke-linecap="square" />
+	<line x1="420" y1="300" x2="420" y2="60" stroke="red" stroke-width="10" stroke-linecap="round" />
+
+	<line x1="380" y1="300" x2="380" y2="60" stroke="black" stroke-width="10" />
+	<line x1="400" y1="300" x2="400" y2="60" stroke="black" stroke-width="10" />
+	<line x1="420" y1="300" x2="420" y2="60" stroke="black" stroke-width="10" />
+
+
+
+	<!-- 
+		СТЫКИ ЛИНИЙ
+		stroke-linejoin="miter"|"bevel"|"round" => нет|квадрат|круг
+	 -->
+	<polyline points="60 400 110 350 160 400"
+		fill="none" stroke="black" stroke-width="10" />
+	<polyline points="210 400 260 350 310 400"
+		fill="none" stroke="black" stroke-width="10" />
+	<polyline points="360 400 410 350 460 400"
+		fill="none" stroke="black" stroke-width="10" />
+	
+	<polyline points="60 400 110 350 160 400"
+		fill="none" stroke="red" stroke-width="10" 
+		stroke-linejoin="miter" />
+	<polyline points="210 400 260 350 310 400"
+		fill="none" stroke="red" stroke-width="10" 
+		stroke-linejoin="bevel" />
+	<polyline points="360 400 410 350 460 400"
+		fill="none" stroke="red" stroke-width="10" 
+		stroke-linejoin="round" />
+
+	<polyline points="60 400 110 350 160 400"
+		fill="none" stroke="black" stroke-width="1" />
+	<polyline points="210 400 260 350 310 400"
+		fill="none" stroke="black" stroke-width="1" />
+	<polyline points="360 400 410 350 460 400"
+		fill="none" stroke="black" stroke-width="1" />
+
+
+
+
+	<!-- 
+		DASHES
+		stroke-dasharray="<ширина штриха>,<ширина пробела>,..."
+		(запятые обязательны, при нечётном количестве чисел шаблон дублируется)
+		stroke-dashoffset="5" - расстояние смещения в шаблоне 
+	 -->
+	<path d="M60 460 Q100 395 150 460 T240 460" 
+	 	fill="none" stroke="black" stroke-width="1"
+	 	stroke-dasharray="5,10,5" />
+ 	<line x1="60" y1="460" x2="240" y2="460"
+ 		stroke="red" stroke-width="1"
+ 		stroke-dasharray="5,5" 
+ 		stroke-dashoffset="5" />
+ 		<!-- здесь смещение ровно на один штрих -->
+
+</svg>

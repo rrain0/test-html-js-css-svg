@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+	width="200" height="250">
+
+
+	<!-- 
+		stroke - обводка
+		fill - заливка
+		rx - Радиус x углов прямоугольника
+		ry - Радиус y углов прямоугольника
+	 -->
+	<rect x="60" y="10" width="30" height="30"
+		stroke="black" stroke-width="5"
+		fill="transparent" />
+
+	<rect x="10" y="10" width="30" height="30" rx="10" ry="10"
+		stroke="black" stroke-width="5" 
+		fill="transparent" />
+
+
+
+	<circle cx="25" cy="75" r="20"
+		stroke="red" stroke-width="5"
+		fill="transparent" />
+
+	<ellipse cx="75" cy="75" rx="20" ry="5"
+		stroke="red" stroke-width="5"
+		fill="transparent" />
+
+
+
+	<line x1="10" y1="110" x2="50" y2="150"
+		stroke="orange" stroke-width="5"
+		fill="transparent" />
+
+	<!-- 
+		polyline - группа соединённых прямых линий
+		points - точки в формате "x1 y1 x2 y2 x3 y3 ..."
+		можно разделять пробелом, запятой, символом перевода строки, EOL (end of line)
+	 -->
+	<polyline points="60 110 65 120 70 115 75 130 80 125 85 140 90 135 95 150 100 145" 
+		stroke="orange" stroke-width="5"
+		fill="transparent" />
+
+
+	<!-- 
+		то же, что polyline, но последняя и первая точки автоматически соединяются
+	 -->
+	<polygon points="50 160 55 180 70 180 60 190 65 205 50 195 35 205 40 190 30 180 45 180"
+		stroke="green" stroke-width="5"
+		fill="transparent" />
+
+
+	<!-- 
+		*описание в следующих файлах*
+	 -->
+	<path d="M20 230 Q40 205 50 230 T90 230"
+		stroke="blue" stroke-width="5"
+		fill="none" />
+
+</svg>

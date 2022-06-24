@@ -66,7 +66,7 @@ function typesTest(){
 		// object
 		// любой непримитив - объект
 		let obj = {}
-		console.log(`typeof ${obj}: ` + typeof obj) // => object
+		console.log(`typeof ${obj}: ` + typeof obj) // => 'object'
 		console.log(`${obj} instanceof Object: ` + (obj instanceof Object)) // => true
 
 		// класс-обёртка для примитива

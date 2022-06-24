@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+	width="1000" height="1000">
+
+	<!-- 
+	ДУГА
+
+	Линия (<предыдущая точка> => x y)
+	делит эллипс (эллипс => rx ry angle)
+	на 2 части (выбор части => large-arc-flag)
+	которые можно нарисовать на одной из сторон линии (выбор стороны => sweep-flag)
+
+	<предыдущая точка> и x y лежат на эллипсе 
+
+	Если эллипс слишком маленький, чтобы найти на нём эти 2 точки, то он масштабируется согласно соотношению радиусов до ближайшего минимального размера (линия будет проходить через его центр), чтобы точки оказались на нём
+
+	<предыдущая точка> A rx ry angle large-arc-flag sweep-flag x y
+
+	<предыдущая точка> - начало линии дуги
+	x y - окончание линии дуги
+
+	rx ry - эллиптические радиусы
+	angle - поворот дуги в градусах
+
+	large-arc-flag - 0 => small arc; 1 => large arc;
+	sweep-flag - 1 => clockwise turning; 0 => counterclockwise turning
+	 -->
+
+	<path d="M10 110 A 150 150 0 0 1 210 110"
+		stroke="black" stroke-width="2"
+		fill="green" fill-opacity="0.5"/>
+
+	<!-- 
+		Автомасштабирование слишком маленьких радиусов
+	 -->
+	<path d="M220 110 A 1.5 1.5 0 0 1 420 110"
+		stroke="black" stroke-width="2"
+		fill="green" fill-opacity="0.5"/>
+
+
+
+	<path d="M10 400 a 100 150 45 0 1 190 -100"
+		stroke="black" stroke-width="2"
+		fill="green" fill-opacity="0.5"/>
+
+	<path d="M210 400 a 100 150 45 1 1 190 -100"
+		stroke="black" stroke-width="2"
+		fill="green" fill-opacity="0.5"/>
+
+	<path d="M410 400 a 100 150 45 0 0 190 -100"
+		stroke="black" stroke-width="2"
+		fill="green" fill-opacity="0.5"/>
+
+	<path d="M610 400 a 100 150 45 1 0 190 -100"
+		stroke="black" stroke-width="2"
+		fill="green" fill-opacity="0.5"/>
+
+	<!-- <path d="M10 315
+       L 110 215
+       A 30 50 0 0 1 162.55 162.45
+       L 172.55 152.45
+       A 30 50 -45 0 1 215.1 109.9
+       L 315 10" stroke="black" fill="green" stroke-width="2" fill-opacity="0.5"/> -->
+
+</svg>

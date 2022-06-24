@@ -14,20 +14,41 @@ function objectsTest(){
 		console.log("Object from entries:",obj) // Object from entries: {id: 8, name: 'some object'}
 	}
 
-	// Динамическое добавление/удаление свойств
+	// Имя свойства объекта из переменных
 	{
-		console.log("Динамическое добавление/удаление свойств:")
+		const propName = 'id'
+		const obj = {
+			[propName]: 1
+		}
+		const id = obj[propName]
+	}
+
+	// Динамическое добавление/удаление свойств
+	// Проверка наличия свойства
+	{
+		console.log("Динамическое добавление/удаление свойств, проверка наличия свойства:")
 
 		let obj = {}
 		obj.a = 5
 		obj["b"] = "bb"
 		obj.c = true
 
-		console.log(obj)
+		console.log(`let obj = {}; obj.a = 5; obj["b"] = "bb"; obj.c = true; obj: `, obj)
 
+		// delete property
 		delete obj.c
 
-		console.log(obj)
+		console.log(`delete obj.c; obj:`,obj)
+
+		// Проверка наличия собственных свойств объекта (не включая унаследованные свойства прототипов)
+		console.log('-----<obj>.hasOwnProperty(<propName>)-----')
+		console.log(`obj.hasOwnProperty('a'):`,obj.hasOwnProperty('a'))
+		console.log(`obj.hasOwnProperty('toString'):`,obj.hasOwnProperty('toString'))
+
+		// Проверка наличия свойств объекта (включая унаследованные)
+		console.log('-----in operator-----')
+		console.log(`'a' in obj:`,'a' in obj)
+		console.log(`'toString' in obj:`,'toString' in obj)
 	}
 
 
@@ -59,7 +80,7 @@ function objectsTest(){
 	}
 
 
-	// spread operator - можно раскукожить объект или что-то итерируемое, например массив
+	// spread operator - деструктуризация - можно раскукожить объект или что-то итерируемое, например массив
 	{
 		let obj = {
 			id: 1,
@@ -162,18 +183,19 @@ function objectsTest(){
 	{
 		let obj = {
 			id: 78,
-			param: "asd"
+			param: "asd",
+			name: undefined,
 		}
 
 		console.log(obj)
+		console.log("-----for..in-----")
 		console.log("for..in obj:")
 		for (let key in obj){
-			console.log(`${key}: ${obj[key]}`)
+			//console.log(`${key}: ${obj[key]}`)
+			console.log(`key=${key} value=${obj[key]}`)
 		}
 		console.log("end of for..in")
 	}
-
-
 
 
 

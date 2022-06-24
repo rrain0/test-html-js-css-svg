@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+	width="1200" height="1200">
+
+	<polyline points="40 240 240 40 440 240" stroke="orange" stroke-width="2" fill="none" />
+	<circle cx="40" cy="240" r="6" fill="red" />
+	<circle cx="240" cy="40" r="6" fill="green" />
+	<circle cx="440" cy="240" r="6" fill="blue" />
+
+	<!-- 
+	Квадратичная кривая Безье:
+	Нужны:
+	P0(x,y) начальная точка (красная)
+	P1(x,y) контрольная точка (зелёная) (x1 y1)
+	P2(x,y) конечная точка (синяя) (x2 y2)
+
+	Q x1 y1 x2 y2
+	 -->
+	<path d="M40 240 Q240 40 440 240" stroke="black" fill="none" />
+
+
+	<!-- кривая Безье второго порядка - парабола - не круг - 
+	точный круг не может быть построен кривыми Безье-->
+	<circle cx="240" cy="440" r="282.84" stroke="aqua" stroke-width="2" fill="none" />
+
+
+
+
+
+	<line x1="600" y1="600" x2="800" y2="600" stroke="orange" stroke-width="2" fill="none" />
+	<line x1="800" y1="600" x2="800" y2="400" stroke="orange" stroke-width="2" fill="none" />
+	<line x1="800" y1="400" x2="800" y2="200" stroke="red" stroke-width="2" fill="none" />
+	<line x1="800" y1="200" x2="1000" y2="200" stroke="orange" stroke-width="2" fill="none" />
+
+	<circle cx="600" cy="600" r="6" fill="red" />
+	<circle cx="800" cy="600" r="6" fill="green" />
+	<circle cx="800" cy="400" r="6" fill="blue" />
+	<circle cx="800" cy="200" r="6" fill="aqua" />
+	<circle cx="1000" cy="200" r="6" fill="aquamarine" />
+
+	<!-- ...инфа о 2 предыдущих точках из Q или T... T x2 y2 -->
+	<path d="M600 600 Q800 600 800 400 T1000 200" stroke="black" stroke-width="1" fill="none" />
+
+
+	<!-- ...если не Q или T, то 2 точки в одной... T x2 y2 -->
+	<!-- получилась линия -->
+	<path d="M800 400 T1000 200" stroke="crimson" stroke-width="1" fill="none" />
+
+</svg>

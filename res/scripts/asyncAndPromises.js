@@ -68,7 +68,7 @@ function testAsyncAndPromises(){
 
 
 	FINALLY:
-	promise.finally(onFinally) - выпоняется для любого (settled) промиса - возвращает новый промис
+	promise.finally(onFinally) - выпоняется для любого (settled) промиса - просто прокидывает текущий промис без его изменения
 
 	В then/catch/finally по сути пишется код нового промиса и он возвращается в статусе fulfilled 
 	со значением value, которое return в хэндлере в методе then/catch.

@@ -1,0 +1,32 @@
+
+
+<!-- Delete width and height of <svg> tag, only viewBox is needed -->
+<!-- If you specify there fill or stroke, they will be default -->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 100 100"
+     fill="#C4C4C4">
+
+    <style>
+        rect {
+            fill: gold;
+        }
+        #c1 {
+            fill: red;
+        }
+        #c2 {
+            fill: blue;
+        }
+        #c3 {
+            fill: green;
+        }
+    </style>
+    <!--
+        Delete all fill and stroke in children
+        in order them to take fill and stroke from parent <svg> tag
+    -->
+    <rect x="16" y="57" width="68" height="16" stroke="none" />
+    <circle id="c1" cx="25.5" cy="40.5" r="9.5" stroke="none" />
+    <circle id="c2" cx="50.5" cy="40.5" r="9.5" stroke="none" />
+    <circle id="c3" cx="74.5" cy="40.5" r="9.5" stroke="none" />
+
+</svg>
