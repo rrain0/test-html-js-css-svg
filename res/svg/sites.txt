@@ -10,6 +10,12 @@ https://developer.mozilla.org/ru/docs/Web/SVG/Tutorial/Gradients
 
 
 
+ИЗУЧИТЬ:
+https://developer.mozilla.org/en-US/docs/Web/SVG/Element/clipPath
+https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clip-rule
+https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/paint-order
+
+
 
 Кривые Безье:
 https://en.wikipedia.org/wiki/Bézier_curve
