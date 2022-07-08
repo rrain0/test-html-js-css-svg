@@ -19,7 +19,58 @@ function testAsyncAndPromises2(){
 		.finally(()=>console.log("this do not execute"));
 
 
+	// Любая функция then / catch / finally возвращает новый промис!!!
 
+	// finally test
+	// finally возвращает новый промис идентичный старому
+	{
+		// finally возвращает новый промис
+		const p1 = Promise.resolve()
+		const p2 = p1.finally()
+		console.log('Promise before and after finally: ', p1===p2) // false
+		console.log('Promise === self: ', p1===p1) // true
+
+		// finally возвращает новый промис,
+		// но не влияет на его результат - новый промис просто клон старого,
+		// а возвращаемое из finally значение просто игнорится
+		Promise.resolve('finally test 1')
+			.finally()
+			.then(val=>console.log(val)) // finally test 1
+		Promise.resolve('finally test 2')
+			.finally(()=>{})
+			.then(val=>console.log(val)) // finally test 2
+		Promise.resolve('finally test 3')
+			.finally(()=>'finally test 3**')
+			.then(val=>console.log(val)) // finally test 3
+		Promise.resolve('finally test 4')
+			.finally(()=>Promise.resolve('finally test 4**'))
+			.then(val=>console.log(val)) // finally test 4
+		Promise.reject('finally test 5')
+			.finally(()=>Promise.resolve('finally test 5**'))
+			.catch(err=>console.log(err)) // finally test 5
+	}
+
+	{
+		const p1 = Promise.resolve()
+		const p2 = p1.catch(err=>{})
+		console.log('Promise before and after not executed catch: ', p1===p2) // false
+	}
+
+	{
+		// catch() - не сработает
+		// catch(err=>{}) - сработает
+		// catch должен быть вызван сразу цепным вызовом!! (без промежуточного сохранения промиса в переменную)
+		// иначе браузер выведет сообщение об ошибке в консоль
+		const p1 = Promise.reject().catch(err=>{})
+		const p2 = p1.then(val=>{})
+		console.log('Promise before and after not executed then: ', p1===p2) // false
+		p2.catch()
+	}
+
+	{
+		const p1 = Promise.resolve('saved into variable')
+		p1.then(val=>console.log(val)) // работает
+	}
 
 
 	/*
@@ -31,7 +82,7 @@ function testAsyncAndPromises2(){
 			 Тогда это значение value поместится в Promise.resolve(value), который вернётся хэндлером.
 			 Так делает любой хэндлер then/catch/finally.
 	*/
-	const promsieBResolved = Promise.resolve("resolved B");
+	const promsieBResolved = Promise.resolve("resolved B0");
 	promsieBResolved
 		// метод вернёт Promise.resolve(val+" and then B1")
 		.then(val=>{return val+" and then B1"})

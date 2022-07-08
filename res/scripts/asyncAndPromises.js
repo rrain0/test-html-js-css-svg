@@ -82,11 +82,30 @@ function testAsyncAndPromises(){
 	onFinally = (<no args>) => {...}
 
 
-	ВНУТРИ ПРОМИСА:
-	resolve(val) - зарезолвить промис и создать следующий(-ие)
-	reject(err) - отклонить промис и создать следующий(-ие)
-	Работает только первый вызов одного из этих методов - остальные не принесут эффекта.
+	# Создание промиса:
+	1) Promise.resolve(value) - мнгновеено создать resolved Promise
+	   Promise.reject(error) - мнгновеено создать rejected Promise
+	2) new Promise(function(resolve, reject) { ... });
+		● new Promise - создаёт объект промиса в состоянии pending и сразу же выполняет функцию-экзекутор, переданную ему.
+		● function(resolve, reject) { ... } - функция-экзекутор - в ней вызывается resolve(value) или reject(error),
+			чтобы зарезолвить или отклонить промис (тогда он переходит в состояние fulfilled).
+			Работает только первый вызов одного из этих методов - остальные не принесут эффекта.
 	*/
+
+
+	// Создание промиса:
+	Promise.resolve("resolved value").then(val=>console.log(val)); // Мгновенно зарезолвить
+	Promise.reject("rejction reason").catch(val=>console.log(val)); // Мгновенно зареджектить
+	new Promise((res,rej)=>setTimeout(()=>res('timeout resolved'),3000)) // Создать, но зарезолвить через 3 секунды
+		.then(res=>console.log(res))
+	new Promise((res,rej)=>setTimeout(()=>rej('timeout rejected'),3000)) // Создать, но зареджектить через 3 секунды
+		.catch(err=>console.log(err))
+	new Promise((res,rej)=>setTimeout(res,3000,'timeout resolved 2')) // Создать, но зарезолвить через 3 секунды
+		.then(res=>console.log(res))
+	new Promise((res,rej)=>setTimeout(rej,3000,'timeout rejected 2')) // Создать, но зареджектить через 3 секунды
+		.catch(err=>console.log(err))
+
+
 
 	// Код только что созданного промиса выполнится синхронно,
 	// а код следующего будет помещён в очередь микрозадач и выполнится после этой функции
@@ -126,9 +145,6 @@ function testAsyncAndPromises(){
 	});
 
 
-
-	Promise.resolve("resolved value").then(val=>console.log(val));
-	Promise.reject("rejction reason").catch(val=>console.log(val));
 
 
 	// Создаёт новый промис, который удовлетворён, 

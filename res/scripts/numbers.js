@@ -1,5 +1,9 @@
 
 
+
+// All numbers in JavaScript stored as 64 bits floating point numbers !!!
+
+
 const mod = (a,b) => {
 	if (a>=0 && b>=0 || a<0 && b<0) return Math.floor(a/b)
 	else return Math.ceil(a/b)
