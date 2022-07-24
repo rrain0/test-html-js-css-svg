@@ -14,6 +14,16 @@ fun118();
 
 funnn1();
 
+
+// destructuring from object and default empty object value
+function destructuringTest({ start=0, end=-1, step=1} = {}){
+	console.log(start,end,step)
+}
+function destructuringFromArray([x,y] = [0,0]){
+	console.log('x',x,'y',y)
+}
+
+
 function funnn1() {
 
 	console.log("fun 2")
