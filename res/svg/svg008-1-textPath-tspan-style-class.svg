@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg"
-	width="400" height="400">
+	width="600" height="400">
 
 <!-- https://developer.mozilla.org/en-US/docs/Web/SVG/Element/textPath -->
 
@@ -7,6 +7,7 @@
 		<path id="textPath" fill="none"
 			d="M10 90 Q90 90 90 45 Q90 10 50 10 Q10 10 10 40 Q10 70 45 70 Q70 70 75 50" />
 
+		<!-- STYLE IN DEFS -->
 		<style>
 			.green { fill: green; stroke: green; }
 		</style>
@@ -27,8 +28,11 @@
 
 	<!-- STYLE -->
 	<style>
+		<!-- by id -->
 		#textWithSpan { font: italic 12px serif; }
+		<!-- by tag -->
 		tspan { font: bold 10px sans-serif; fill: red; }
+		<!-- by class -->
 		.small { font-size: 0.8em; }
 	</style>
 
@@ -45,5 +49,23 @@
 
 	<rect x="120" y="200" width="100" height="100" 
 		class="green" />
+
+
+	<!-- INLINE STYLE -->
+	<rect x="10" y="200" width="100" height="100"
+		  style="fill: aquamarine; stroke: black"
+		  transform="translate(220,0)"/>
+
+
+	<rect x="10" y="200" width="100" height="100"
+		transform="translate(330,0)">
+		<!-- STYLE AS CHILD TAG - IT IS WORKING FINE -->
+		<style>
+			:root{
+				fill: orange;
+				stroke: blue;
+			}
+		</style>
+	</rect>
 
 </svg>

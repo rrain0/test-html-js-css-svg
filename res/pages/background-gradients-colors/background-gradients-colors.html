@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="../../styles/index-reset-css.css">
+    <link rel="stylesheet" type="text/css" href="../../styles/common.css">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <meta charset="UTF-8">
+    <title>Background & Colors</title>
+</head>
+<body>
+
+
+<!--
+    background-size (object-fit for img):
+    ● cover - ширина и высота изображения всегда будут не меньше ширины и высоты контейнера
+    ● contain - ширина и высота изображения всегда будут не больше ширины и высоты контейнера
+    Значения:
+    ● 2 значения - <width> <height>
+    ● ● auto - instead of value - keep aspect ratio
+    ● 1 значение - только width - аналогично width auto
+    ● значения через запятую - для разных background
+
+
+    background-position (object-postiion for img):
+    ● background-position -  x / y offset from left / top
+    ● background-position: 10px 20px;
+    ● ● bottom center left right top
+    
+    https://developer.mozilla.org/ru/docs/Web/CSS/background-origin
+    background-origin: устанавливает начало координат бэкграунда
+    ● border-box - координаты бэкграунда начинаются в начале бордера
+    ● padding-box - координаты бэкграунда начинаются в начале паддинга (default)
+    ● content-box - координаты бэкграунда начинаются в начале контента
+    
+    https://developer.mozilla.org/en-US/docs/Web/CSS/background-clip
+    background-clip: устанавливает границы, в которых бэкграунд виден
+    ● border-box - бэкграунд виден внутри бордера и внутрь (паддинг, контент, текст (он должен обладать прозрачностью))
+    ● padding-box - бэкграунд виден внутри паддинга и внутрь (контент, текст (он должен обладать прозрачностью))
+    ● content-box - бэкграунд виден внутри контента и внутрь (текст (он должен обладать прозрачностью))
+    ● text - бэкграунд виден внутри текста (он должен обладать прозрачностью)
+    ● значения через запятую - для разных background
+    
+    ● Если не указаны значения для всех бэкграундов, то вроде как они повторятся дальше с первого по конечное,
+    пока не заполнятся все бэкграунды
+    background-image: <a>,<b>,<c>,<d>,<e>;
+    background-color: <a>,<b>; // => <a>,<b>,<a>,<b>,<a>;
+-->
+
+
+<!-- Simple Fullscreen Background -->
+<div style="
+        width: 100%; height: 100vh;
+        background-image: url(../../images/NEXT%20UP.jpg);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+"></div>
+<img src='../../images/NEXT%20UP.jpg'
+     alt="Next UP Fire"
+     style="
+        width: 100%; height: 100vh;
+        object-position: center;
+        object-fit: cover;
+    "
+/>
+
+
+
+<!-- Задать изображению только высоту, ширина самого контейнера img подгонится -->
+<img src='../../images/NEXT%20UP.jpg'
+     alt="Next UP Fire"
+     style="
+        width: auto; height: 800px;
+        object-position: center;
+        object-fit: contain;
+    "
+/>
+
+
+
+<!-- Blur effect -->
+<div style="position: relative">
+    <img src="../../images/NEXT%20UP.jpg">
+    <div style="
+            position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+            backdrop-filter: blur(5px);
+         "
+    ></div>
+</div>
+<!-- Blur with up layer transparent color -->
+<div style="position: relative">
+    <img src="../../images/NEXT%20UP.jpg">
+    <div style="
+            position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+            backdrop-filter: blur(5px);
+            background: #4fc3f766;
+         "
+    ></div>
+</div>
+
+
+
+<!-- Opacity Effect -->
+<div style="
+    position: relative;
+    width: 100%; height: 100vh;
+">
+
+    <!-- some usual content -->
+    <div style="
+        width: 400px; height: 400px;
+        background: linear-gradient(45deg, crimson, 20%, gold, 80%, turquoise) no-repeat;
+    "></div>
+
+    <!-- transparent background image -->
+    <div style="
+        position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+        background-image: url(../../images/NEXT%20UP.jpg);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        opacity: 0.5;
+        z-index: -1;
+    "></div>
+
+    <!-- background color under transparent image -->
+    <div style="
+        position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+        background: white;
+        z-index: -2;
+    "></div>
+
+</div>
+
+
+
+
+<!-- несколько Background образуют квадратные вырезы по углам -->
+<div style="
+    --offset: 50px;
+    --bg-size: calc(100% - var(--offset) * 2);
+
+    width: 500px; height: 500px;
+    background:
+        linear-gradient(turquoise, turquoise),
+        linear-gradient(turquoise, turquoise);
+    background-repeat: no-repeat;
+    background-size:
+        100% var(--bg-size),
+        var(--bg-size) 100%;
+    background-position:
+        0 var(--offset),
+        var(--offset), 0;
+"></div>
+
+
+
+
+<!-- Gradients -->
+<!--
+  0deg - from bottom to top
+  rotation: clockwise
+  default: 180deg (0.5turn)
+-->
+<div style="
+    width: 100%; height: fit-content;
+    display: flex;
+    flex-flow: column;
+">
+  
+  <div>Linear gradient principle</div>
+  <img
+    src="./linear-gradient-principle.png"
+    style="width: 400px; height: auto;"
+  ></img>
+  
+  <div>Linear gradient 1</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: linear-gradient(45deg, crimson, 20%, gold, 80%, turquoise);
+    "
+  ></div>
+  
+  <div>Linear gradient 2</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: linear-gradient(
+        red 10%,
+        30%, /* number without color - specify position of midpoint transition of two colors */
+        blue 90%
+      );
+    "
+  ></div>
+  
+  <div>Linear gradient 3</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: linear-gradient(
+        to bottom right,
+        #992c46 0%,
+        #282c34 40% 60%, /* <color> <number1> <number2> - shortcut for <color> <number1>, <color> <number2> */
+        #992c46 100%
+      );
+    "
+  ></div>
+  
+  <div>Linear gradient 4</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: linear-gradient(#e66465, #9198e5);
+    "
+  ></div>
+  
+  <div>Linear gradient 5</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+    "
+  ></div>
+  
+  <div>Linear gradient 6</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: linear-gradient(to left, #333, #333 50%, #eee 75%, #333 75%);
+    "
+  ></div>
+  
+  <div>Linear gradient 7</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background:
+            linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
+            linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
+            linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);
+    "
+  ></div>
+  
+  <div>Linear gradient 8</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: linear-gradient(
+        to right,
+        red 20%,
+        orange 20% 40%,
+        yellow 40% 60%,
+        green 60% 80%,
+        blue 80%
+      );
+    "
+  ></div>
+  
+  <div>Linear gradient 9</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: linear-gradient(45deg, red, blue);
+    "
+  ></div>
+  
+  <div>Linear gradient 10</div>
+  <!--Gradient that starts at 60% of the gradient line-->
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: linear-gradient(135deg, orange 60%, cyan);
+    "
+  ></div>
+  
+  
+  
+  
+  <div>Repeating Linear gradient 1</div>
+  <!--Zebra stripes-->
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent 0 20px,
+        black 20px 40px
+      );
+    "
+  ></div>
+  
+  <div>Repeating Linear gradient 2</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: repeating-linear-gradient(45deg, #3f87a6, #ebf8e1 15%, #f69d3c 20%);
+    "
+  ></div>
+  
+  <div>Repeating Linear gradient 3</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background:
+            repeating-linear-gradient(transparent, #4d9f0c 40px),
+            repeating-linear-gradient(0.25turn, transparent, #3f87a6 20px);
+    "
+  ></div>
+  
+  <div>Repeating Linear gradient 4</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background:
+        repeating-linear-gradient(
+          190deg,
+          rgba(255, 0, 0, 0.5) 40px,
+          rgba(255, 153, 0, 0.5) 80px,
+          rgba(255, 255, 0, 0.5) 120px,
+          rgba(0, 255, 0, 0.5) 160px,
+          rgba(0, 0, 255, 0.5) 200px,
+          rgba(75, 0, 130, 0.5) 240px,
+          rgba(238, 130, 238, 0.5) 280px,
+          rgba(255, 0, 0, 0.5) 300px
+        ),
+        repeating-linear-gradient(
+          -190deg,
+          rgba(255, 0, 0, 0.5) 30px,
+          rgba(255, 153, 0, 0.5) 60px,
+          rgba(255, 255, 0, 0.5) 90px,
+          rgba(0, 255, 0, 0.5) 120px,
+          rgba(0, 0, 255, 0.5) 150px,
+          rgba(75, 0, 130, 0.5) 180px,
+          rgba(238, 130, 238, 0.5) 210px,
+          rgba(255, 0, 0, 0.5) 230px
+        ),
+        repeating-linear-gradient(23deg,
+          red 50px, orange 100px, yellow 150px, green 200px,
+          blue 250px, indigo 300px, violet 350px, red 370px
+        );
+    "
+  ></div>
+  
+  
+  
+  
+  
+  
+  <div>Conic vs radial gradient principle</div>
+  <img
+    src="./conic-gradient-vs-radial-gradient-principle.png"
+    style="width: 400px; height: auto;"
+  ></img>
+  
+  <div>Conic gradient 1</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: conic-gradient(red, orange, yellow, green, blue);
+    "
+  ></div>
+  
+  <div>Conic gradient 2</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: conic-gradient(from 0.25turn at 50% 30%, #f69d3c, 10deg, #3f87a6, 350deg, #ebf8e1);
+    "
+  ></div>
+  
+  <div>Conic gradient 3</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: conic-gradient(from 3.1416rad at 10% 50%, #e66465, #9198e5);
+    "
+  ></div>
+  
+  <div>Conic gradient 4</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: conic-gradient(
+        red 6deg, orange 6deg 18deg, yellow 18deg 45deg,
+        green 45deg 110deg, blue 110deg 200deg, purple 200deg
+      );
+    "
+  ></div>
+  
+  <div>Conic gradient 5</div>
+  <!--Color wheel-->
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: conic-gradient(
+        hsl(360, 100%, 50%),
+        hsl(315, 100%, 50%),
+        hsl(270, 100%, 50%),
+        hsl(225, 100%, 50%),
+        hsl(180, 100%, 50%),
+        hsl(135, 100%, 50%),
+        hsl(90, 100%, 50%),
+        hsl(45, 100%, 50%),
+        hsl(0, 100%, 50%)
+    );
+    "
+  ></div>
+  
+  <div>Conic gradient 6</div>
+  <!--A conic gradient rotated 45 degrees,
+   starting blue and finishing red-->
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: conic-gradient(from 45deg, blue, red);
+    "
+  ></div>
+  
+  <div>Conic gradient 7</div>
+  <!--A bluish purple box: the gradient goes from blue to red,
+   but only the bottom right quadrant is visible, as the
+   center of the conic gradient is at the top left corner-->
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: conic-gradient(from 90deg at 0 0, blue, red);
+    "
+  ></div>
+  
+  <div>Conic gradient 8</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: conic-gradient(from 40deg, #fff, #000);
+    "
+  ></div>
+  
+  <div>Conic gradient 9</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: conic-gradient(from 0deg at 0% 25%, blue, green, yellow 180deg);
+    "
+  ></div>
+  
+  <div>Conic gradient 9</div>
+  <div>Gradient pie-chart</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: conic-gradient(red 36deg, orange 36deg 170deg, yellow 170deg);
+      border-radius: 50%;
+    "
+  ></div>
+  
+  <div>Conic gradient 10</div>
+  <div>Checkerboard</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: conic-gradient(
+        #fff 0.25turn,
+        #000 0.25turn 0.5turn,
+        #fff 0.5turn 0.75turn,
+        #000 0.75turn
+      ) top left / 25% 25% repeat;
+      border: 1px solid;
+    "
+  ></div>
+  
+  
+  
+  
+  
+  
+  <div>Repeating conic vs repeating radial gradient principle</div>
+  <img
+    src="./repeating-conic-gradient-vs-repeating-radial-gradient-principle.png"
+    style="width: 400px; height: auto;"
+  ></img>
+  
+  <div>Repeating conic gradient 1</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: repeating-conic-gradient(red 0%, yellow 15%, red 33%);
+    "
+  ></div>
+  
+  <div>Repeating conic gradient 2</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: repeating-conic-gradient(
+        from 45deg at 10% 50%,
+        brown 0deg 10deg,
+        darkgoldenrod 10deg 20deg,
+        chocolate 20deg 30deg
+      );
+    "
+  ></div>
+  
+  <div>Repeating conic gradient 3</div>
+  <div>Starburst: a blue on blue starburst: the gradient
+    is a starburst of lighter and darker blue,
+    centered in the upper left quadrant,
+    offset by 3degrees so there is no up/down straight line</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: repeating-conic-gradient(
+        from 3deg at 25% 25%,
+        hsl(200, 100%, 50%) 0deg 15deg,
+        hsl(200, 100%, 60%) 10deg 30deg
+      );
+    "
+  ></div>
+  
+  <div>Repeating conic gradient 4</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: repeating-conic-gradient(from -45deg, red 45deg, orange, yellow, green, blue 225deg);
+    "
+  ></div>
+  
+  <div>Repeating conic gradient 5</div>
+  <div>Black and white starburst</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: repeating-conic-gradient(#fff 0 9deg, #000 9deg 18deg);
+    "
+  ></div>
+  
+  
+  
+  
+  
+  
+  <div>Radial gradient principle</div>
+  <img
+    src="./radial-gradient-principle.png"
+    style="width: 400px; height: auto;"
+  ></img>
+  
+  <div>Radial gradient 1</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: radial-gradient(#e66465, #9198e5);
+    "
+  ></div>
+  
+  <div>Radial gradient 1.1</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      /*
+        Shape center keywords: at ( 'top' | 'right' | 'bottom' | 'left' | 'center'
+          | 'top right' | 'top left' | 'bottom right' | 'bottom left' )
+        Shape center coords: at ( <x> | <x> <y> )
+      */
+      background: radial-gradient(circle at top right, #e66465, #9198e5);
+    "
+  ></div>
+  
+  <div>Radial gradient 2 - circle</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      /*
+        Gradient's ending shape: 'circle' | 'ellipse' (default)
+        Circle have 1 radius to adjust and ellipse have 2 radii to adjust.
+        
+        Size keywords: 'closest-side' | 'closest-corner' | 'farthest-side' | 'farthest-corner' (default)
+      */
+      background: radial-gradient(closest-corner circle, #3f87a6, #ebf8e1, #f69d3c);
+      /* same definitions: */
+      background: radial-gradient(closest-corner circle at 50% 50%, #3f87a6, #ebf8e1, #f69d3c);
+      background: radial-gradient(closest-corner circle at center, #3f87a6, #ebf8e1, #f69d3c);
+    "
+  ></div>
+  
+  <div>Radial gradient 2.1 - circle</div>
+  <div
+    style="
+      width: 400px; height: 200px;
+      background: radial-gradient(closest-corner circle, #3f87a6, #ebf8e1, #f69d3c);
+      /* same definitions: */
+      background: radial-gradient(closest-corner circle at 50% 50%, #3f87a6, #ebf8e1, #f69d3c);
+      background: radial-gradient(closest-corner circle at center, #3f87a6, #ebf8e1, #f69d3c);
+    "
+  ></div>
+  
+  <div>Radial gradient 2.2 - ellipse</div>
+  <div
+    style="
+      width: 400px; height: 200px;
+      background: radial-gradient(closest-corner, #3f87a6, #ebf8e1, #f69d3c);
+      /* same definitions: */
+      background: radial-gradient(closest-corner ellipse at 50% 50%, #3f87a6, #ebf8e1, #f69d3c);
+      background: radial-gradient(closest-corner ellipse at center, #3f87a6, #ebf8e1, #f69d3c);
+    "
+  ></div>
+  
+  <div>Radial gradient 3</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: radial-gradient(circle at 100%, #333, #333 50%, #eee 75%, #333 75%);
+    "
+  ></div>
+  
+  <div>Radial gradient 4</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background:
+        radial-gradient(ellipse at top, #e66465, transparent),
+        radial-gradient(ellipse at bottom, #4d9f0c, transparent);
+    "
+  ></div>
+  
+  <div>Radial gradient 5</div>
+  <div>A gradient at the center of its container,
+    starting red, changing to blue, and finishing green</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: radial-gradient(circle at center, red 0, blue, green 100%);
+    "
+  ></div>
+  
+  <div>Radial gradient 6</div>
+  <div>A gradient at the center of its container,
+    starting red, changing to blue, and finishing green</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background-image: radial-gradient(cyan 0%, transparent 20%, salmon 40%);
+    "
+  ></div>
+  
+  <div>Radial gradient 7</div>
+  <div>A gradient at the center of its container,
+    starting red, changing to blue, and finishing green</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background-image: radial-gradient(farthest-corner at 40px 40px, #f35 0%, #43e 100%);
+    "
+  ></div>
+  
+  
+  
+  
+  
+  <div>Repeating radial gradient 1</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: repeating-radial-gradient(#e66465, #9198e5 20%);
+    "
+  ></div>
+  
+  <div>Repeating radial gradient 2</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: repeating-radial-gradient(closest-side, #3f87a6, #ebf8e1, #f69d3c);
+    "
+  ></div>
+  
+  <div>Repeating radial gradient 3</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: repeating-radial-gradient(circle at 100%, #333, #333 10px, #eee 10px, #eee 20px);
+    "
+  ></div>
+  
+  <div>Repeating radial gradient 4</div>
+  <div
+    style="
+      width: 400px; height: 400px;
+      background: repeating-radial-gradient(black, black 5px, white 5px, white 10px);
+    "
+  ></div>
+  
+  
+
+</div>
+
+
+
+
+
+</body>
+</html>

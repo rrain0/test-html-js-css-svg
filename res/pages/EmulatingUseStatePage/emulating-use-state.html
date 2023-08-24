@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Эмулируем React useState в обычном JS (via data-attributes & css selectors)</title>
+  <link rel="stylesheet" type="text/css" href="emulating-use-state.css">
+</head>
+<body>
+
+<script>
+  function toggleExpand(){
+    const element = document.getElementById('component')
+    if (element.dataset.expanded!=='true'){
+      element.dataset.expanded = 'true'
+    } else {
+      element.dataset.expanded = 'false'
+    }
+  }
+</script>
+
+<div class="someElementContext">
+  <!-- data-expanded хранит состояние -->
+  <div id="component" class="component" data-expanded="false">
+    
+    <div class="collapsableContent">
+      <div>Initial content</div>
+    </div>
+    
+    <button onClick="toggleExpand()">
+      <div class="collapsableContent">Expand</div>
+      <div class="expandableContent">Collapse</div>
+    </button>
+  
+    <div class="expandableContent">
+      <div>Additional content</div>
+    </div>
+    <div class="expandableContent">
+      <div>More additional content</div>
+    </div>
+    
+  </div>
+</div>
+
+</body>
+</html>
+

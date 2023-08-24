@@ -13,6 +13,153 @@
 <img src="../images/grid-indexed-lines-rows-cols-with-labels.png">
 
 
+<!-- 
+    ВНИМАНИЕ!!!
+    Ширина и высота элементов в сетке в процентах идёт от ширины и высоты ячейки, а не контейнера!!!
+ -->
+
+<!--
+For Flex & Grid:
+● place-items: center - align-items: center & justify-items: center;
+● place-items: flex-start center - align-items: flex-start & justify-items: center;
+● place-items: start stretch - align-items: start & justify-items: stretch;
+● place-content
+● place-self
+-->
+
+<!--
+
+Дорожка сетки - строка / столбец
+
+
+● grid-template-rows - размеры явных рядов
+● grid-template-columns - размеры явных колонок
+
+Можно использовать:
+    <value>fr
+    auto
+    auto-fill - будет как минимум 1 столбец
+    auto-fit - пустые дорожки удалятся
+    none
+    minmax(<min>, <max>) - задание диапазона
+    min-content
+    max-content
+    fit-content(<value>) - auto & не больше value (но не меньше минимума)
+    repeat(<cnt>, <value>) - повторить cnt раз дорожку с размером value
+        ● repeat(<auto-fill / auto-fit>, ...) - будут динамически добавляться ряды / колонки
+          grid-template-columns: repeat(auto-fill, 186px);
+          grid-template-columns: repeat(auto-fill, minmax(186px, 1fr));
+
+● Имена линий (границ дорожек):
+    Указываются в [<line-name>]
+    Могут иметь несколько имён - указывать через пробел [<line-name-1> <line-name-2> ...]
+    Если имена у нескольких линий имена одинаковые, то выберется первая из них, но можно указать номер:
+        grid-area: <line-name> <number>;
+        grid-area: row-a-start 3;
+
+
+grid-template-rows:  5em 200px 200px;   // 3 строки
+grid-template-rows: [header-start] 20vh [header-end]; // 1 строка, линии 0 и 1 именованы
+grid-template-columns: 200px 5em 50%;   // 3 столбца
+grid-template-columns: 1fr 1fr 1fr 1fr; // эквивалентно grid-template-columns: 25% 25% 25% 25%;
+grid-template-columns: 1fr 2fr 1fr;     // эквивалентно grid-template-columns: 25% 50% 25%;
+grid-template-columns: auto 1fr auto;
+grid-template-columns: fit-content(50%) fit-content(300px) 1fr;
+    // 3 колонки, линия 0 и 2 имеют по 2 имени (имена указываются в [] через пробел)
+grid-template-columns: [full-start sidebar-start] 1fr 2fr [sidebar-end main-start] 1fr;
+    // динамическое создание колонок если для них есть место
+grid-template-columns: repeat(auto-fill, 186px);
+grid-template-columns: repeat(auto-fill, minmax(186px, 1fr));
+
+Если сумма всех гибких размеров (fr) дорожек меньше 1, они будут занимать только соответствующую долю оставшегося пространства, а не расширяться, чтобы заполнить его полностью.
+
+
+● grid-template-areas - именованые области
+    ● если нужно оставить область без имени, то именуйте её одной или несколькими точками
+    ● линии, ограничивающие область, получают имя области с суффиксами -start / -end
+
+.grid-container {
+    display: grid;
+    grid-template-areas: "header header"
+                         "sidebar content"
+                         "sidebar content";
+    grid-template-columns: 150px 1fr;
+    grid-template-rows: 50px 1fr 50px;
+}
+header {
+    grid-area: header; // указание области по имени
+}
+
+
+
+
+
+
+● grid-template | grid - сокращения для grid-template-rows & grid-template-columns & grid-template-areas
+grid в отличие от grid-template сбрасывает ещё свойства неяаной сетки
+
+● grid-auto-rows - неявные ряды - auto | значение
+● grid-auto-columns - неявные колонки - auto | значение
+
+● grid-auto-flow: row | column | dense
+dense - Алгоритм "плотной" укладки элементов.
+
+● grid-row-gap: 15px;
+● grid-column-gap: 15px;
+● grid-gap: 15px 15px;
+grid-gap: grid-row-gap grid-column-gap?
+
+
+● grid - сокращение для
+                        grid-template-rows & grid-template-columns & grid-template-areas &
+                        grid-auto-rows & grid-auto-columns & grid-auto-flow
+
+
+
+
+
+● order: 3
+Переупорядочивание элементов.
+Свойство должно использоваться только для визуального, а не логического переупорядочения контента.
+
+● grid-row-start
+● grid-row-end - если задать имя линии, то автоматически выбирается последняя с таким именем
+● grid-col-start
+● grid-col-end - если задать имя линии, то автоматически выбирается последняя с таким именем
+● grid-row: grid-row-start / grid-row-end
+● grid-col: grid-col-start / grid-col-end
+● grid-area: grid-row-start / grid-col-start / grid-row-end / grid-col-end
+grid-area - задать элементу область в сетке, где он будет отображён
+grid-area: <grid-row-line-start> / <grid-column-line-start> / <grid-row-line-end> / <grid-column-line-end>
+    ● По номеру линии:
+        grid-area: 1 / 2 / 3 / -4
+        grid-area: 1 / 2 / auto / span 2
+        grid-area: 1 / 2
+        ● span <number> - количество дорожек, занимаемое элемнтом
+        ● auto - span 1
+        ● если указано меньше, чем 4 значения, то оставшиеся будут auto
+        ● вместо номеров линий можно использовать их имена
+        ● Если задано отрицательное целое число, то отсчет с конца явной сетки
+    ● По имени линии:
+        grid-area: one-start / one-start / one-end / one-end;
+        grid-area: one-start 3 / one-start / one-end / one-end 4;
+        ● если не указано col-start, то оно станет row-start,
+          если не указано row/col-end, то оно станет row/col-start.
+        ● цифра после имени линии означает взять именно эту линию по номеру, если их несколько
+    ● По имени области:
+        grid-area: <area-name>
+        grid-area: header
+        ● Здесь работает правило копирования значения в оставшиеся 3 свойства, как и у линий
+
+● Именованые области автоматически создают линии по её периметру с использованием суффиксов -start & -end
+● Именованые области автоматически создают линии по её периметру с именем области
+● Именованые линии с суффиксами -start & -end автоматически создают область, окружённую ими
+
+
+-->
+
+
+
 
 <div style="
     display: grid;
@@ -48,7 +195,20 @@
 </div>
 
 
-<div style="height: 64px"></div>
+
+<div id="div1" style="height: 64px; width: 100%;"></div>
+<script>
+    const div1 = document.querySelector('#div1')
+    div1.addEventListener('click', function(ev){
+        console.log(this) // current element
+        console.log(ev) // event
+        console.log(this===ev.target) // true
+
+        console.log(this.style.cssText)
+        this.style.cssText+=`background: red; height: 128px;`
+        console.log(this.style.cssText)
+    })
+</script>
 
 
 <div style="
@@ -59,6 +219,7 @@
     grid-gap: 15px 15px;
 ">
     <img src="../images/NEXT%20UP.jpg" style="
+        /* it is line numbers - before row 1 there is line 1, before row 2 - line 2 */
         grid-area: 1 / 1 / 3 / 3; /* grid-row-start / grid-column-start / grid-row-end / grid-column-end */
         width: 100%; height: 100%; object-fit: cover;
     "/>
@@ -81,7 +242,7 @@
 </div>
 
 
-<div style="height: 64px" onclick={alert("ADFDS")}></div>
+<div style="height: 64px; width: 100%;" onclick='alert("ADFDS")'></div>
 
 
 <div style="

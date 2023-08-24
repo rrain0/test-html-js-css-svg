@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8">
+  <title>Gradient Border</title>
+  
+  
+  <style>
+    
+    * { box-sizing: border-box; }
+    
+    body {
+      background: skyblue;
+      display: flex;
+      flex-flow: column nowrap;
+      gap: 16px;
+      padding: 16px;
+      margin: 0;
+      place-items: start;
+    }
+    
+    .white-grad {
+      color: #313149;
+      padding: 10px;
+      position: relative;
+    }
+    .white-grad::after {
+      content: "";
+      position: absolute;
+      inset: 0; /* shorthand for: top: 0; right: 0; bottom: 0; left: 0; */
+      border: 5px solid transparent;
+      border-radius: 15px;
+      background: linear-gradient(to right, #9c20aa, #fb3570) border-box;
+      
+      /* там где в маске есть цвет, изображение будет с ним смешано по альфа каналу (можно и по яркости) */
+      /* mask: url(...some-svg..); */
+      /* several mask layers */
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0) border-box;
+      mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0) border-box;
+      -webkit-mask-composite: xor;
+      /*
+      The non-overlapping regions of
+      source (the current mask layer) and destination (all layers below) are combined.
+      */
+      mask-composite: exclude;
+    }
+    
+    .with-bgc {
+      background: lightgoldenrodyellow;
+    }
+    
+    .with-radius {
+      border-radius: 15px;
+    }
+    .with-radius::after {
+      border-radius: inherit;
+    }
+  </style>
+  
+</head>
+<body>
+
+
+<div class="white-grad"> Some text here</div>
+
+<div class="white-grad with-bgc"> Some long long long text here</div>
+
+<div class="white-grad with-bgc with-radius"> Some long long <br>long text here</div>
+
+
+</body>
+</html>

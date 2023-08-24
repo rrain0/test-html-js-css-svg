@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="icon" href="../images/favicon.png">
+    <title>Dimensions Test</title>
+</head>
+<body>
+
+
+<style>
+    * {
+        margin: 0;
+        box-sizing: border-box;
+    }
+    a {
+        display: contents;
+        text-decoration: none;
+    }
+    body {
+        background: #f5f5f5;
+    }
+</style>
+
+
+<div style="
+    position: relative;
+    display: grid; 
+    place-items: center;
+    width: fit-content; height: fit-content;
+    background: #f9cc9d; /* margin color */ 
+">
+
+    <div style="
+    position: absolute;
+    top: 0px; left: 0px;
+    ">margin</div>
+    <div style="
+    position: absolute;
+    top: 40px; left: 40px;
+    ">border</div>
+    <div style="
+    position: absolute;
+    top: 80px; left: 80px;
+    ">padding</div>
+
+    <div style="
+    position: absolute;
+    top: 40px; right: 40px;
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+    padding: 4px 4px 10px 10px;
+    ">box-sizing: border-box;</div>
+    <div style="
+    position: absolute;
+    bottom: 40px; left: 40px;
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
+    padding: 10px 10px 4px 4px;
+    ">box-sizing: border-box;</div>
+    <div style="
+    position: absolute;
+    top: 120px; right: 120px;
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+    padding: 4px 4px 10px 10px;
+    ">box-sizing: content-box;</div>
+    <div style="
+    position: absolute;
+    bottom: 120px; left: 120px;
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
+    padding: 10px 10px 4px 4px;
+    ">box-sizing: content-box;</div>
+
+
+    <div style="
+        box-sizing: content-box;
+        width: 400px; height: 400px;
+        margin: 40px;
+        border: 40px solid #fddd9b; /* border color */
+        padding: 40px; 
+        background: #c3d08b; /* padding color */
+    ">
+        <div style="
+            background: #8cb6c0; /* content color */
+            width: 100%; height: 100%;
+        ">
+            content
+        </div>
+    </div>
+
+</div>
+
+
+<div style="height: 64px"></div>
+
+
+<div>Scrollbars are placed between border and padding</div>
+<div>Paddings become scrollable with content</div>
+<div>In Firefox right padding is omitted</div>
+<div style="
+    position: relative;
+    display: grid; 
+    place-items: center;
+    width: fit-content; height: fit-content;
+    background: #f9cc9d; /* margin color */ 
+">
+
+    <div style="
+    position: absolute;
+    top: 0px; left: 0px;
+    ">margin</div>
+    <div style="
+    position: absolute;
+    top: 40px; left: 40px;
+    z-index: 1;
+    ">border</div>
+
+    <div style="
+    position: absolute;
+    top: 40px; right: 40px;
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+    padding: 4px 4px 10px 10px;
+    z-index: 1;
+    ">box-sizing: border-box;</div>
+    <div style="
+    position: absolute;
+    bottom: 40px; left: 40px;
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
+    padding: 10px 10px 4px 4px;
+    z-index: 1;
+    ">box-sizing: border-box;</div>
+
+    <div style="
+        box-sizing: content-box;
+        position: relative;
+        width: 400px; height: 400px;
+        margin: 40px;
+        border: 40px solid #fddd9b; /* border color */
+        padding: 40px; 
+        background: #c3d08b; /* padding color */
+        overflow: auto;
+    ">
+        <div style="
+        position: absolute;
+        top: 0; left: 0;
+        ">padding</div>
+
+        <div style="
+            display: grid;
+            grid: 'center';
+            background: #8cb6c0; /* content color */
+            width: 200%; height: 200%;
+        ">
+            <div style="
+                grid-area: center;
+                place-self: stretch;
+            ">
+                content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content content
+            </div>
+
+            <div style="
+            grid-area: center;
+            place-self: start start;
+            border-top: 2px solid black;
+            border-left: 2px solid black;
+            padding: 4px 10px 10px 4px;
+            background: #FFFFFFCC
+            ">box-sizing: content-box;</div>
+            <div style="
+            grid-area: center;
+            place-self: start end;
+            border-top: 2px solid black;
+            border-right: 2px solid black;
+            padding: 4px 4px 10px 10px;
+            background: #FFFFFFCC
+            ">box-sizing: content-box;</div>
+            <div style="
+            grid-area: center;
+            place-self: end end;
+            border-bottom: 2px solid black;
+            border-right: 2px solid black;
+            padding: 10px 4px 4px 10px;
+            background: #FFFFFFCC
+            ">box-sizing: content-box;</div>
+            <div style="
+            grid-area: center;
+            place-self: end start;
+            border-bottom: 2px solid black;
+            border-left: 2px solid black;
+            padding: 10px 10px 4px 4px;
+            background: #FFFFFFCC
+            ">box-sizing: content-box;</div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

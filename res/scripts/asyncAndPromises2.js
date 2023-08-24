@@ -93,7 +93,7 @@ function testAsyncAndPromises2(){
 		 // метод вернёт Promise.reject("rejected B4")
 		.then(val=>{return Promise.reject("rejected B4")})
 		 // метод вернёт Promise.resolve(undefined)
-		.catch(err=>{console.log("and catch B5 "+err)})
+		.catch(err=>{ console.log("and catch B5 "+err)})
 		 // вернёт new Promise((resolve, reject)=>{console.log("Not settled")}) и цепочка дальше не выполнится
 		.then(val=>{return new Promise((resolve, reject)=>{console.log("Not settled B6")})})
 
@@ -167,7 +167,21 @@ function testAsyncAndPromises2(){
 
 
 
-
+	// BOTH THE SAME:
+	async function awaitInCodeChain() {
+		return {
+			p1: await Promise.resolve("p1"),
+			p2: await Promise.resolve("p2")
+		}
+	}
+	async function awaitInCodeChainAnalogue() {
+		const p1 = await Promise.resolve("p1");
+		const p2 = await Promise.resolve("p2");
+		return {
+			p1,
+			p2
+		}
+	}
 
 
 
@@ -216,7 +230,7 @@ function testAsyncAndPromises2(){
 
 
 	// Ждёт когда все промисы завершаться с любым результатом.
-	// Возвращает массив этих промисов.
+	// Возвращает промис с массивом из результатов переданных промисов.
 	Promise.allSettled([promiseC, promiseD, promiseF, promiseG])
 		.then(allSettledPromisesArr=>console.log(allSettledPromisesArr));
 

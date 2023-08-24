@@ -1,7 +1,7 @@
 
 
 {
-	console.log("-----------------------------------------------------BROWSER INTERACTION");
+	console.log("-------------BROWSER INTERACTION");
 
 	const logIntoConsole = () => console.log("log into console");
 	const warnIntoConsole = () => console.warn("warn into console e.g.: Obsolete method. Please use.......");
@@ -68,5 +68,5 @@
 
 
 
-	console.log("------------------------------------------------------------------------");
+	console.log("-------------BROWSER INTERACTION END");
 }

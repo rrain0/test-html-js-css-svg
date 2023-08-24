@@ -22,6 +22,19 @@ function typeCastingTest(){
 	console.log("Boolean(-1): " + Boolean(-1)); // => true
 	console.log("Boolean(undefined): " + Boolean(undefined)); // => false
 	console.log("Boolean(null): " + Boolean(null)); // => false
+	console.log("!!null:", !!null) // => false
+
+	/*
+		0 								=> false
+		NaN 							=> false
+		"" (the empty string) 			=> false
+		0n (the bigint version of zero) => false
+		null 							=> false
+		undefined 						=> false
+		(other values)					=> true
+	 */
+
+	
 
 // каст в число
 	console.log("Number(\"12345\"):");
@@ -31,20 +44,24 @@ function typeCastingTest(){
 
 
 
-// == сравнить с приведением типов
-// === сравнить без приведения типов
-// с undefined и null каке-то особые правила
+	// == сравнить с приведением типов
+	// === сравнить без приведения типов - если значения разного типа, то всегда false
+	// с undefined и null какие-то особые правила
 
 	console.log("\"01\" == 1: " + ("01" == 1)); // => true (with type casting)
 	console.log("\"01\" === 1: " + ("01" === 1)); // => false
 
 	console.log(!!undefined === !!0); // => true
 	console.log(undefined === 0); // => false
-	console.log("undefined === NaN: " + (undefined === NaN)); // => false
-	console.log("undefined == NaN: " + (undefined == NaN)); // => true
-	console.log("!undefined: " + !undefined); // => true
+	console.log("undefined === NaN:", undefined === NaN) // => false
+	console.log("undefined == NaN:", undefined == NaN) // => true
+	console.log("!undefined:", !undefined); // => true
 
-//походу объекты равны только если это один и тот же объект по ссылке
+
+	console.log("undefined == false: ", undefined == false) // => false
+	console.log("undefined == false: ", undefined == null) // => true
+
+// объекты сравниваются только по ссылке
 	console.log({name: "ivan", id: 7} == {name: "ivan", id: 7});
 	console.log({name: "ivan", id: 7} === {name: "ivan", id: 7});
 	const obj4 = {name: "ivan", id: 7};

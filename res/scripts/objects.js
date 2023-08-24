@@ -4,6 +4,68 @@ function objectsTest(){
 
 	console.log("-----------------------------------------------OBJECTS");
 
+	// getter & setter
+	// Object.defineProperty / Object.defineProperties
+	// There are two type of properties:
+	// ● data props - contains a value
+	// ● accessor props - contains getter / setter functions (can't store a value)
+	{
+		console.log('------getter & setter------')
+		const obj = {
+			_id: 9,
+			get id(){ return -this._id }, // without backing field _id there will be endless recursion
+			set id(newVal){ this._id = newVal*10 },
+
+			name: 'some name',
+		}
+
+		console.log('set id = ', obj.id = 8) //8
+		console.log('get id', obj.id) // -80
+		console.log('set id = ', obj.id = 25); // 25
+		console.log('get id', obj.id) // -250
+
+		Object.defineProperty(obj, 'name2', {
+			get(){ return this.name+' by custom getter' },
+			set(newVal) { this.name = newVal+' by custom setter' }
+		})
+		Object.defineProperties(obj, {
+			_name3: {
+				value: 'third name',
+			},
+			name3: {
+				get(){ return this._name3+' by custom getter' },
+				set(newVal) { this._name3 = newVal+' by custom setter' }
+			}
+		})
+
+		console.log('set name2 = ', obj.name2 = 'new name 2') // new name 2
+		console.log('obj.name2:', obj.name2) // new name 2 by custom setter by custom getter
+		console.log('obj.name3 from initial value:', obj.name3) // third name by custom getter
+		console.log('set name3 = ', obj.name3 = 'new name 3') // new name 3
+		console.log('obj.name3:', obj.name3) // third name by custom getter
+
+		console.log('obj:', obj)
+
+		const idSetter = Object.getOwnPropertyDescriptor(obj, 'id').set
+		console.log('idSetter:', idSetter) // function id(newVal)
+		console.log('idSetter.call(obj,10):', idSetter.call(obj,10)) // it works normally
+		console.log(obj._id) // 100
+		console.log('idSetter.bind(obj)(20):', idSetter.bind(obj)(20)) // it works normally
+		console.log(obj._id) // 200
+
+		const _idSetter = Object.getOwnPropertyDescriptor(obj, '_id').set
+		console.log('_idSetter:', _idSetter) // undefined
+
+
+
+		console.log('-----------------------------')
+	}
+	{
+		let obj = { prop: 'p' }
+		// Object.hasOwn() is intended as a replacement for Object.prototype.hasOwnProperty()
+		Object.hasOwn(obj, 'prop') // returns boolean
+	}
+
 	// Object from Map
 	{
 		const entries = new Map([
@@ -118,7 +180,7 @@ function objectsTest(){
 			login: "Andrew",
 			email: "andrew@mail.ru",
 			description: "I am superman",
-			favoriteMusicArtists: ["Skillet", "Scarlxord", "Dead by April"],
+			favoriteMusicArtists: ["Skillet", "Scarlxrd", "Dead by April"],
 			location: {
 				country: "Russia",
 				city: "Irkutsk",
@@ -175,11 +237,10 @@ function objectsTest(){
 
 
 
-
+	// При перечислении свойств через for..in и тд порядок итерации соответствует порядку добавления полей в объект!!!
 
 	// for..in
-	// for..in покажет только обычные свойства объекта
-	// (без прототипа, символов)
+	// for..in покажет только обычные свойства объекта (own, enumerable, with prototype chain)
 	{
 		let obj = {
 			id: 78,
@@ -197,6 +258,25 @@ function objectsTest(){
 		console.log("end of for..in")
 	}
 
+
+
+
+	// for..in
+	// for(const key in object){ object[key] = 'new value' }
+	// (with prototypes, enumerable, no symbol keys)
+
+
+	// Object.keys(someObject) => keys[]
+	// все ключи объекта
+	// (own, enumerable, no symbol keys)
+
+	// Object.values(someObject) => values[]
+	// все значения объекта
+	// (own, enumerable, no symbol keys)
+
+	// Object.entries(someObject) => [name, value][]
+	// все записи ([ключ: значение]) объекта
+	// (own, enumerable, no symbol keys)
 
 
 

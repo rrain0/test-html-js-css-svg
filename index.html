@@ -27,23 +27,37 @@
 		<li>React</li>
 		<li><a href="res/pages/basic-html-test.html">Basic HTML test</a></li>
 		<li><a href="res/pages/point-on-field.html">Point on field</a></li>
-		<li><a href="res/pages/blurred-image.html">Blurred image</a></li>
-		<li><a href="res/pages/fullscreen-background.html">Fullscreen background</a></li>
+		<li><a href="res/pages/background-gradients-colors/background-gradients-colors.html">Background & Colors</a></li>
 		<li><a href="res/pages/floats-and-image-shapes.html">Floats & Image Shapes</a></li>
 		<li><a href="res/pages/svg-test.html">SVG</a></li>
 		<li><a href="res/pages/grid-test.html">Grid</a></li>
 		<li><a href="res/pages/colored-tags.html">Colored tags</a></li>
 		<li><a href="res/pages/work-with-dom.html">Work with DOM</a></li>
+		<li><a href="res/pages/dimensions.html">Dimensions</a></li>
+		<li><a href="res/pages/colors.html">Colors</a></li>
+		<li><a href="res/pages/gradient-border.html">Gradient Border</a></li>
 	</ul>
 
 	<textarea id="text-area" placeholder="I am textarea to alert by button"></textarea>
 	<button onclick="clickMeBtnAction()">Click me to alert</button>
 
 	<div>
+		<button onclick="jsBasic()">jsBasic</button>
+	</div>
+	<div>
+		<button onclick="functions()">functions</button>
+	</div>
+	<div>
 		<button onclick="testAsyncAndPromises()">async and promises</button>
 	</div>
 	<div>
 		<button onclick="testAsyncAndPromises2()">async and promises 2</button>
+	</div>
+	<div>
+		<button onclick="asyncAndErrors()">async and errors</button>
+	</div>
+	<div>
+		<button onclick="asyncAndLoops()">Async And Loops</button>
 	</div>
 	<div>
 		<button onclick="macroMicroTasksTest()">Macro/Micro Tasks</button>
@@ -68,6 +82,9 @@
 	</div>
 	<div>
 		<button onclick="objectsTest()">Objects</button>
+	</div>
+	<div>
+		<button onclick="classes()">Classes</button>
 	</div>
 	<div>
 		<button onclick="typeCastingTest()">Type casting</button>
@@ -97,7 +114,7 @@
 		<button onclick="syntax()">Syntax</button>
 	</div>
 	<div>
-		<button onclick="asyncAndLoops()">Async And Loops</button>
+		<button onclick="voidOperator()">void operator</button>
 	</div>
 
 
@@ -106,6 +123,7 @@
 	<!-- чтобы найти элемент по id, надо сначала обработать его html -->
 	<script src="res/script2.js"></script>
 
+	<script src="res/scripts/jsBasic.js"></script>
 	<script src="res/scripts/functions.js"></script>
 	<script src="res/scripts/array.js"></script>
 	<script src="res/scripts/string.js"></script>
@@ -114,6 +132,8 @@
 	<script src="res/scripts/typeCasting.js"></script>
 	<script src="res/scripts/asyncAndPromises.js"></script>
 	<script src="res/scripts/asyncAndPromises2.js"></script>
+	<script src="res/scripts/asyncAndErrors.js"></script>
+	<script src="res/scripts/asyncAndLoops.js"></script>
 	<script src="res/scripts/macroAndMicroTasks.js"></script>
 	<script src="res/scripts/setAndMap.js"></script>
 	<script src="res/scripts/numbers.js"></script>
@@ -126,7 +146,7 @@
 	<script src="res/scripts/urlWork.js"></script>
 	<script src="res/scripts/jsClosures.js"></script>
 	<script src="res/scripts/syntax.js"></script>
-	<script src="res/scripts/asyncAndLoops.js"></script>
+	<script src="res/scripts/voidOperator.js"></script>
 
 	<script type="text/javascript">console.log("log from 'script' tag in html")</script>
 	<script>console.log("log (2) from 'script' tag in html")</script>

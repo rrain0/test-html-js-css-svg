@@ -18,13 +18,96 @@ function numbers(){
 	console.log(1.0+2.5+2.5); // => 6 => не 6.0
 	console.log("1+5:");
 	console.log(1+5); // => 6
+	
+	
+	console.log("1e-3",1e-3) // exponential
+	console.log('0xff5588',0xff5588) // hex
+	console.log('0o76543210',0o76543210) // oct
+	console.log('0b110011',0b110011) // bin
+	
+	
+	
+	// Округление:
+	// floor - округление в меньшую сторону (в сторону -∞)
+	console.log('Math.floor(3.8)',Math.floor(3.8)) // 3
+	console.log('Math.floor(-3.8)',Math.floor(-3.8)) // -4
+	// ceil - округление в большую сторону (в сторону +∞)
+	console.log('Math.ceil(3.8)',Math.ceil(3.8)) // 4
+	console.log('Math.ceil(-3.8)',Math.ceil(-3.8)) // -3
+	// round - округление до ближайшего целого (x.5 => x+1; -x.5 => -x+1)
+	console.log('Math.round(3.1)', Math.round(3.1)) // 3
+	console.log('Math.round(3.6)', Math.round(3.6)) // 4
+	console.log('Math.round(-3.1)', Math.round(-3.1)) // -3
+	console.log('Math.round(-3.6)', Math.round(-3.6)) // -4
+	console.log('Math.round(3.5)', Math.round(3.5)) // 4
+	console.log('Math.round(-3.5)', Math.round(-3.5)) // -3
+	// trunc - отбрасывание дробной части
+	console.log('Math.trunc(3.1)', Math.trunc(3.1)) // 3
+	console.log('Math.trunc(3.6)', Math.trunc(3.6)) // 3
+	console.log('Math.trunc(-3.1)', Math.trunc(-3.1)) // -3
+	console.log('Math.trunc(-3.6)', Math.trunc(-3.6)) // -3
+	console.log('Math.trunc(3.5)', Math.trunc(3.5)) // 3
+	console.log('Math.trunc(-3.5)', Math.trunc(-3.5)) // -3
+	
 
-
-
+	// toFixed(number) - округление half-up в строку с добавлением недостающих нулей
+	console.log('3.31.toFixed(1)', 3.31.toFixed(1)) // 3.3
+	console.log('3.36.toFixed(1)', 3.36.toFixed(1)) // 3.4
+	console.log('(-3.31).toFixed(1)', (-3.31).toFixed(1)) // -3.3
+	console.log('(-3.36).toFixed(1)', (-3.36).toFixed(1)) // -3.4
+	console.log('3.35.toFixed(1)', 3.35.toFixed(1)) // 3.4
+	console.log('(-3.35).toFixed(1)', (-3.35).toFixed(1)) // -3.4
+	console.log('3.35.toFixed(3)', 3.35.toFixed(3)) // 3.350
+	console.log('(-3.35).toFixed(3)', (-3.35).toFixed(3)) // -3.350
+	console.log( '6.35.toFixed(20)', 6.35.toFixed(20) ) // 6.34999999999999964473
+	console.log( '6.35.toFixed(1)', 6.35.toFixed(1) ) // !!!! 6.3, потому что 6.34999999999999964473
+	
+	
+	console.log('0.1 + 0.2', 0.1 + 0.2) // 0.30000000000000004 (!!!!!! потеря точности)
+	
+	console.log("+''", +'') // пустая строка - это 0
+	console.log('isFinite(5)', isFinite(5)) // true
+	console.log('isFinite(-Infinity)', isFinite(-Infinity)) // false
+	console.log('isFinite(NaN)', isFinite(NaN)) // false
+	console.log('isNaN(NaN)', isNaN(NaN)) // true
+	console.log('NaN===NaN', NaN===NaN) // false
+	console.log('isNaN(\'klsj\')', isNaN('klsj')) // true
+	console.log('Number.isNaN(\'klsj\')', Number.isNaN('klsj')) // false
+	console.log('Object.is(NaN, NaN)', Object.is(NaN, NaN)) // true
+	console.log('Object.is(0, -0)', Object.is(0, -0)) // false
+	console.log('0 === -0', 0 === -0) // true
+	// isNaN & isFinite сначала преобразуют к числу, а потом проверяют
+	// Number.isNaN & Number.isFinite сначала проверяют чтобы это было число, а потом проверяют значение
+	
+	
+	// удаляют пробелы в начале и читают число до ошибки парсинга с указанной системой счисления
+	// parseInt(string, radix[2,36]?)
+	console.log( 'parseInt(\'100px\')', parseInt('100px') ) // 100
+	console.log( 'parseFloat(\'12.5em\')', parseFloat('12.5em') ) // 12.5
+	console.log( 'parseFloat(\'  12.5em\')', parseFloat('  12.5em') ) // 12.5
+	
+	console.log( 'parseInt(\'12.3\')', parseInt('12.3') ) // 12, вернётся только целая часть
+	console.log( 'parseFloat(\'12.3.4\')', parseFloat('12.3.4') ) // 12.3, произойдёт остановка чтения на второй точке
+	
+	console.log( 'parseInt(\'0xff\', 16)', parseInt('0xff', 16) ) // 255
+	console.log( 'parseInt(\'ff\', 16)', parseInt('ff', 16) ) // 255, без 0x тоже работает
+	
+	console.log( 'parseInt(\'2n9c\', 36)', parseInt('2n9c', 36) ) // 123456
+	
+	// + & Number() тримят строку перед парсингом
+	console.log( "Number('  12  ')", Number('  12  ')) // 12
+	console.log( "+'  12  '", +'  12  ') // 12
+	
+	
+	// Math.random() генерирует рандомное число в интервале [0; 1)
+	console.log('Math.random()', Math.random())
+	
+	
+	
 	// toString()
 	// toString(radix)
-	console.log("Number(29).toString(16):");
-	console.log( Number(29).toString(16) ); // => 1d
+	console.log("29..toString(16):");
+	console.log( 29..toString(16) ); // => 1d
 
 	console.log("Number(29.55).toString(16):");
 	console.log( Number(29.55).toString(16) ); // => 1d.8ccccccccccd
@@ -37,7 +120,14 @@ function numbers(){
 	console.log( -4294967296 ); // => 0
 	console.log( "bin: " + (-4294967296).toString(2) ) // => bin: -100000000000000000000000000000000
 
+	// toLocaleString
+	// can display without exponential notation
+	console.log(
+		0.00000000000000000000000000000000000000000000001
+			.toLocaleString(['fullwide', 'en-Us'], { useGrouping: false, maximumSignificantDigits: 21 })
+	) // "0.00000000000000000000000000000000000000000000001"
 
+	
 
 
 

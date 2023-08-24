@@ -1,0 +1,29 @@
+
+
+.someElementContext {
+  display: contents;
+  
+  .component {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: start;
+    padding: 32px;
+    gap: 32px;
+    
+    // Классы, управляющие видимостью элементов на странице
+    // в зависимости от текущего значения data-expanded
+    .expandableContent {
+      display: none;
+    }
+    .collapsableContent {
+      display: contents;
+    }
+    &[data-expanded=true] .expandableContent {
+      display: contents;
+    }
+    &[data-expanded=true] .collapsableContent {
+      display: none;
+    }
+  }
+}
+

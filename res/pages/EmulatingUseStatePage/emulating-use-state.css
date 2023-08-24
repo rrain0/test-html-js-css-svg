@@ -1,0 +1,24 @@
+.someElementContext {
+  display: contents;
+}
+.someElementContext .component {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: start;
+  padding: 32px;
+  gap: 32px;
+}
+.someElementContext .component .expandableContent {
+  display: none;
+}
+.someElementContext .component .collapsableContent {
+  display: contents;
+}
+.someElementContext .component[data-expanded=true] .expandableContent {
+  display: contents;
+}
+.someElementContext .component[data-expanded=true] .collapsableContent {
+  display: none;
+}
+
+/*# sourceMappingURL=emulating-use-state.css.map */

@@ -5,3 +5,28 @@ ul li {
     /*color: rgb(49, 151, 116);*/
 }
 
+
+
+.tableServicesOnObject * {
+    text-align: start;
+    vertical-align: top;
+}
+
+
+.someDiv {
+    width: 200px;
+    height: 200px;
+    display: grid;
+    grid: 'c';
+}
+.div1 {
+    grid-area: c;
+    width: 200px;
+    height: 200px;
+    background: aqua;
+}
+.div2 {
+    width: 200px;
+    height: 200px;
+    background: brown;
+}
