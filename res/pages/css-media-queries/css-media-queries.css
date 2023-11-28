@@ -1,0 +1,22 @@
+
+
+
+.container1 {
+  width: 200px;
+  height: 200px;
+  background: lightskyblue;
+}
+@media (400px <= width <= 600px) {
+  .container1 {
+    width: 400px;
+    height: 400px;
+    background: #2ecdbb;
+  }
+}
+@media (width > 600px) {
+  .container1 {
+    width: 600px;
+    height: 600px;
+    background: #f39aba;
+  }
+}

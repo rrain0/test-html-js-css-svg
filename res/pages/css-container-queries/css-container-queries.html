@@ -2,18 +2,17 @@
 <html lang="ru">
 <head>
 	<meta charset="UTF-8">
-	<title>CSS Container Queries</title>
-
-	<meta
-	  name="viewport"
+	<meta name="viewport"
 	  content="width=device-width, initial-scale=1, shrink-to-fit=no"
 	/>
-
-
-	<link rel="icon" href="../../images/favicon.png">
-
+  <link rel="icon" href="../../images/favicon.png">
+  
+  <title>CSS Container Queries</title>
+  <link rel="stylesheet" type="text/css" href="css-container-queries.css">
+  
 </head>
 <body>
+
 
 
 <div style="height: 230px;"></div>
@@ -39,6 +38,68 @@
     "></div>
   </div>
 </div>
+
+
+
+<div style="height: 230px;"></div>
+
+
+
+<div class="container1">
+  <div class="box1">
+    <div class="box2"></div>
+  </div>
+</div>
+
+
+
+<div style="height: 230px;"></div>
+
+
+
+<div style="
+  container-type: size;
+  width: 400px;
+  height: 400px;
+  background: lightskyblue;
+">
+  
+  <div style="
+    width: 50cqw;
+    height: 50cqh;
+    background: #2ecdbb;
+  ">
+    <div style="
+      width: 25cqw;
+      height: 25cqh;
+      background: #f39aba;
+    "></div>
+    <div style="
+      width: 40%;
+      height: 40%;
+      background: #f39aba;
+    "></div>
+  </div>
+    
+  <div style="
+    width: 50%;
+    height: 50%;
+    background: #333333;
+  ">
+    <div style="
+      width: 25cqw;
+      height: 25cqh;
+      background: #9198e5;
+    "></div>
+    <div style="
+      width: 40%;
+      height: 40%;
+      background: #9198e5;
+    "></div>
+  </div>
+  
+</div>
+
 
 
 <div style="height: 230px;"></div>
