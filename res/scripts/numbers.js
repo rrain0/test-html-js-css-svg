@@ -35,6 +35,7 @@ function numbers(){
 	console.log('Math.ceil(3.8)',Math.ceil(3.8)) // 4
 	console.log('Math.ceil(-3.8)',Math.ceil(-3.8)) // -3
 	// round - округление до ближайшего целого (x.5 => x+1; -x.5 => -x+1)
+	// начиная с .5 в сторону +∞
 	console.log('Math.round(3.1)', Math.round(3.1)) // 3
 	console.log('Math.round(3.6)', Math.round(3.6)) // 4
 	console.log('Math.round(-3.1)', Math.round(-3.1)) // -3

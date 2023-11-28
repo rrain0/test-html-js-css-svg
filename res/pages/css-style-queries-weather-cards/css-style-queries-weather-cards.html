@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS Container Queries</title>
+
+	<meta
+	  name="viewport"
+	  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+	/>
+  
+  <!-- stylesheet указывает на то, что это стиль css -->
+  <link rel="stylesheet" type="text/css" href="css-style-queries-weather-cards.css">
+
+	<link rel="icon" href="../../images/favicon.png">
+
+</head>
+<body>
+
+
+<ul class="card-list">
+  <li class="card-container" style="--rain: true;">
+    <div class="weather-card">
+      <div class="day">Thursday</div>
+      <div class="date">February <span>9</span></div>
+      <div class="temps">
+        <div class="high">High: <span>52</span></div>/
+        <div class="low">Low: <span>43</span></div>
+      </div>
+      <div class="features">
+        Afternoon showers
+      </div>
+    </div>
+  </li>
+  <li class="card-container" style="--cloudy: true;">
+    <div class="weather-card">
+      <div class="day">Friday</div>
+      <div class="date">February <span>10</span></div>
+      <div class="temps">
+        <div class="high">High: <span>45</span></div>/
+        <div class="low">Low: <span>39</span></div>
+      </div>
+      <div class="features">
+        Mostly cloudy
+      </div>
+    </div>
+  </li>
+  <li class="card-container" style="--cloudy: true; --sunny: true;">
+    <div class="weather-card">
+      <div class="day">Saturday</div>
+      <div class="date">February <span>11</span></div>
+      <div class="temps">
+        <div class="high">High: <span>55</span></div>/
+        <div class="low">Low: <span>47</span></div>
+      </div>
+      <div class="features">
+        Partly cloudy
+      </div>
+    </div>
+  </li>
+  <li class="card-container" style="--sunny: true;">
+    <div class="weather-card">
+      <div class="day">Saturday</div>
+      <div class="date">February <span>12</span></div>
+      <div class="temps">
+        <div class="high">High: <span>55</span></div>/
+        <div class="low">Low: <span>47</span></div>
+      </div>
+      <div class="features">
+        Clear skies, sun
+      </div>
+    </div>
+  </li>
+</ul>
+</ul>
+
+
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS Container Queries</title>
+
+	<meta
+	  name="viewport"
+	  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+	/>
+
+
+	<link rel="icon" href="../../images/favicon.png">
+
+</head>
+<body>
+
+
+<div style="height: 230px;"></div>
+
+
+<!-- CSS Container Queries -->
+<!-- https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_container_queries -->
+<div style="
+  container-type: inline-size;
+  width: 600px;
+  height: 400px;
+  background: #333333;
+">
+  <div style="
+    width: 50cqw;
+    height: 400px;
+    background: #9198e5;
+  ">
+    <div style="
+      width: 40cqw;
+      height: 400px;
+      background: #da5474;
+    "></div>
+  </div>
+</div>
+
+
+<div style="height: 230px;"></div>
+
+
+
+</body>
+</html>

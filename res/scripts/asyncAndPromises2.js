@@ -257,12 +257,113 @@ function testAsyncAndPromises2(){
 		.then(oneVal=>console.log("race one resolved: "+oneVal))
 		.catch(oneErr=>console.log("race one rejected: "+oneErr)); // => race one rejected: promiseF rejected value
 	
+	
+	
+	
+	
+	{ // Error propagation
 
-
-
+    // If we not await / then / catch then it will be deferred and uncaught
+		async function one(){
+			return 1
+		}
+		async function err(){
+			throw new Error('raise error')
+		}
+		
+		
+		function start0(){
+			one().then(()=>{
+				err() // !!! will be uncaught error in its own async thread
+				console.log('continuing start0...') // it executes
+			})
+				.catch(err=>console.log('caught err'))
+			console.log('exiting start0...') // it executes
+		}
+		async function startAwait0(){
+			try{
+				await one()
+				err() // !!! will be uncaught error in its own async thread
+				console.log('continuing startAwait0...') // it executes
+			} catch (e){
+				console.log('caught err')
+			}
+			console.log('exiting startAwait0...') // it executes
+		}
+		async function startAwait01(){
+			try{
+				await one()
+				try{
+					err() // !!! will be uncaught error in its own async thread
+					console.log('continuing startAwait01...') // it executes
+				} catch (e){
+					console.log('caught err 0')
+				}
+			} catch (e){
+				console.log('caught err')
+			}
+			console.log('exiting startAwait01...') // it executes
+		}
+		
+		
+		function start1(){
+			one().then(()=>{
+				err().then() // !!! will be uncaught error
+			})
+				.catch(err=>console.log('caught err'))
+			console.log('exiting start1...') // it executes
+		}
+		async function startAwait1(){
+			try{
+				await one()
+				await err()
+			} catch (e){
+				console.log('caught err') // !!! caught here
+			}
+			console.log('exiting startAwait1...') // it executes
+		}
+		
+		
+		function start2(){
+			one().then(()=>{
+				err().catch(err=>console.log('caught err 0')) // !!! caught here
+			})
+				.catch(err=>console.log('caught err'))
+			console.log('exiting start2...') // it executes
+		}
+		async function startAwait2(){
+			try{
+				await one()
+				try{
+					await err()
+				} catch (e){
+					console.log('caught err 0')// !!! caught here
+				}
+			} catch (e){
+				console.log('caught err')
+			}
+			console.log('exiting startAwait2...') // it executes
+		}
+		
+	}
+	
+	
+	{
+		// Multiple handlers for single Promise will work
+		const p = Promise.resolve(1)
+		p.then(v=>console.log(v+1)) // => 2
+		p.then(v=>console.log(v+2)) // => 3
+		
+	}
+	
 
 
 
 
 	//console.log("----------------------------------------------------------");
 }
+
+
+
+
+

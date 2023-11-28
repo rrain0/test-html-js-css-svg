@@ -6,9 +6,15 @@ function RegExpTest() {
 		const regexp = /^\w*$/
 	}
 
-// RegExp = Regular Expression
-// const regExpSyntax = /<regExp>/<flags>
-
+	// RegExp = Regular Expression
+	// const regExpSyntax = /<regExp>/<flags>
+	
+	/*
+		JavaScript RegExp objects are stateful when they have the global or sticky flags set (e.g., /foo/g or /foo/y).
+		They store a lastIndex from the previous match. Using this internally,
+		test(), exec() and string match() etc. can be used to iterate over multiple matches in a string of text (with capture groups).
+	*/
+	
 	{
 		const str = "For more info, see Chapter 3.4.5.1"
 		// flag i => ignore case
@@ -16,6 +22,8 @@ function RegExpTest() {
 		const found = str.match(regExp)
 		console.log(found)
 		/*
+			!!! Regex must NOT have 'g' flag to return this result
+			
 			will return:
 
 			[

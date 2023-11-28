@@ -227,7 +227,7 @@ function testAsyncAndPromises(){
 		if (container.length) {
 		// Делаем что-то с контейнером
 		} else {
-		setTimeout(waitForDOM, 300); // Попробовать снова через 300 миллисекунд
+			setTimeout(waitForDOM, 300); // Попробовать снова через 300 миллисекунд
 		}
 	}
 	//waitForDOM();

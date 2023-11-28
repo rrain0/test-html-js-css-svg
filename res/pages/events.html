@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+  <link rel="icon" href="../images/favicon.png">
+  <title>Events Test</title>
+</head>
+<body>
+
+
+<ul id="list">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+  <li>Item 4</li>
+  <li>Item 5</li>
+  <li>Item 6</li>
+</ul>
+
+
+<script>
+  /*
+    Event.target - объект - инициатор события
+    Event.currentTarget - объект, на который повешан текущий обработчик события
+   */
+  const ul = document.querySelector('#list')
+  // порядок добавления в коде влияет на порядок срабатывания (на property ev listener это тоже распространяется) !!!
+  // Standard event listener
+  ul.addEventListener('click',function(ev){
+    console.log('onclick from standard event listener',ev)
+    const target = ev.target
+    const currentTarget = this
+    console.log('target',target)
+    console.log('currentTarget',currentTarget)
+  })
+  // Property event listener
+  ul.onclick = ev=>{
+    console.log('onclick from property event listener',ev)
+    const target = ev.target
+    const currentTarget = ev.currentTarget
+    console.log('target',target)
+    console.log('currentTarget',currentTarget)
+  }
+</script>
+
+
+</body>
+</html>

@@ -117,5 +117,81 @@
 </div>
 
 
+<div style="height: 230px;"></div>
+
+
+<div>
+  Теги dl, dt и dd используются для вёрстки списка описаний (пары ключ - значение, термины - определение) («dl» означает «description list»).
+  У тега dl есть встроенная роль list, у dt — term, а у dd — definition.
+  Можно несколько терминов подряд или несколько определений подряд или можно dt & dd оборачивать в div
+</div>
+<dl>
+  <dt>Blink</dt>
+  <dd>Движок в браузерах Chrome, Edge, Opera</dd>
+  <dt>Gecko</dt>
+  <dd>Движок в браузере Firefox</dd>
+  <dt>WebKit</dt>
+  <dd>Движок в браузере Apple Safari</dd>
+</dl>
+
+
+<div style="height: 230px;"></div>
+
+
+<div style="
+  width: 400px;
+  column-count: 2;
+  column-gap: 10px;
+  background: #9198e5;
+">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto blanditiis commodi delectus dolor eos expedita id iusto minus molestiae molestias quaerat, quia quibusdam quisquam recusandae rem veniam vero, voluptatum.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto blanditiis commodi delectus dolor eos expedita id iusto minus molestiae molestias quaerat, quia quibusdam quisquam recusandae rem veniam vero, voluptatum.</p>
+</div>
+
+
+<div style="height: 230px;"></div>
+
+
+<div style="
+  display: -webkit-box; /* necessary -webkit-box or -webkit-inline-box */
+  -webkit-box-orient: vertical; /* necessary */
+  overflow: hidden; /* necessary */
+  -webkit-line-clamp: 2; /* container will be 2 lines height with ellipsis */
+  width: 400px;
+  background: #9198e5;
+">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto blanditiis commodi delectus dolor eos expedita id iusto minus molestiae molestias quaerat, quia quibusdam quisquam recusandae rem veniam vero, voluptatum.</p>
+</div>
+
+
+<div style="height: 230px;"></div>
+
+
+<!-- CSS Container Queries -->
+<!-- https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_container_queries -->
+<div style="
+  container-type: inline-size;
+  width: 600px;
+  height: 400px;
+  background: #9198e5;
+">
+  <div style="
+    width: 50cqw;
+    height: 400px;
+    background: #333333;
+  ">
+    <div style="
+      width: 40cqw;
+      height: 400px;
+      background: #d9480f;
+    "></div>
+  </div>
+</div>
+
+
+<div style="height: 230px;"></div>
+
+
+
 </body>
 </html>

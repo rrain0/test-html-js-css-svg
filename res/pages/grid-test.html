@@ -6,7 +6,13 @@
     <link rel="icon" href="../images/favicon.png">
     <title>Grid Test</title>
 </head>
-<body>
+<body style="
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 0;
+  padding: 10px;
+  gap: 64px;
+">
 
 
 <img src="../images/grid-indexed-lines-rows-cols.png">
@@ -24,7 +30,7 @@ For Flex & Grid:
 ● place-items: flex-start center - align-items: flex-start & justify-items: center;
 ● place-items: start stretch - align-items: start & justify-items: stretch;
 ● place-content
-● place-self
+● place-self - element's position inside GRID CELL
 -->
 
 <!--
@@ -38,8 +44,6 @@ For Flex & Grid:
 Можно использовать:
     <value>fr
     auto
-    auto-fill - будет как минимум 1 столбец
-    auto-fit - пустые дорожки удалятся
     none
     minmax(<min>, <max>) - задание диапазона
     min-content
@@ -47,6 +51,8 @@ For Flex & Grid:
     fit-content(<value>) - auto & не больше value (но не меньше минимума)
     repeat(<cnt>, <value>) - повторить cnt раз дорожку с размером value
         ● repeat(<auto-fill / auto-fit>, ...) - будут динамически добавляться ряды / колонки
+            auto-fill - будет как минимум 1 столбец
+            auto-fit - пустые дорожки удалятся
           grid-template-columns: repeat(auto-fill, 186px);
           grid-template-columns: repeat(auto-fill, minmax(186px, 1fr));
 
@@ -60,6 +66,8 @@ For Flex & Grid:
 
 grid-template-rows:  5em 200px 200px;   // 3 строки
 grid-template-rows: [header-start] 20vh [header-end]; // 1 строка, линии 0 и 1 именованы
+grid-template-rows: subgrid; // взять разметку используемых этим элементом рядов родителя у самого родителя
+grid-template-columns: subgrid; // взять разметку используемых этим элементом колонок родителя у самого родителя
 grid-template-columns: 200px 5em 50%;   // 3 столбца
 grid-template-columns: 1fr 1fr 1fr 1fr; // эквивалентно grid-template-columns: 25% 25% 25% 25%;
 grid-template-columns: 1fr 2fr 1fr;     // эквивалентно grid-template-columns: 25% 50% 25%;
@@ -71,12 +79,15 @@ grid-template-columns: [full-start sidebar-start] 1fr 2fr [sidebar-end main-star
 grid-template-columns: repeat(auto-fill, 186px);
 grid-template-columns: repeat(auto-fill, minmax(186px, 1fr));
 
-Если сумма всех гибких размеров (fr) дорожек меньше 1, они будут занимать только соответствующую долю оставшегося пространства, а не расширяться, чтобы заполнить его полностью.
+Если сумма всех гибких размеров (fr) дорожек меньше 1,
+они будут занимать только соответствующую долю оставшегося пространства,
+а не расширяться, чтобы заполнить его полностью.
 
 
 ● grid-template-areas - именованые области
     ● если нужно оставить область без имени, то именуйте её одной или несколькими точками
     ● линии, ограничивающие область, получают имя области с суффиксами -start / -end
+    ● имя НЕ ДОЛЖНО БЫТЬ ЦИФРОЙ - иначе путаница с номерами линий
 
 .grid-container {
     display: grid;
@@ -96,7 +107,7 @@ header {
 
 
 ● grid-template | grid - сокращения для grid-template-rows & grid-template-columns & grid-template-areas
-grid в отличие от grid-template сбрасывает ещё свойства неяаной сетки
+grid в отличие от grid-template сбрасывает ещё свойства неявной сетки
 
 ● grid-auto-rows - неявные ряды - auto | значение
 ● grid-auto-columns - неявные колонки - auto | значение
@@ -273,6 +284,207 @@ grid-area: <grid-row-line-start> / <grid-column-line-start> / <grid-row-line-end
         width: 100%; height: 100%; object-fit: cover;
     "/>
 </div>
+
+
+
+
+
+
+<!-- SUBGRID -->
+<!-- https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Subgrid -->
+
+<!--
+  You can use
+  ● grid-template-columns: subgrid;
+  ● grid-template-rows: subgrid;
+  to inherit sizes of used columns / rows from parent grid
+-->
+<!-- main grid -->
+<div style="
+  width: 800px; height: 600px;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(4, minmax(100px, auto));
+  border: 2px solid #f76707;
+  border-radius: 5px;
+  background-color: #fff4e6;
+">
+  
+  <!-- subgrid -->
+  <div style="
+    display: grid;
+    grid-column: 2 / 7;
+    grid-row: 2 / 4;
+    grid-template-columns: subgrid; /* SubGrid */
+    grid-template-rows: repeat(3, 80px);
+    border: 2px solid #ffa94d;
+    border-radius: 5px;
+    background-color: #ffd8a8;
+    color: #d9480f;
+  ">
+  
+    <!-- subgrid item -->
+    <!--
+      Note that line numbering restarts inside the subgrid — column line 1, when inside the subgrid,
+      is the first line of the subgrid.
+      The subgridded element doesn't inherit the line numbers of the parent grid.
+      
+      Gaps are inherited but can also be overridden with a different gap value.
+      Line names can be passed from the parent into the subgrid,
+      and the subgrid can also declare its own line names.
+    -->
+    <div style="
+      grid-column: 3 / 6;
+      grid-row: 1 / 3;
+      background-color: rgb(40, 240, 83);
+    ">
+    
+    </div>
+    
+  </div>
+  
+</div>
+
+
+<!-- main grid -->
+<div style="
+  width: 800px; height: 600px;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(4, minmax(100px, auto));
+  border: 2px solid #f76707;
+  border-radius: 5px;
+  background-color: #fff4e6;
+">
+  
+  <!-- subgrid -->
+  <div style="
+    display: grid;
+    grid-column: 2 / 7;
+    grid-row: 2 / 4;
+    grid-template-columns: subgrid;
+    grid-template-rows: subgrid;
+    border: 2px solid #ffa94d;
+    border-radius: 5px;
+    color: #d9480f;
+  ">
+    <!--
+      NO IMPLICIT GRID in a subgridded dimension !!!
+      As the subgrid is on both dimensions, there is nowhere for the extra two items to go,
+      so they go into the last track of the grid, as defined in the specification.
+    -->
+    
+    <!-- subgrid items -->
+    <div style="background-color: #d9480f; color: #fff; border-radius: 5px;">1</div>
+    <div style="background-color: #d9480f; color: #fff; border-radius: 5px;">2</div>
+    <div style="background-color: #d9480f; color: #fff; border-radius: 5px;">3</div>
+    <div style="background-color: #d9480f; color: #fff; border-radius: 5px;">4</div>
+    <div style="background-color: #d9480f; color: #fff; border-radius: 5px;">5</div>
+    <div style="background-color: #d9480f; color: #fff; border-radius: 5px;">6</div>
+    <div style="background-color: #d9480f; color: #fff; border-radius: 5px;">7</div>
+    <div style="background-color: #d9480f; color: #fff; border-radius: 5px;">8</div>
+    <div style="background-color: #d9480f; color: #fff; border-radius: 5px;">9</div>
+    <div style="background-color: #d9480f; color: #fff; border-radius: 5px;">10</div>
+    <!-- !!! The last two items does not fit into the explicit grid and will be placed in last track -->
+    <div style="background-color: #d9480f; color: #fff; border-radius: 5px; font-size: 2em;">11</div>
+    <div style="background-color: #d9480f; color: #fff; border-radius: 5px; font-size: 2em;">12</div>
+    
+  </div>
+  
+</div>
+
+
+<!-- main grid -->
+<div style="
+  width: 800px; height: 600px;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(4, minmax(100px, auto));
+  border: 2px solid #f76707;
+  border-radius: 5px;
+  background-color: #fff4e6;
+">
+  
+  <!-- subgrid -->
+  <div style="
+    display: grid;
+    grid-column: 2 / 7;
+    grid-row: 2 / 4;
+    grid-template-columns: subgrid;
+    grid-auto-rows: minmax(100px, auto); /* changed only this to accommodate all items */
+    border: 2px solid #ffa94d;
+    border-radius: 5px;
+    color: #d9480f;
+  ">
+    <!-- subgrid items -->
+    <div style="background-color: #d9480f; color: #fff; border-radius: 5px;">1</div>
+    <div style="background-color: #d9480f; color: #fff; border-radius: 5px;">2</div>
+    <div style="background-color: #d9480f; color: #fff; border-radius: 5px;">3</div>
+    <div style="background-color: #d9480f; color: #fff; border-radius: 5px;">4</div>
+    <div style="background-color: #d9480f; color: #fff; border-radius: 5px;">5</div>
+    <div style="background-color: #d9480f; color: #fff; border-radius: 5px;">6</div>
+    <div style="background-color: #d9480f; color: #fff; border-radius: 5px;">7</div>
+    <div style="background-color: #d9480f; color: #fff; border-radius: 5px;">8</div>
+    <div style="background-color: #d9480f; color: #fff; border-radius: 5px;">9</div>
+    <div style="background-color: #d9480f; color: #fff; border-radius: 5px;">10</div>
+    <div style="background-color: #d9480f; color: #fff; border-radius: 5px; font-size: 2em;">11</div>
+    <div style="background-color: #d9480f; color: #fff; border-radius: 5px; font-size: 2em;">12</div>
+    
+  </div>
+  
+</div>
+
+
+
+<!-- main grid -->
+<!-- Main grid line names are accessible inside subgrid -->
+<div style="
+  width: 800px; height: 600px;
+  display: grid;
+  /* Defining main grid line names */
+  grid-template-columns: 1fr 1fr 1fr [col-start] 1fr 1fr 1fr [col-end] 1fr 1fr 1fr;
+  grid-template-rows: repeat(4, minmax(100px, auto));
+  gap: 20px;
+  border: 2px solid #f76707;
+  border-radius: 5px;
+  background-color: #fff4e6;
+">
+  
+  <!-- subgrid -->
+  <div style="
+    display: grid;
+    grid-column: 2 / 7;
+    grid-row: 2 / 4;
+    /* Overriding row-gap of main grid */
+    row-gap: 0px;
+    /* Defining subgrid line names */
+    grid-template-columns: subgrid [sub-a] [sub-b] [sub-c] [sub-d] [sub-e] [sub-f];
+    grid-template-rows: subgrid;
+    border: 2px solid #ffa94d;
+    border-radius: 5px;
+    color: #d9480f;
+  ">
+    <!-- subgrid items -->
+    <div style="
+      /* Using main grid line names */
+      grid-column: col-start / col-end;
+      grid-row: 1 / 3;
+      background-color: rgb(40, 240, 83);
+    "></div>
+    <div style="
+      background-color: rgba(0,0,0,.5);
+      /* Using subgrid line names */
+      grid-column: sub-b / sub-d;
+      grid-row: 1;
+    "></div>
+    
+  </div>
+  
+</div>
+
+
+
+
 
 
 
