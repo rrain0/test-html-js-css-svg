@@ -29,3 +29,13 @@
 
 
 
+.text {
+  font-family: system-ui, sans-serif;
+  font-size: 14.5px;
+  letter-spacing: 2px;
+}
+
+.box {
+  border-radius: 5px;
+  padding: 10px 32px;
+}

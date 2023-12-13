@@ -1,6 +1,7 @@
 
 
 
+
 .container1 {
   container: container1 / inline-size;
   width: 200px;
@@ -16,6 +17,15 @@
   width: 100px;
   height: 100px;
   background: #f39aba;
+}
+@container screen {
+  .box3 {
+    position: fixed;
+    top: 0; left: 0;
+    width: 50px;
+    height: 50px;
+    background: #909da4;
+  }
 }
 
 
