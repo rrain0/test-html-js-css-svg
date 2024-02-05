@@ -1,8 +1,39 @@
 
 
+
+
 function objectsTest(){
 
-	console.log("-----------------------------------------------OBJECTS");
+	console.log("-----------------------------------------------OBJECTS")
+	
+	
+	
+	// modifying Object prototype
+	{
+		Object.prototype.let = function (handler){
+			return handler(this)
+		}
+		Object.prototype.also = function (handler){
+			handler(this)
+			return this
+		}
+		
+		console.log('({ a: 1 }).also(it=>it.a=22).also(console.log)')
+		;({ a: 1 }).also(it=>it.a=22).also(console.log) // {a: 22}
+		
+		// WARNING!!! this makes primitive values their object-wrappers
+		console.log('1 .also(it=>it.a=22).also(console.log)')
+		;1 .let(it=>it+2).also(console.log) // Number {3}
+		
+		
+		
+		// erase modification
+		Object.prototype.let = undefined
+		Object.prototype.also = undefined
+	}
+	
+	
+	
 
 	// getter & setter
 	// Object.defineProperty / Object.defineProperties
@@ -76,6 +107,8 @@ function objectsTest(){
 		console.log("Object from entries:",obj) // Object from entries: {id: 8, name: 'some object'}
 	}
 
+	
+	
 	// Имя свойства объекта из переменных
 	{
 		const propName = 'id'
@@ -85,6 +118,8 @@ function objectsTest(){
 		const id = obj[propName]
 	}
 
+	
+	
 	// Динамическое добавление/удаление свойств
 	// Проверка наличия свойства
 	{
@@ -113,6 +148,7 @@ function objectsTest(){
 		console.log(`'toString' in obj:`,'toString' in obj)
 	}
 
+	
 
 	// У объекта все свойства - строки
 	{
@@ -141,6 +177,7 @@ function objectsTest(){
 		console.log(obj["00"]) // => 2
 	}
 
+	
 
 	// spread operator - деструктуризация - можно раскукожить объект или что-то итерируемое, например массив
 	{
