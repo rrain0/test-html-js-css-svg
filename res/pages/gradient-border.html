@@ -31,7 +31,12 @@
       inset: 0; /* shorthand for: top: 0; right: 0; bottom: 0; left: 0; */
       border: 5px solid transparent;
       border-radius: 15px;
+      background-image: linear-gradient(to right, #9c20aa, #fb3570);
+      background-origin: border-box;
+      /*
+      short:
       background: linear-gradient(to right, #9c20aa, #fb3570) border-box;
+      */
       
       /* там где в маске есть цвет, изображение будет с ним смешано по альфа каналу (можно и по яркости) */
       /* mask: url(...some-svg..); */
@@ -42,12 +47,14 @@
       mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0) border-box;
+      
       -webkit-mask-composite: xor;
       /*
       The non-overlapping regions of
       source (the current mask layer) and destination (all layers below) are combined.
       */
       mask-composite: exclude;
+      
     }
     
     .with-bgc {

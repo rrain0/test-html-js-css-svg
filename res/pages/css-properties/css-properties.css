@@ -1,0 +1,140 @@
+/* Variable names are case-sensitive */
+/* Variable values do inherit */
+
+/* This is global scope variables */
+:root {
+  --first-color: aqua;
+}
+
+
+.firstSquare {
+  width: 200px;
+  height: 200px;
+  background: var(--first-color);
+  
+  /* Doesn't work because scope is .secondSquare */
+  /*background: var(--second-color);*/
+}
+
+
+.secondSquare {
+  width: 200px;
+  height: 200px;
+  --second-color: blue;
+  background: var(--second-color);
+}
+
+
+/*  The SELECTOR given to the ruleset defines the scope that the custom property can be used in. */
+.thirdSquareContainer {
+  display: flex;
+  --third-color: palevioletred;
+}
+
+
+.thirdSquareContainer .thirdSquare {
+  width: 200px;
+  height: 200px;
+  background: blue;
+  border: 5px solid var(--third-color); /* variable works */
+}
+
+
+.text1 {
+  color: var(--text-color); /* variable isn't defined, will be color default: black */
+}
+
+
+.text2 {
+  --text-color: red;
+  color: var(--text-color); /* red */
+}
+
+
+.text3 {
+  --text-color: green;
+  color: var(--text-color); /* green */
+}
+
+
+.text4 {
+  color: var(--text-color, blue); /* default value: blue */
+  --font-size: 3em;
+  background-color: var(--font-size, aquamarine);
+  font-size: var(--text-color, var(--font-size, 2em)); /* default value of other type, than the variable type */
+}
+
+
+/*
+    var(--foo, red, blue) defines a fallback of red, blue
+    — anything between the first comma and the end of the function is considered a fallback value.
+ */
+
+
+
+/*
+@property registration - you can register @property only outside of any selector.
+@property is animatable.
+*/
+@property --forth-color {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: sandybrown;
+}
+@property --fifth-color {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: sandybrown;
+}
+@property --sixth-rotation {
+  syntax: '<angle>';
+  inherits: true;
+  initial-value: 0.05turn;
+}
+
+
+.forthSquareContainer {
+  display: flex;
+  --forth-color: skyblue;
+  border: 5px solid var(--forth-color); /* will be skyblue */
+}
+.forthSquareContainer .forthSquare {
+  width: 200px;
+  height: 200px;
+  background: var(--forth-color); /* will be sandybrown, because inherits: false */
+}
+
+
+.fifthSquareContainer {
+  display: flex;
+  --fifth-color: skyblue;
+  border: 5px solid var(--fifth-color); /* will be skyblue */
+}
+.fifthSquareContainer .fifthSquare {
+  width: 200px;
+  height: 200px;
+  background: var(--fifth-color); /* will be skyblue */
+}
+
+/* Gradient animation via @property*/
+@keyframes pieProgressRotation {
+  0% { --sixth-rotation: 0.05turn }
+  20% { --sixth-rotation: 0.95turn }
+  40% { --sixth-rotation: 0.95turn }
+  80% { --sixth-rotation: 0.05turn }
+  100% { --sixth-rotation: 0.05turn }
+}
+.sixthBox {
+  display: flex;
+}
+.sixthBox .sixthItem {
+  width: 200px;
+  height: 200px;
+  border-radius: 999999px;
+  background-image: conic-gradient(
+    transparent 0turn var(--sixth-rotation),
+    #333 var(--sixth-rotation) 1turn
+  );
+  background-size: 100% 100%;
+  animation: pieProgressRotation 4s linear infinite;
+}
