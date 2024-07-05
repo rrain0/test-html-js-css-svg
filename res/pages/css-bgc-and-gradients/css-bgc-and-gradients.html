@@ -21,7 +21,7 @@
     ● значения через запятую - для разных background
 
 
-    background-position (object-postiion for img):
+    background-position (object-position for img):
     ● background-position -  x / y offset from left / top
     ● background-position: 10px 20px;
     ● ● bottom center left right top
@@ -47,28 +47,29 @@
 -->
 
 
+
 <!-- Simple Fullscreen Background -->
 <div>Simple Fullscreen Background</div>
 <div style="
-        width: 100%; height: 100vh;
-        background-image: url(../../images/NEXT%20UP.jpg);
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
+  width: 100%; height: 100vh;
+  background-image: url('../../images/NEXT UP.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 "></div>
-<img src='../../images/NEXT%20UP.jpg'
-     alt="Next UP Fire"
-     style="
-        width: 100%; height: 100vh;
-        object-position: center;
-        object-fit: cover;
-    "
+<img src='../../images/NEXT UP.jpg'
+  alt="Next UP Fire"
+  style="
+    width: 100%; height: 100vh;
+    object-position: center;
+    object-fit: cover;
+  "
 />
 
 
 
 <!-- Задать изображению только высоту, ширина самого контейнера img подгонится -->
-<img src='../../images/NEXT%20UP.jpg'
+<img src='../../images/NEXT UP.jpg'
   alt="Next UP Fire"
   style="
     width: auto; height: 800px;
@@ -79,26 +80,51 @@
 
 
 
+<!-- Background image transparent gradient -->
+<div>Background image transparent gradient</div>
+<div style="
+  display: flex;
+  flex-flow: row;
+  background-image: linear-gradient(to right, #ff000088, #00ff0088, #0000ff88);
+">
+  <div style="
+    background-image: url('../../images/NEXT UP.jpg');
+    width: 800px; height: 800px;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+  "></div>
+  <img src='../../images/NEXT UP.jpg'
+    alt="Next UP Fire"
+    style="
+      width: 800px; height: auto;
+      object-position: center;
+      object-fit: cover;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+    "
+  />
+</div>
+
+
 <!-- Blur effect -->
 <div>Blur effect</div>
 <div style="position: relative">
-    <img src="../../images/NEXT%20UP.jpg">
-    <div style="
-            position: absolute; top: 0; right: 0; bottom: 0; left: 0;
-            backdrop-filter: blur(5px);
-         "
-    ></div>
+  <img src="../../images/NEXT UP.jpg">
+  <div style="
+    position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+    backdrop-filter: blur(5px);
+  "></div>
 </div>
+
+
+
 <!-- Blur with up layer transparent color -->
 <div>Blur with up layer transparent color</div>
 <div style="position: relative">
-    <img src="../../images/NEXT%20UP.jpg">
-    <div style="
-            position: absolute; top: 0; right: 0; bottom: 0; left: 0;
-            backdrop-filter: blur(5px);
-            background: #4fc3f766;
-         "
-    ></div>
+  <img src="../../images/NEXT UP.jpg">
+  <div style="
+    position: absolute; inset: 0;
+    backdrop-filter: blur(5px);
+    background: #4fc3f766;
+  "></div>
 </div>
 
 
@@ -119,7 +145,7 @@
     <!-- transparent background image -->
     <div style="
         position: absolute; top: 0; right: 0; bottom: 0; left: 0;
-        background-image: url(../../images/NEXT%20UP.jpg);
+        background-image: url('../../images/NEXT UP.jpg');
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
