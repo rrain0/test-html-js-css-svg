@@ -22,13 +22,17 @@ function generatorTest(){
 
         let gen1 = createGenerator1() // получение экземпляра генератора
         console.log('#1')
-        console.log(gen1.next()) // => {value: 1, done: false} // запуск генератора + выполнение до следующего yield + возвращение результата этого yield
+        // запуск генератора + выполнение до первого yield + возвращение результата этого yield
+        console.log(gen1.next()) // => {value: 1, done: false}
         console.log('#2')
-        console.log(gen1.next()) // => {value: 'second', done: false} // продолжение выполнения генератора + выполнение до следующего yield + возвращение результата этого yield
+        // продолжение выполнения генератора + выполнение до следующего yield + возвращение результата этого yield
+        console.log(gen1.next()) // => {value: 'second', done: false}
         console.log('#3')
-        console.log(gen1.next()) // => {value: 3, done: true} // продолжение выполнения генератора + выполнение до конца функции
+        // продолжение выполнения генератора + выполнение до конца функции
+        console.log(gen1.next()) // => {value: 3, done: true}
         console.log('#4')
-        console.log(gen1.next()) // => {value: undefined, done: true} // больше нет кода, который осталось выполнить
+        // больше нет кода, который осталось выполнить
+        console.log(gen1.next()) // => {value: undefined, done: true}
         console.log('#5')
 
 
@@ -64,19 +68,19 @@ function generatorTest(){
 
     {
         console.log("Вложенные генераторы:")
-        function* genenrateSequence(s,e){
-            for(let i = s; i<=e; i++) yield i
+        function* generateSequence(s,e) {
+            for(let i = s; i <= e; i++) yield i
         }
 
         // специальный yield* делгирующий выполнение другому генератору
         // Получается – как будто мы вставили код внутреннего генератора во внешний напрямую
         function* generateAlphaNum(){
             // коды символов 0..9
-            yield* genenrateSequence(48,57)
+            yield* generateSequence(48,57)
             // коды символов A..Z
-            yield* genenrateSequence(65,90)
+            yield* generateSequence(65,90)
             // коды символов a..z
-            yield* genenrateSequence(97,122)
+            yield* generateSequence(97,122)
         }
 
         let str = ''

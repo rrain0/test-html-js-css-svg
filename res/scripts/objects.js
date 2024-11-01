@@ -56,15 +56,15 @@ function objectsTest(){
 		console.log('get id', obj.id) // -250
 
 		Object.defineProperty(obj, 'name2', {
-			get(){ return this.name+' by custom getter' },
-			set(newVal) { this.name = newVal+' by custom setter' }
+			get() { return this.name + ' by custom getter' },
+			set(newVal) { this.name = newVal + ' by custom setter' }
 		})
 		Object.defineProperties(obj, {
 			_name3: {
 				value: 'third name',
 			},
 			name3: {
-				get(){ return this._name3+' by custom getter' },
+				get() { return this._name3+' by custom getter' },
 				set(newVal) { this._name3 = newVal+' by custom setter' }
 			}
 		})
