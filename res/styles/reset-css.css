@@ -1,12 +1,38 @@
-* {
-    margin: 0;
-    box-sizing: border-box;
-}
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+    background: none;
+    /* disable highlight on mobile devices when tapping on screen */
+    -webkit-tap-highlight-color: transparent;
+}
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+    background: none;
+    /* disable highlight on mobile devices when tapping on screen */
+    -webkit-tap-highlight-color: transparent;
+}
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+    background: none;
+    /* disable highlight on mobile devices when tapping on screen */
+    -webkit-tap-highlight-color: transparent;
+}
 a {
     display: contents;
     text-decoration: none;
+    color: unset;
 }
+
+
 
 
 body {
