@@ -26,16 +26,38 @@
 }
 
 
+.col {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 10px;
+  gap: 10px;
+}
+.rowWrap {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 10px;
+  gap: 10px;
+}
 
+
+
+
+.square {
+  width: 100px;
+  height: 100px;
+  padding: 8px 8px;
+  border-radius: 5px;
+}
+.rect {
+  width: 300px;
+  height: 100px;
+  padding: 10px 32px;
+  border-radius: 5px;
+}
 
 
 .text {
   font-family: system-ui, sans-serif;
   font-size: 14.5px;
   letter-spacing: 2px;
-}
-
-.box {
-  border-radius: 5px;
-  padding: 10px 32px;
 }

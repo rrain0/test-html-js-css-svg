@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="../../images/favicon.png" />
+  <link rel="stylesheet" type="text/css" href="../../styles/reset-css.css" />
+  <title>On page leave</title>
+</head>
+<body>
+
+
+<script>
+  const buildUrlWithHash = () => {
+    const newUrl =
+      location.origin +
+      location.pathname +
+      location.search +
+      (location.hash?.length > 1 ? location.hash : "#")
+    return newUrl
+  }
+  
+  /*const addHistorySecondEntry = () => {
+    history.pushState({ isSecond: true }, '', buildUrlWithHash())
+  }
+  const fixHistory = () => {
+    history.replaceState({ isFirst: true }, '', buildUrlWithHash())
+    addHistorySecondEntry()
+  }
+  
+  fixHistory()*/
+  
+  console.log(
+    'URL: ' +
+    location.origin +
+    location.pathname +
+    location.search +
+    location.hash
+  )
+  
+  history.replaceState({ isFirst: true }, '', buildUrlWithHash()+'1')
+  history.pushState({ isSecond: true }, '', buildUrlWithHash()+'2')
+  history.pushState({ isThird: true }, '', buildUrlWithHash()+'3')
+  
+  /*const addHistoryFirstEntry = () => {
+    history.pushState({ isFirst: true }, '', newUrl)
+  }
+  
+  addHistoryFirstEntry()
+  //addHistorySecondEntry()
+  */
+  window.addEventListener('popstate', function(ev) {
+    // ev.state returns the same as in history.state
+    console.log('ev.state:', ev.state, 'history.state:', history.state)
+  })
+  
+  const goBack = () => {
+    setTimeout(() => history.back(), 0)
+    setTimeout(() => history.back(), 1000)
+    setTimeout(() => history.back(), 2000)
+    
+    setTimeout(() => history.back(), 3000)
+    setTimeout(() => history.back(), 4000)
+    setTimeout(() => history.back(), 5000)
+  }
+</script>
+
+<button onclick="goBack()">Go back</button>
+
+<iframe
+  src="on-page-leave-2.html"
+  style="width: 300px; height: 300px;"
+></iframe>
+
+
+
+
+</body>
+</html>

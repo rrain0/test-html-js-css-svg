@@ -7,8 +7,14 @@
 	const warnIntoConsole = () => console.warn("warn into console e.g.: Obsolete method. Please use.......");
 	const errIntoConsole = () => console.error("err into consle: AAAAAAAA");
 
-	const alertNotification = () => alert("deafault alert browser notification");
-
+	// Show a message to the user and wait synchronously for him to close it.
+	const alertNotification = () => alert("default alert browser notification");
+	
+	// Ask user and wait synchronously for an answer. Returns true or false.
+	const showDialog = () => confirm('Подтвердить?')
+	
+	// Prompt user some input and wait synchronously. Returns string.
+	const promptUser = () => prompt('Введите текст')
 
 
 	// имеет глобальную область видимости

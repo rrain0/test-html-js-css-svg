@@ -35,9 +35,18 @@ function testAsyncAndPromises(){
 	Функция имеет доступ к этой области памяти и ко всем родителям этой области памяти. 
 	Такие функции называются замыканиями. 
 	С этой точки зрения, все функции в JavaScript — замыкания, так как все они имеют контекст.
-	Web API и JavaScrtipt движок работают независимо. 
+	Web API и JavaScript движок работают независимо.
 	Web API решает, в какой момент функция двигается дальше, в очередь вызовов.
 	*/
+	
+	
+	
+	/*
+	!!!! Async functions start running immediately when you call them,
+	but when they get to an await on a Promise, that creates a closure of the current stack state,
+	with all local variables and the whole execution context,
+	and that promise + closure gets put on a list of pending functions (more detail below).
+	 */
 
 
 
