@@ -58,4 +58,9 @@ function symbolsTest(){
 	arr[sym1] = 89898
 	console.log(arr[sym1]) // => 89898
 	console.log(arr.length) // => 0 - нулевая длина
+	
+	// Symbol to string
+	//console.log(`${Symbol('a')}`) // Error
+	console.log(`${String(Symbol('a'))}`) // Ok
+	console.log(`${Symbol('a').toString()}`) // Ok
 }
