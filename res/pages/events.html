@@ -21,28 +21,264 @@
 
 <script>
   /*
-    Event.target - объект - инициатор события
+    Event.target - объект-инициатор события
     Event.currentTarget - объект, на который повешан текущий обработчик события
+    
+    Event.stopPropagation()
+      - prevents further propagation for next elements
+    Event.stopImmediatePropagation()
+      - prevents further propagation for next elements and next listeners of this element
    */
   const ul = document.querySelector('#list')
   // порядок добавления в коде влияет на порядок срабатывания (на property ev listener это тоже распространяется) !!!
   // Standard event listener
-  ul.addEventListener('click',function(ev){
-    console.log('onclick from standard event listener',ev)
+  ul.addEventListener('click', function(ev) {
+    console.log('onclick from standard event listener', ev)
     const target = ev.target
     const currentTarget = this
-    console.log('target',target)
-    console.log('currentTarget',currentTarget)
+    console.log('target', target)
+    console.log('currentTarget', currentTarget)
   })
   // Property event listener
-  ul.onclick = ev=>{
-    console.log('onclick from property event listener',ev)
+  ul.onclick = ev => {
+    console.log('onclick from property event listener', ev)
     const target = ev.target
     const currentTarget = ev.currentTarget
-    console.log('target',target)
-    console.log('currentTarget',currentTarget)
+    console.log('target', target)
+    console.log('currentTarget', currentTarget)
   }
 </script>
+
+
+
+<div style="height: 20px;"></div>
+
+<div id="box1" style="width: 200px; height: 200px; background: #637685">
+  <button id="btn1" style="width: 100px; height: 100px;">
+    Produce events 1
+  </button>
+</div>
+
+<div style="height: 20px;"></div>
+
+<div id="box2" style="width: 200px; height: 200px; background: #fda085">
+  <button id="btn2" style="width: 100px; height: 100px;">
+    Produce events 2
+  </button>
+  <div>stop propagation</div>
+</div>
+
+<div style="height: 20px;"></div>
+
+<div id="box3" style="width: 200px; height: 200px; background: aquamarine">
+  <button id="btn3" style="width: 100px; height: 100px;">
+    Produce events 3
+  </button>
+  <div>capture stop propagation</div>
+</div>
+
+
+
+<script>
+  window.addEventListener('pointerdown', ev => {
+    console.log(`window pointerdown bubble #${ev.pointerId}`)
+  })
+  window.addEventListener('pointerup', ev => {
+    console.log(`window pointerup bubble #${ev.pointerId}`)
+  })
+  window.addEventListener('pointercancel', ev => {
+    console.log(`window pointercancel bubble #${ev.pointerId}`)
+  })
+  window.addEventListener('click', ev => {
+    console.log(`window click bubble`)
+  })
+  window.addEventListener('pointerdown', ev => {
+    console.log(`window pointerdown capture #${ev.pointerId}`)
+  }, { capture: true })
+  window.addEventListener('pointerup', ev => {
+    console.log(`window pointerup capture #${ev.pointerId}`)
+  }, { capture: true })
+  window.addEventListener('pointercancel', ev => {
+    console.log(`window pointercancel capture #${ev.pointerId}`)
+  }, { capture: true })
+  window.addEventListener('click', ev => {
+    console.log(`window click capture`)
+  }, { capture: true })
+  
+  
+  
+  
+  const box1 = document.getElementById('box1')
+  box1.addEventListener('pointerdown', ev => {
+    console.log(`box1 pointerdown bubble #${ev.pointerId}`)
+  })
+  box1.addEventListener('pointerup', ev => {
+    console.log(`box1 pointerup bubble #${ev.pointerId}`)
+  })
+  box1.addEventListener('pointercancel', ev => {
+    console.log(`box1 pointercancel bubble #${ev.pointerId}`)
+  })
+  box1.addEventListener('click', ev => {
+    console.log(`box1 click bubble`)
+  })
+  box1.addEventListener('pointerdown', ev => {
+    console.log(`box1 pointerdown capture #${ev.pointerId}`)
+  }, { capture: true })
+  box1.addEventListener('pointerup', ev => {
+    console.log(`box1 pointerup capture #${ev.pointerId}`)
+  }, { capture: true })
+  box1.addEventListener('pointercancel', ev => {
+    console.log(`box1 pointercancel capture #${ev.pointerId}`)
+  }, { capture: true })
+  box1.addEventListener('click', ev => {
+    console.log(`box1 click capture`)
+  }, { capture: true })
+  
+  
+  const btn1 = document.getElementById('btn1')
+  btn1.addEventListener('pointerdown', ev => {
+    console.log(`btn1 pointerdown bubble #${ev.pointerId}`)
+  })
+  btn1.addEventListener('pointerup', ev => {
+    console.log(`btn1 pointerup bubble #${ev.pointerId}`)
+  })
+  btn1.addEventListener('pointercancel', ev => {
+    console.log(`btn1 pointercancel bubble #${ev.pointerId}`)
+  })
+  btn1.addEventListener('click', ev => {
+    console.log(`btn1 click bubble`)
+  })
+  btn1.addEventListener('pointerdown', ev => {
+    console.log(`btn1 pointerdown capture #${ev.pointerId}`)
+  }, { capture: true })
+  btn1.addEventListener('pointerup', ev => {
+    console.log(`btn1 pointerup capture #${ev.pointerId}`)
+  }, { capture: true })
+  btn1.addEventListener('pointercancel', ev => {
+    console.log(`btn1 pointercancel capture #${ev.pointerId}`)
+  }, { capture: true })
+  btn1.addEventListener('click', ev => {
+    console.log(`btn1 click capture`)
+  }, { capture: true })
+  
+  
+  
+  
+  const box2 = document.getElementById('box2')
+  box2.addEventListener('pointerdown', ev => {
+    console.log(`box2 pointerdown bubble STOP #${ev.pointerId}`)
+    ev.stopPropagation()
+  })
+  box2.addEventListener('pointerup', ev => {
+    console.log(`box2 pointerup bubble #${ev.pointerId}`)
+  })
+  box2.addEventListener('pointercancel', ev => {
+    console.log(`box2 pointercancel bubble #${ev.pointerId}`)
+  })
+  box2.addEventListener('click', ev => {
+    console.log(`box2 click bubble`)
+  })
+  box2.addEventListener('pointerdown', ev => {
+    console.log(`box2 pointerdown capture #${ev.pointerId}`)
+  }, { capture: true })
+  box2.addEventListener('pointerup', ev => {
+    console.log(`box2 pointerup capture #${ev.pointerId}`)
+  }, { capture: true })
+  box2.addEventListener('pointercancel', ev => {
+    console.log(`box2 pointercancel capture #${ev.pointerId}`)
+  }, { capture: true })
+  box2.addEventListener('click', ev => {
+    console.log(`box2 click capture`)
+  }, { capture: true })
+  
+  
+  const btn2 = document.getElementById('btn2')
+  btn2.addEventListener('pointerdown', ev => {
+    console.log(`btn2 pointerdown bubble #${ev.pointerId}`)
+  })
+  btn2.addEventListener('pointerup', ev => {
+    console.log(`btn2 pointerup bubble #${ev.pointerId}`)
+  })
+  btn2.addEventListener('pointercancel', ev => {
+    console.log(`btn2 pointercancel bubble #${ev.pointerId}`)
+  })
+  btn2.addEventListener('click', ev => {
+    console.log(`btn2 click bubble`)
+  })
+  btn2.addEventListener('pointerdown', ev => {
+    console.log(`btn2 pointerdown capture #${ev.pointerId}`)
+  }, { capture: true })
+  btn2.addEventListener('pointerup', ev => {
+    console.log(`btn2 pointerup capture #${ev.pointerId}`)
+  }, { capture: true })
+  btn2.addEventListener('pointercancel', ev => {
+    console.log(`btn2 pointercancel capture #${ev.pointerId}`)
+  }, { capture: true })
+  btn2.addEventListener('click', ev => {
+    console.log(`btn2 click capture`)
+  }, { capture: true })
+  
+  
+  
+  
+  const box3 = document.getElementById('box3')
+  box3.addEventListener('pointerdown', ev => {
+    console.log(`box3 pointerdown bubble #${ev.pointerId}`)
+  })
+  box3.addEventListener('pointerup', ev => {
+    console.log(`box3 pointerup bubble #${ev.pointerId}`)
+  })
+  box3.addEventListener('pointercancel', ev => {
+    console.log(`box3 pointercancel bubble #${ev.pointerId}`)
+  })
+  box3.addEventListener('click', ev => {
+    console.log(`box3 click bubble`)
+  })
+  box3.addEventListener('pointerdown', ev => {
+    console.log(`box3 pointerdown capture STOP #${ev.pointerId}`)
+    ev.stopPropagation()
+  }, { capture: true })
+  box3.addEventListener('pointerup', ev => {
+    console.log(`box3 pointerup capture #${ev.pointerId}`)
+  }, { capture: true })
+  box3.addEventListener('pointercancel', ev => {
+    console.log(`box3 pointercancel capture #${ev.pointerId}`)
+  }, { capture: true })
+  box3.addEventListener('click', ev => {
+    console.log(`box3 click capture`)
+  }, { capture: true })
+  
+  
+  const btn3 = document.getElementById('btn3')
+  btn3.addEventListener('pointerdown', ev => {
+    console.log(`btn3 pointerdown bubble #${ev.pointerId}`)
+  })
+  btn3.addEventListener('pointerup', ev => {
+    console.log(`btn3 pointerup bubble #${ev.pointerId}`)
+  })
+  btn3.addEventListener('pointercancel', ev => {
+    console.log(`btn3 pointercancel bubble #${ev.pointerId}`)
+  })
+  btn3.addEventListener('click', ev => {
+    console.log(`btn3 click bubble`)
+  })
+  btn3.addEventListener('pointerdown', ev => {
+    console.log(`btn3 pointerdown capture #${ev.pointerId}`)
+  }, { capture: true })
+  btn3.addEventListener('pointerup', ev => {
+    console.log(`btn3 pointerup capture #${ev.pointerId}`)
+  }, { capture: true })
+  btn3.addEventListener('pointercancel', ev => {
+    console.log(`btn3 pointercancel capture #${ev.pointerId}`)
+  }, { capture: true })
+  btn3.addEventListener('click', ev => {
+    console.log(`btn3 click capture`)
+  }, { capture: true })
+  
+  
+</script>
+
+
 
 
 </body>

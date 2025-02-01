@@ -15,6 +15,7 @@ function RegExpTest() {
 		test(), exec() and string match() etc. can be used to iterate over multiple matches in a string of text (with capture groups).
 	*/
 	
+	// MATCH
 	{
 		const str = "For more info, see Chapter 3.4.5.1"
 		// flag i => ignore case
@@ -78,7 +79,18 @@ function RegExpTest() {
 	}
 
 
-	// todo matchAll
+	// MATCH ALL
+	{
+		"placeSubType0a".matchAll(/(\p{Lu})|(\d+)/gu).forEach(it => console.log(it))
+		/*
+		Array of matches:
+		['S', 'S', undefined, index: 5, input: 'placeSubType0a', groups: undefined]
+		['T', 'T', undefined, index: 8, input: 'placeSubType0a', groups: undefined]
+		['0', undefined, '0', index: 12, input: 'placeSubType0a', groups: undefined]
+		*/
+	}
+	
+	
 	// todo regexp methods
 
 
@@ -102,6 +114,20 @@ function RegExpTest() {
 		console.log("/^\d$/.test(1f23):")
 		console.log(/^\d$/.test("1f23"))
 
+	}
+	
+	{
+		// '$&' - заменяется на найденную подстроку
+		'1d6g66'.replace(/\d/g, "-$&") // => '-1d-6g-6-6'
+	}
+	{
+		// str.replace with replacer function
+		function replacer(match, p1, p2, p3, offset, string) {
+			// p1 is non-digits, p2 digits, and p3 non-alphanumerics
+			return [p1, p2, p3].join(" - ");
+		}
+		const newString = "abc12345#$*%".replace(/([^\d]*)(\d*)([^\w]*)/, replacer);
+		console.log(newString); // abc - 12345 - #$*%
 	}
 
 }

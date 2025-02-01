@@ -8,6 +8,13 @@ function objectsTest(){
 	
 	
 	
+	// Create REALLY EMPTY OBJECT, without prototype
+	{
+		const reallyEmptyObject = Object.create(null)
+	}
+	
+	
+	
 	// modifying Object prototype
 	{
 		Object.prototype.let = function (handler){
@@ -18,12 +25,12 @@ function objectsTest(){
 			return this
 		}
 		
-		console.log('({ a: 1 }).also(it=>it.a=22).also(console.log)')
-		;({ a: 1 }).also(it=>it.a=22).also(console.log) // {a: 22}
+		console.log('({ a: 1 }).also(it => it.a = 22).also(console.log)')
+		;({ a: 1 }).also(it => it.a = 22).also(console.log) // { a: 22 }
 		
 		// WARNING!!! this makes primitive values their object-wrappers
 		console.log('1 .also(it=>it.a=22).also(console.log)')
-		;1 .let(it=>it+2).also(console.log) // Number {3}
+		;1 .let(it => it + 2).also(console.log) // Number {3}
 		
 		
 		

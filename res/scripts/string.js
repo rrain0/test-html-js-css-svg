@@ -1,7 +1,7 @@
 
 
 
-function stringTest(){
+function stringTest() {
 	console.log("----------------------------------------------STRING");
 
 	{
@@ -22,19 +22,21 @@ function stringTest(){
 
 		// TAGGED TEMPLATES
 		console.log("TAGGED TEMPLATES:")
-		const personOldTag = (strings, nameExp, ageExp, genderExp) => { // after strings array, there is string template argument values
-			let s0 = strings[0] // ""
+		// after 'strings' array, there is ...string[] template argument values
+		const personOldTag = (strings, nameArg, ageArg, genderArg) => {
+			let s0 = strings[0] // "" - before name is empty string
 			let s1 = strings[1] // " is a "
 			let s2 = strings[2] // " year old "
-			let s3 = strings[3] // ""
+			let s3 = strings[3] // "" - after gender is empty string
 
-			let oldStr = ageExp>75 ? 'senior' : 'young'
+			let oldStr = ageArg > 75 ? 'senior' : 'young'
 
 			console.log(strings) // Array(4) [ "", " is a ", " year old\t", "" ]
-			console.log(strings.raw) // Array(4) [ "", " is a ", " year old\\t", "" ] // returns string[] without escaping special chars
+			// returns string[] without escaping special chars
+			console.log(strings.raw) // Array(4) [ "", " is a ", " year old\\t", "" ]
 
 			// We can even return a string built using a template literal
-			return `${nameExp}${s1}${oldStr}${genderExp}.`
+			return `${nameArg}${s1}${oldStr}${genderArg}.`
 		}
 
 		const name = 'Bob'
