@@ -1,5 +1,5 @@
 
-function symbolsTest(){
+function symbolsTest() {
 	// Symbol - используется как уникальный ключ доступа в объекте помимо строк
 	// Каждый новый Symbol всегда УНИКАЛЕН
 	//

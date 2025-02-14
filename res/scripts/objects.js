@@ -98,10 +98,14 @@ function objectsTest(){
 
 		console.log('-----------------------------')
 	}
+	
+	// Проверить, есть ли свойство в объекте
+	// Object.hasOwn(obj, 'prop') - checks if an object has OWN property
+	// 'prop' in obj - checks if an object or its proto has property
 	{
 		let obj = { prop: 'p' }
-		// Object.hasOwn() is intended as a replacement for Object.prototype.hasOwnProperty()
-		Object.hasOwn(obj, 'prop') // returns boolean
+		let hasP1 = Object.hasOwn(obj, 'prop') // returns boolean
+		let hasP2 = 'prop' in obj
 	}
 
 	// Object from Map
@@ -284,7 +288,7 @@ function objectsTest(){
 	// При перечислении свойств через for..in и тд порядок итерации соответствует порядку добавления полей в объект!!!
 
 	// for..in
-	// for..in покажет только обычные свойства объекта (own, enumerable, with prototype chain)
+	// Iterates over: own || proto chain, enumerable && string (not symbols)
 	{
 		let obj = {
 			id: 78,
@@ -306,21 +310,21 @@ function objectsTest(){
 
 
 	// for..in
-	// for(const key in object){ object[key] = 'new value' }
+	// for(const key in object) { object[key] = 'new value' }
 	// (with prototypes, enumerable, no symbol keys)
 
 
 	// Object.keys(someObject) => keys[]
 	// все ключи объекта
-	// (own, enumerable, no symbol keys)
+	// (own, enumerable && string, no symbol keys)
 
 	// Object.values(someObject) => values[]
 	// все значения объекта
-	// (own, enumerable, no symbol keys)
+	// (own, enumerable && string, no symbol keys)
 
 	// Object.entries(someObject) => [name, value][]
 	// все записи ([ключ: значение]) объекта
-	// (own, enumerable, no symbol keys)
+	// (own, enumerable && string, no symbol keys)
 
 
 

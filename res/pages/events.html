@@ -80,6 +80,22 @@
 
 
 <script>
+  
+  /*
+  Event travel:
+    window capture ->
+      el1 capture ->
+        el2 capture ->
+        el2 bubble ->
+      el1 bubble ->
+    window bubble
+  
+  Any ev.stopPropagation() prevents next els' handlers to trigger.
+  Window capture phase always occurs !!!
+   */
+  
+  
+  
   window.addEventListener('pointerdown', ev => {
     console.log(`window pointerdown bubble #${ev.pointerId}`)
   })
