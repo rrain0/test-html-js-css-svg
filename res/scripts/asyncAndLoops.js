@@ -68,6 +68,8 @@ function asyncAndLoops() {
   
   // for-await-of async
   // If the current iterator's element is Promise then for-await awaits it before executing for-body.
+  // After loop ends, for-await calls <iterator>.return()
+  //   to perform any cleanup and awaits its execution.
   {
     async function* asyncGenerator() {
       const array = ["a", "b", "c"]
