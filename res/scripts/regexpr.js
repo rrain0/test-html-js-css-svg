@@ -101,7 +101,7 @@ function RegExpTest() {
 
 
 	{
-		// check if matches only
+		// CHECK MATCH ONLY
 
 		console.log("check if matches only:")
 
