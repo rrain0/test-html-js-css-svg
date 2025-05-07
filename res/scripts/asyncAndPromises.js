@@ -42,7 +42,8 @@ function testAsyncAndPromises(){
 	
 	
 	/*
-	!!!! Async functions start running immediately when you call them,
+	!!!! Any code is executed at once util there is any await.
+	Async functions start running immediately when you call them,
 	but when they get to an await on a Promise, that creates a closure of the current stack state,
 	with all local variables and the whole execution context,
 	and that promise + closure gets put on a list of pending functions (more detail below).
@@ -301,6 +302,49 @@ function testAsyncAndPromises(){
 		await this.sleepAsync(2500);
 		// дальше код выполнится через 2500 мс, т.к. будет в then
 	}
+
+
+
+
+
+ 
+	if (false) {
+		// Any await schedules execution
+		// output: 1, 2, 4, 3
+		console.log(1)
+		;(async () => {
+			console.log(2)
+			await (async () => { })()
+			console.log(3)
+		})()
+		console.log(4)
+	}
+	if (false) {
+		// Any await schedules execution
+		// output: 1, 2, 4, 3
+		console.log(1)
+		;(async () => {
+			console.log(2)
+			await (async () => Promise.resolve())()
+			console.log(3)
+		})()
+		console.log(4)
+	}
+	if (false) {
+		// Any await schedules execution
+		// output: 1, 2, 4, 3
+		console.log(1)
+		;(async () => {
+			console.log(2)
+			await 1
+			console.log(3)
+		})()
+		console.log(4)
+	}
+
+
+
+ 
 
 
 

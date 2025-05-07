@@ -1,0 +1,66 @@
+<!doctype html>
+
+
+<!-- !!! Разадавать сайт надо из-под nginx, потому что paint worklet требует корсов -->
+<!-- Supports only Chrome -->
+
+<button id="ripple">
+  Click me!
+</button>
+
+<style>
+#ripple {
+  width: 300px;
+  height: 300px;
+  border-radius: 150px;
+  font-size: 5em;
+  background-color: rgb(255, 64, 129);
+  border: 0;
+  box-shadow:
+    0 1px 1.5px 0 rgba(0, 0, 0, 0.12),
+    0 1px 1px 0 rgba(0, 0, 0, 0.24);
+  color: white;
+
+  --ripple-x: 0;
+  --ripple-y: 0;
+  --ripple-color: rgba(255, 255, 255, 0.54);
+  --animation-tick: 0;
+}
+#ripple:focus {
+  outline: none;
+}
+#ripple.animating {
+  background-image: paint(ripple);
+}
+</style>
+
+<script>
+  if (location.protocol === 'http:' && location.hostname !== 'localhost') {
+    location.protocol = 'https:'
+  }
+  if ('paintWorklet' in CSS) {
+    CSS.paintWorklet.addModule('ripple-paint-worklet.js')
+  }
+  else {
+    document.body.innerHTML =
+      'You need support for <a href="https://drafts.css-houdini.org/css-paint-api/">CSS Paint API</a> to view this demo :('
+  }
+const button = document.querySelector('#ripple')
+let start = performance.now()
+let x, y
+document.querySelector('#ripple').addEventListener('click', ev => {
+  button.classList.add('animating')
+  ;[x, y] = [ev.clientX, ev.clientY]
+  start = performance.now()
+  requestAnimationFrame(function raf(now) {
+    const count = Math.floor(now - start)
+    button.style.cssText = `--ripple-x: ${x}; --ripple-y: ${y}; --animation-tick: ${count};`
+    if (count > 1000) {
+      button.classList.remove('animating')
+      button.style.cssText = `--animation-tick: 0`
+      return
+    }
+    requestAnimationFrame(raf)
+  })
+})
+</script>

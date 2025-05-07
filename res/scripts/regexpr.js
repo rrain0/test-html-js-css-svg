@@ -122,12 +122,27 @@ function RegExpTest() {
 	}
 	{
 		// str.replace with replacer function
-		function replacer(match, p1, p2, p3, offset, string) {
-			// p1 is non-digits, p2 digits, and p3 non-alphanumerics
-			return [p1, p2, p3].join(" - ");
+		function replacer(match, group1, group2, group3, offset, string) {
+			// group1 is non-digits, group2 digits, and group3 non-alphanumerics
+			// Returned string replaces original match
+			return [group1, group2, group3].join(" - ")
 		}
-		const newString = "abc12345#$*%".replace(/([^\d]*)(\d*)([^\w]*)/, replacer);
-		console.log(newString); // abc - 12345 - #$*%
+		const newString = "abc12345#$*%aaaaa".replace(/([^\d]*)(\d*)([^\w]*)/, replacer)
+		console.log(newString) // abc - 12345 - #$*%aaaaa
+		
+		const capitalize = str => (
+			str.replace(/^./, match => match.toUpperCase())
+		)
+		const uncapitalize = str => (
+			str.replace(/^./, match => match.toLowerCase())
+		)
+		const camelCaseToKebabCase = str => (
+			// '$&' - заменяется на найденную подстроку (найденный match)
+			str.replace(/\p{Lu}|\d+/gu, '-$&').toLowerCase()
+		)
+		const kebabCaseToCamelCase = str => (
+			str.replace(/-./g, match => match[1].toUpperCase())
+		)
 	}
 
 }
