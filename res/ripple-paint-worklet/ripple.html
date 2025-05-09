@@ -10,9 +10,9 @@
 
 <style>
 #ripple {
-  width: 300px;
-  height: 300px;
-  border-radius: 150px;
+  width: 500px;
+  height: 500px;
+  border-radius: 250px;
   font-size: 5em;
   background-color: rgb(255, 64, 129);
   border: 0;
@@ -34,33 +34,135 @@
 }
 </style>
 
+
+
 <script>
-  if (location.protocol === 'http:' && location.hostname !== 'localhost') {
-    location.protocol = 'https:'
+  
+  const { protocol, hostname, port, pathname, search } = location
+  
+  // WARNING!!! 'paintWorklet' property exists only for localhost or https
+  if (protocol === 'http:' && hostname !== 'localhost') {
+    //location.protocol = 'https:'
+    const localhostLink = `${protocol}//localhost${port && `:${port}`}${pathname}${search}`
+    const httpsLink = `https://${hostname}${port && `:${port}`}${pathname}${search}`
+    document.body.innerHTML =
+      'You need to view this page via localhost or https:<br>' +
+      `<a href="${localhostLink}">${localhostLink}</a><br>` +
+      `<a href="${httpsLink}">${httpsLink}</a><br>`
   }
-  if ('paintWorklet' in CSS) {
-    CSS.paintWorklet.addModule('ripple-paint-worklet.js')
+  else if (!('paintWorklet' in CSS)) {
+    document.body.innerHTML =
+      'You need support for' +
+      ' <a href="https://drafts.css-houdini.org/css-paint-api/">CSS Paint API</a>' +
+      ' to view this demo :('
   }
   else {
-    document.body.innerHTML =
-      'You need support for <a href="https://drafts.css-houdini.org/css-paint-api/">CSS Paint API</a> to view this demo :('
-  }
-const button = document.querySelector('#ripple')
-let start = performance.now()
-let x, y
-document.querySelector('#ripple').addEventListener('click', ev => {
-  button.classList.add('animating')
-  ;[x, y] = [ev.clientX, ev.clientY]
-  start = performance.now()
-  requestAnimationFrame(function raf(now) {
-    const count = Math.floor(now - start)
-    button.style.cssText = `--ripple-x: ${x}; --ripple-y: ${y}; --animation-tick: ${count};`
-    if (count > 1000) {
-      button.classList.remove('animating')
-      button.style.cssText = `--animation-tick: 0`
-      return
+    const variant = 'file'
+    
+    if (variant === 'file') {
+      CSS.paintWorklet.addModule('ripple-paint-worklet.js')
     }
-    requestAnimationFrame(raf)
+    
+    if (variant === 'dataUrl') {
+      CSS.paintWorklet.addModule(`data:application/javascript;charset=utf8,${encodeURIComponent(`
+        class RipplePainter {
+          
+          static get inputProperties() {
+            return [
+              'background-color', '--ripple-color', '--animation-tick',
+              '--ripple-x', '--ripple-y',
+            ]
+          }
+          
+          paint(ctx, geom, properties) {
+            const bgColor = properties.get('background-color').toString();
+            const rippleColor = properties.get('--ripple-color').toString();
+            const x = parseFloat(properties.get('--ripple-x').toString());
+            const y = parseFloat(properties.get('--ripple-y').toString());
+            let tick = parseFloat(properties.get('--animation-tick').toString());
+            if (tick < 0) tick = 0
+            if (tick > 1000) tick = 1000
+        
+            ctx.fillStyle = bgColor
+            ctx.fillRect(0, 0, geom.width, geom.height)
+            ctx.fillRect(0, 0, geom.width, geom.height)
+        
+            ctx.fillStyle = rippleColor
+            ctx.globalAlpha = 1 - tick / 1000
+            ctx.arc(
+              x, y, // center
+              geom.width * tick / 1000, // radius
+              0, // startAngle
+              2 * Math.PI //endAngle
+            )
+            ctx.fill()
+          }
+        }
+        
+        // Register our class under a specific name to be used in CSS
+        registerPaint('ripple', RipplePainter)
+      `)}`)
+    }
+    
+    if (variant === 'blob') {
+      CSS.paintWorklet.addModule(URL.createObjectURL(new Blob([`
+        class RipplePainter {
+          
+          static get inputProperties() {
+            return [
+              'background-color', '--ripple-color', '--animation-tick',
+              '--ripple-x', '--ripple-y',
+            ]
+          }
+          
+          paint(ctx, geom, properties) {
+            const bgColor = properties.get('background-color').toString();
+            const rippleColor = properties.get('--ripple-color').toString();
+            const x = parseFloat(properties.get('--ripple-x').toString());
+            const y = parseFloat(properties.get('--ripple-y').toString());
+            let tick = parseFloat(properties.get('--animation-tick').toString());
+            if (tick < 0) tick = 0
+            if (tick > 1000) tick = 1000
+        
+            ctx.fillStyle = bgColor
+            ctx.fillRect(0, 0, geom.width, geom.height)
+            ctx.fillRect(0, 0, geom.width, geom.height)
+        
+            ctx.fillStyle = rippleColor
+            ctx.globalAlpha = 1 - tick / 1000
+            ctx.arc(
+              x, y, // center
+              geom.width * tick / 1000, // radius
+              0, // startAngle
+              2 * Math.PI //endAngle
+            )
+            ctx.fill()
+          }
+        }
+        
+        // Register our class under a specific name to be used in CSS
+        registerPaint('ripple', RipplePainter)
+      `], {type: "application/javascript"})))
+    }
+  }
+  
+  
+  const button = document.querySelector('#ripple')
+  let start = performance.now()
+  let x, y
+  document.querySelector('#ripple').addEventListener('click', ev => {
+    button.classList.add('animating')
+    ;[x, y] = [ev.clientX, ev.clientY]
+    start = performance.now()
+    requestAnimationFrame(function raf(now) {
+      const count = Math.floor(now - start)
+      button.style.cssText = `--ripple-x: ${x}; --ripple-y: ${y}; --animation-tick: ${count};`
+      if (count > 1000) {
+        button.classList.remove('animating')
+        button.style.cssText = `--animation-tick: 0`
+        return
+      }
+      requestAnimationFrame(raf)
+    })
   })
-})
 </script>

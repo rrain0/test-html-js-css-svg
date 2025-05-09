@@ -34,4 +34,5 @@ class RipplePainter {
   }
 }
 
+// Register our class under a specific name to be used in CSS
 registerPaint('ripple', RipplePainter)
