@@ -1,8 +1,17 @@
 <!doctype html>
 
 
-<!-- !!! Разадавать сайт надо из-под nginx, потому что paint worklet требует корсов -->
 <!-- Supports only Chrome -->
+
+<!--
+  Polyfill
+  Get latest: https://unpkg.com/css-paint-polyfill
+  Or: https://unpkg.com/css-paint-polyfill/dist/css-paint-polyfill.js
+  
+  But... IT IS NOT WORKING !!!
+-->
+<script src='css-paint-polyfill-v3.4.0.js'></script>
+
 
 <button id="ripple">
   Click me!
@@ -150,7 +159,7 @@
   const button = document.querySelector('#ripple')
   let start = performance.now()
   let x, y
-  document.querySelector('#ripple').addEventListener('click', ev => {
+  button.addEventListener('click', ev => {
     button.classList.add('animating')
     ;[x, y] = [ev.clientX, ev.clientY]
     start = performance.now()
