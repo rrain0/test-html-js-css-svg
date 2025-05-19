@@ -18,5 +18,20 @@
 	<circle cx="150" cy="100" r="80" fill="green" />
 
 	<text x="150" y="125" font-size="60" text-anchor="middle" fill="white">SVG</text>
+	
+	<!--
+		text-anchor='middle' - горизонтально текст по середине от x, y
+		dominant-baseline='middle'/'center' - вертикальное выравнивание
+		transform='translate(0,2)' - зафайнтюнить вертикальное выравнивание
+	-->
+	<text
+		x='50%' y='50%'
+		text-anchor='middle'
+		dominant-baseline='middle'
+		transform='translate(0,2)'
+		font-size='40'
+	>
+		🎲
+	</text>
 
 </svg>
