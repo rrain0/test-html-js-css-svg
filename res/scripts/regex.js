@@ -15,7 +15,9 @@ function RegExpTest() {
 		test(), exec() and string match() etc. can be used to iterate over multiple matches in a string of text (with capture groups).
 	*/
 	
-	// MATCH
+	
+	// 🔶string.match(regex)
+	// без g флага, находит только первое совпадение
 	{
 		const str = "For more info, see Chapter 3.4.5.1"
 		// flag i => ignore case
@@ -79,14 +81,38 @@ function RegExpTest() {
 	}
 
 
-	// MATCH ALL
+	// 🔶string.matchAll(regex)
+	// обязательно g флаг, находит все совпадения
 	{
-		"placeSubType0a".matchAll(/(\p{Lu})|(\d+)/gu).forEach(it => console.log(it))
+		// \p{Lu} - letter uppercase
+		'placeSubType0a'.matchAll(/(\p{Lu})|(\d+)/gu).forEach(it => console.log(it))
 		/*
 		Array of matches:
-		['S', 'S', undefined, index: 5, input: 'placeSubType0a', groups: undefined]
-		['T', 'T', undefined, index: 8, input: 'placeSubType0a', groups: undefined]
-		['0', undefined, '0', index: 12, input: 'placeSubType0a', groups: undefined]
+		['S', 'S', undefined,
+			index: 5, input: 'placeSubType0a', groups: undefined
+		]
+		['T', 'T', undefined,
+			index: 8, input: 'placeSubType0a', groups: undefined
+		]
+		['0', undefined, '0',
+			index: 12, input: 'placeSubType0a', groups: undefined
+		]
+		*/
+	}
+	{
+		// \p{Lu} - letter uppercase
+		'placeSubType0a'.matchAll(/(\p{Lu})|(?<digits>\d+)/gu).forEach(it => console.log(it))
+		/*
+		Array of matches:
+		['S', 'S', undefined,
+			index: 5, input: 'placeSubType0a', groups: { digits: undefined }
+		]
+		['T', 'T', undefined,
+			index: 8, input: 'placeSubType0a', groups: { digits: undefined }
+		]
+		['0', undefined, '0',
+			index: 12, input: 'placeSubType0a', groups: { digits: '0' }
+		]
 		*/
 	}
 	

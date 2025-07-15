@@ -14,7 +14,7 @@ function jsBasic(){
 
 	//вывод в консоль браузера
 	//консоль находится в инструментах разработки
-	console.log(2+3);
+	console.log(2 + 3);
 
 
 	console.log("-------------------------");
@@ -164,26 +164,26 @@ function jsBasic(){
 
 
 	function fun3() {
-		const const1 = "const 1";
+		const const1 = "const 1"
 		if (true) {
 
 			// TypeError: Assignment to constant variable.
-			try{ const1 += "123" } catch(e){ console.warn(e) }
+			try { const1 += "123" } catch(e) { console.warn(e) }
 
-			console.log(const1); // -> const 1
+			console.log(const1) // -> const 1
 
 			//ReferenceError: Cannot access 'const3' before initialization
-			try{console.log(const3) } catch(e){ console.warn(e) }
+			try {console.log(const3) } catch(e) { console.warn(e) }
 
-			const const3 = "const 3";
+			const const3 = "const 3"
 
 			console.log(const3); // -> const 3
 		}
 
 		//ReferenceError: const3 is not defined
-		try{console.log(const3) } catch(e){ console.warn(e) }
+		try {console.log(const3) } catch(e) { console.warn(e) }
 	}
-	fun3();
+	fun3()
 
 	console.log("-------------------------");
 
@@ -206,8 +206,8 @@ function jsBasic(){
 	*/
 	function funFact() {
 		//"use strict"; //это позволит избежать некоторых антипаттернов, таких как этот
-		globalTrue = true;// antipattern
-		globalFalse = false;// antipattern
+		globalTrue = true // antipattern
+		globalFalse = false // antipattern
 	}
 	funFact();
 	console.log(globalTrue);
@@ -219,9 +219,9 @@ function jsBasic(){
 	но они являются свойствами глобального объекта. 
 	Свойства могут быть удалены с помощью оператора delete, тогда как переменные var не могут
 	*/
-	delete globalTrue; //удаление подразумеваемой глобальной переменной
+	delete globalTrue // Удаление подразумеваемой глобальной переменной
 	//ReferenceError: globalTrue is not defined
-	try{ console.log(globalTrue) } catch(e){ console.warn(e) }
+	try { console.log(globalTrue) } catch(e) { console.warn(e) }
 
 
 

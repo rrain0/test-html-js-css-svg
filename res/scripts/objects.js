@@ -15,12 +15,13 @@ function objectsTest(){
 	
 	
 	
-	// modifying Object prototype
+	// Modify Object prototype
+	// Add custom function to prototype
 	{
-		Object.prototype.let = function (handler){
+		Object.prototype.let = function (handler) {
 			return handler(this)
 		}
-		Object.prototype.also = function (handler){
+		Object.prototype.also = function (handler) {
 			handler(this)
 			return this
 		}
@@ -37,6 +38,12 @@ function objectsTest(){
 		// erase modification
 		Object.prototype.let = undefined
 		Object.prototype.also = undefined
+	}
+	// При вызове метода у примитива,
+	// js заглядывает (а может и создаёт объект из примитива) в класс-обёртку и оттуда берёт методы.
+	{
+		String.prototype.aaa = function() { return 'aaa' + this }
+		console.log('sss'.aaa()) // 'aaasss'
 	}
 	
 	

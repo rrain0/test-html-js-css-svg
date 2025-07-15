@@ -1,13 +1,14 @@
 
 
-function typesTest(){
+function typesTest() {
 
 // todo instanceof
 // https://learn.javascript.ru/instanceof
 	{
 
 		// Примитивные типы && typeof && instanceof
-		// number string boolean null undefined bigint symbol object
+		// Primitives: number string boolean null undefined bigint symbol
+		// Objects: object, function, array
 
 		// number
 		let n = 123
@@ -43,8 +44,8 @@ function typesTest(){
 
 		// null
 		// !!!!!! специальное поведение у typeof => object
-		// это отдельный тип, хоть typeof и пишет что объект
-		// символизирует присутствие пустого значения
+		// Это отдельный тип, хоть typeof и пишет что объект
+		// Символизирует присутствие пустого значения
 		let var1 = null
 		console.log(`typeof ${var1}: ` + typeof var1) // => object
 		console.log(`${var1} instanceof Object: ` + (var1 instanceof Object)) // => false
