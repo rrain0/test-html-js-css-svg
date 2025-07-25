@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gradient 2</title>
+</head>
+<body>
+
+<div style='
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 16px;
+'>
+  
+  
+  
+  <div style='
+    width: 800px;
+    height: 600px;
+    position: relative;
+  '>
+    
+    <div style='
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      mask-image:
+        conic-gradient(at top left, rgba(0,0,0,0) 0% 25%, rgba(0,0,0,1) 37.5% 50%),
+        conic-gradient(at bottom left, rgba(0,0,0,1) 0% 12.5%, rgba(0,0,0,0) 25% 100%),
+        linear-gradient(to right, rgba(0,0,0,1) 0% 30%, rgba(0,0,0,0) 100%);
+      mask-composite: intersect;
+      background-image:
+        linear-gradient(to bottom, #1e1d40 0% 30%, #292c67 70% 100%);
+    '>
+    </div>
+    
+    <div style='
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      mask-image:
+        conic-gradient(at top right, rgba(0,0,0,0) 0% 50%, rgba(0,0,0,1) 62.5% 75%),
+        conic-gradient(at top left, rgba(0,0,0,1) 25% 37.5%, rgba(0,0,0,0) 50% 100%),
+        linear-gradient(to bottom, rgba(0,0,0,1) 0% 30%, rgba(0,0,0,0) 100%);
+      mask-composite: intersect;
+      background-image:
+        linear-gradient(to left, #fdcd5a 0% 10%, #1e1d40 80% 100%);
+    '>
+    </div>
+    
+    <div style='
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      mask-image:
+        conic-gradient(at bottom left, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 12.5% 25%),
+        conic-gradient(at bottom right, rgba(0,0,0,1) 75% 87.5%, rgba(0,0,0,0) 100%),
+        linear-gradient(to top, rgba(0,0,0,1) 0% 30%, rgba(0,0,0,0) 100%);
+      mask-composite: intersect;
+      background-image:
+        linear-gradient(to right, #292c67 0% 20%, #cfa3cc 80% 100%);
+    '>
+    </div>
+    
+    <div style='
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      mask-image:
+        conic-gradient(at bottom right, rgba(0,0,0,0) 0% 75%, rgba(0,0,0,1) 87.5% 100%),
+        conic-gradient(at top right, rgba(0,0,0,1) 50% 62.5%, rgba(0,0,0,0) 75% 100%),
+        linear-gradient(to left, rgba(0,0,0,1) 0% 30%, rgba(0,0,0,0) 100%);
+      mask-composite: intersect;
+      background-image:
+        linear-gradient(to top, #cfa3cc 0% 30%, #fdcd5a 70% 100%);
+    '>
+    </div>
+  
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- Симметричный вариант верхнего -->
+  <div style='
+    width: 800px;
+    height: 600px;
+    position: relative;
+  '>
+    
+    <div style='
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      mask-image:
+        conic-gradient(at top left, rgba(0,0,0,0) 0% 25%, rgba(0,0,0,1) 40% 50%),
+        conic-gradient(at bottom left, rgba(0,0,0,1) 0% 10%, rgba(0,0,0,0) 25% 100%),
+        linear-gradient(to right, rgba(0,0,0,1) 0% 30%, rgba(0,0,0,0) 100%);
+      mask-composite: intersect;
+      background-image:
+        linear-gradient(to bottom, #1e1d40 0% 10%, #292c67 90% 100%);
+    '>
+    </div>
+    
+    <div style='
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      mask-image:
+        conic-gradient(at bottom left, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 15% 25%),
+        conic-gradient(at bottom right, rgba(0,0,0,1) 75% 85%, rgba(0,0,0,0) 100%),
+        linear-gradient(to top, rgba(0,0,0,1) 0% 30%, rgba(0,0,0,0) 100%);
+      mask-composite: intersect;
+      background-image:
+        linear-gradient(to right, #292c67 0% 10%, #cfa3cc 90% 100%);
+    '>
+    </div>
+    
+    <div style='
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      mask-image:
+        conic-gradient(at bottom right, rgba(0,0,0,0) 0% 75%, rgba(0,0,0,1) 90% 100%),
+        conic-gradient(at top right, rgba(0,0,0,1) 50% 60%, rgba(0,0,0,0) 75% 100%),
+        linear-gradient(to left, rgba(0,0,0,1) 0% 30%, rgba(0,0,0,0) 100%);
+      mask-composite: intersect;
+      background-image:
+        linear-gradient(to top, #cfa3cc 0% 10%, #fdcd5a 90% 100%);
+    '>
+    </div>
+    
+    <div style='
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      mask-image:
+        conic-gradient(at top right, rgba(0,0,0,0) 0% 50%, rgba(0,0,0,1) 65% 75%),
+        conic-gradient(at top left, rgba(0,0,0,1) 25% 35%, rgba(0,0,0,0) 50% 100%),
+        linear-gradient(to bottom, rgba(0,0,0,1) 0% 30%, rgba(0,0,0,0) 100%);
+      mask-composite: intersect;
+      background-image:
+        linear-gradient(to left, #fdcd5a 0% 10%, #1e1d40 90% 100%);
+    '>
+    </div>
+  
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  <div style='
+    width: 800px;
+    height: 600px;
+    position: relative;
+  '>
+    
+    <div style='
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(to right, #292c67 0% 30%, #cfa3cc 70% 100%);
+    '>
+    </div>
+    
+    <div style='
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image:
+        radial-gradient(circle at top left, #1e1d40 0% 10%, transparent 50% 100%);
+    '>
+    </div>
+    
+    <div style='
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image:
+        radial-gradient(circle at top right, #fdcd5a 0% 10%, transparent 50% 100%);
+    '>
+    </div>
+  
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  <div style='
+    width: 440.5px;
+    height: 322px;
+    background-image:
+      radial-gradient(farthest-corner at bottom right, #cfa3cc 15%, #cfa3cc11 50%, transparent 100%),
+      radial-gradient(farthest-corner at top right, #fdcd5a 15%, #fdcd5a11 50%, transparent 100%),
+      radial-gradient(farthest-corner at bottom left, #292c67 15%, #292c6711 50%, transparent 100%),
+      radial-gradient(farthest-corner at top left, #1e1d40 15%, #1e1d40 60%, transparent 100%);
+  '>
+  </div>
+  
+  
+  
+  <div style='
+    width: 400px;
+    height: 300px;
+    background-image: linear-gradient(to top right, #3F4265 0%, #ACC9DC 100%);
+  '>
+  </div>
+  
+  
+  
+  <div style='
+    width: 440.5px;
+    height: 322px;
+     /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */
+    background-image: radial-gradient(
+      104.31% 109.78% at 7.89% -9.55%,
+      #0D0E35 11.82%,
+      #865B8F 40%,
+      #D69AC9 70%,
+      #FFD361 100%
+    );
+  '>
+  </div>
+  
+  
+</div>
+
+</body>
+</html>
