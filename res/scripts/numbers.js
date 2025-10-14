@@ -5,23 +5,35 @@
 
 
 const mod = (a,b) => {
-	if (a>=0 && b>=0 || a<0 && b<0) return Math.floor(a/b)
-	else return Math.ceil(a/b)
+	if (a >= 0 && b >= 0 || a < 0 && b < 0) return Math.floor(a / b)
+	else return Math.ceil(a / b)
 }
 
-function numbers(){
 
-	console.log("----------------------------------------------NUMBERS");
+function numbers() {
+
+	console.log("----------------------------------------------NUMBERS")
+  
+  
+  // Неточности при операции сложения.
+  // А значит неточности могут быть при любых операциях с числами, где есть дробная часть.
+  console.log('0.1 + 0.2:', 0.1 + 0.2) // => 0.30000000000000004
+  
+  /*
+  В JS, видимо, точные результаты гарантированно можно получить в следующих случаях:
+  ● +, -, %, *, ** - если используются с целыми числами и без переполнения [-2^53, +2^53]
+    Без переполнения - это: [-2^53, +2^53] или [-9007199254740992, +9007199254740992]
+  ● <number>.toFixed(n) - возвращает строку, которая есть число, округлённое до n знаков после запятой
+  ● Math.round, Math.floor, Math.ceil, Math.sign, ... - возвращают целое число
+   */
 
 
-	console.log("1.0+2.5+2.5:");
-	console.log(1.0+2.5+2.5); // => 6 => не 6.0
-	console.log("1+5:");
-	console.log(1+5); // => 6
+	console.log("1.0 + 2.5 + 2.5:", 1.0 + 2.5 + 2.5) // => 6 => не 6.0
+	console.log("1 + 5:", 1 + 5) // => 6
 	
 	
-	console.log("1e-3",1e-3) // exponential
-	console.log('0xff5588',0xff5588) // hex
+	console.log("1e-3", 1e-3) // exponential
+	console.log('0xff5588', 0xff5588) // hex
 	console.log('0o76543210',0o76543210) // oct
 	console.log('0b110011',0b110011) // bin
 	
@@ -29,11 +41,11 @@ function numbers(){
 	
 	// Округление:
 	// floor - округление в меньшую сторону (в сторону -∞)
-	console.log('Math.floor(3.8)',Math.floor(3.8)) // 3
-	console.log('Math.floor(-3.8)',Math.floor(-3.8)) // -4
+	console.log('Math.floor(3.8)', Math.floor(3.8)) // 3
+	console.log('Math.floor(-3.8)', Math.floor(-3.8)) // -4
 	// ceil - округление в большую сторону (в сторону +∞)
-	console.log('Math.ceil(3.8)',Math.ceil(3.8)) // 4
-	console.log('Math.ceil(-3.8)',Math.ceil(-3.8)) // -3
+	console.log('Math.ceil(3.8)', Math.ceil(3.8)) // 4
+	console.log('Math.ceil(-3.8)', Math.ceil(-3.8)) // -3
 	// round - округление до ближайшего целого (x.5 => x+1; -x.5 => -x+1)
 	// начиная с .5 в сторону +∞
 	console.log('Math.round(3.1)', Math.round(3.1)) // 3

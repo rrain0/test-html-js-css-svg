@@ -581,6 +581,54 @@ grid-area: <grid-row-line-start> / <grid-column-line-start> / <grid-row-line-end
 
 
 
+<div>
+  Rows of items.<br/>
+  Item has 2 columns.<br/>
+  First column (icon) is visually joined by rounded div.<br/>
+  This does NOT work because rows are dynamic.<br/>
+</div>
+<div style="
+  width: 200px; height: auto;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  border-radius: 5px;
+  background-color: #fff4e6;
+">
+  
+  <div style='
+    display: grid;
+    grid-template-columns: subgrid; grid-column: 1 / span 2;
+    align-items: center;
+  '>
+    
+    <div style='width: 40px; height: 40px; display: flex; align-items: center; justify-content: center'>
+      <div>💡</div>
+    </div>
+    <div>Bulb</div>
+    
+    <div style='width: 40px; height: 40px; display: flex; align-items: center; justify-content: center'>
+      <div>💡</div>
+    </div>
+    <div>Bulb</div>
+    
+  </div>
+  
+  <div style='
+    display: grid;
+    grid-template-columns: subgrid; grid-column: 1;
+    /* does not work because rows are dynamic */
+    grid-template-rows: subgrid; grid-row: 1 / -1;
+  '>
+    
+    <div style='width: 100%; height: 100%; border-radius: 999999px; background-color: #f76707;'>
+    </div>
+    
+  </div>
+  
+</div>
+
+
+
 
 
 
