@@ -51,8 +51,8 @@ For Flex & Grid:
     fit-content(<value>) - auto & не больше value (но не меньше минимума)
     repeat(<cnt>, <value>) - повторить cnt раз дорожку с размером value
         ● repeat(<auto-fill / auto-fit>, ...) - будут динамически добавляться ряды / колонки
-            repeat(3, auto 1fr) - повторить auto 1fr 3 раза
-            auto-fill - будет как минимум 1 столбец
+            repeat(3, auto 1fr) - повторить 'auto 1fr' 3 раза
+            auto-fill - пустые дорожки остануться, будет как минимум 1 столбец
             auto-fit - пустые дорожки удалятся
           grid-template-columns: repeat(auto-fill, 186px);
           grid-template-columns: repeat(auto-fill, minmax(186px, 1fr));
@@ -126,6 +126,13 @@ grid-gap: grid-row-gap grid-column-gap?
                         grid-template-rows & grid-template-columns & grid-template-areas &
                         grid-auto-rows & grid-auto-columns & grid-auto-flow
 
+.grid-container {
+    display: grid;
+    grid: "header header" 50px
+          "sidebar content" 1fr
+          "sidebar content" 50px
+          / 150px 1fr;
+}
 
 
 

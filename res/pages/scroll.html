@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+	<meta charset='UTF-8' />
+	<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'/>
+	<link rel='icon' href='../images/favicon.png' />
+  
+  <title>Scroll</title>
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
+    html * {
+      padding: 10px;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      gap: 10px;
+    }
+  </style>
+</head>
+<body>
+
+
+
+<div>Block height > block + block overflow auto</div>
+<div>Does not work</div>
+<div>
+  Block + overflow auto must have height or max-height,
+  because block layout does not constrain its children.
+  <br/>
+  So everywhere where container height depends on content
+  you need to use flex or grid with min-height: 0
+  up to element with defined height.
+</div>
+
+<div style='overflow: hidden'>
+  <div style='height: 400px; width: 300px; background-color: tomato;'>
+    
+    <div style='width: 100%; background-color: steelblue;'>
+      Высота  зависит от контента<br/>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec semper lorem nec lectus tempus, non viverra justo varius. Ut aliquet nisi imperdiet metus rutrum, id ullamcorper sapien elementum.
+    </div>
+    
+    <div style='width: 100%; background-color: violet; overflow: auto;'>
+      <div style='width: 100%; background-color: burlywood;'>
+        Высота  зависит от контента<br/>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec semper lorem nec lectus tempus, non viverra justo varius. Ut aliquet nisi imperdiet metus rutrum, id ullamcorper sapien elementum. Aliquam sollicitudin tempor eros, a bibendum velit mattis elementum. Nam libero nisl, venenatis ac vulputate eget, eleifend sed nisi. Ut ac volutpat lectus. Maecenas semper quam fermentum consequat commodo. Nulla vel porta velit. Etiam turpis sapien, mollis nec neque eget, pulvinar tristique leo. Duis ullamcorper purus sit amet tellus varius, id gravida risus aliquet.
+        Etiam blandit libero tristique justo accumsan, sit amet euismod purus semper. Praesent vitae felis placerat velit bibendum iaculis cursus id erat. Duis lobortis quam maximus, ullamcorper nibh nec, finibus nulla. Ut sit amet accumsan quam. Sed sit amet orci ac tellus pretium interdum. Etiam a ante auctor, volutpat libero ac, consequat tortor. Duis id lorem tempus nulla blandit hendrerit id ac nulla. Vivamus erat nulla, porttitor eget auctor sed, scelerisque vitae ante. Praesent gravida lacus sed luctus luctus.
+        Suspendisse tincidunt arcu ac enim mollis iaculis et eu massa. Mauris arcu tellus, auctor aliquet suscipit vel, fringilla eu massa. Morbi interdum quam a sapien rutrum, et lobortis libero blandit. Donec eget tellus ipsum. Vivamus rutrum odio eu odio dapibus, eu rhoncus nisl hendrerit. Integer mattis elit in neque euismod suscipit. Nulla facilisi. Nullam condimentum vehicula cursus. Maecenas vel elit enim.
+      </div>
+    </div>
+  
+  </div>
+</div>
+
+
+
+<div>Flex height > block + block overflow auto</div>
+<div>Works</div>
+
+<div style='overflow: hidden'>
+<div style='height: 400px; width: 300px; background-color: tomato;
+  display: flex; flex-direction: column;
+'>
+  
+  <div style='width: 100%; background-color: steelblue;'>
+    Высота  зависит от контента<br/>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec semper lorem nec lectus tempus, non viverra justo varius. Ut aliquet nisi imperdiet metus rutrum, id ullamcorper sapien elementum.
+  </div>
+  
+  <div style='width: 100%; background-color: violet; overflow: auto;
+    flex-grow: 1;
+  '>
+    <div style='width: 100%; background-color: burlywood;'>
+      Высота  зависит от контента<br/>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec semper lorem nec lectus tempus, non viverra justo varius. Ut aliquet nisi imperdiet metus rutrum, id ullamcorper sapien elementum. Aliquam sollicitudin tempor eros, a bibendum velit mattis elementum. Nam libero nisl, venenatis ac vulputate eget, eleifend sed nisi. Ut ac volutpat lectus. Maecenas semper quam fermentum consequat commodo. Nulla vel porta velit. Etiam turpis sapien, mollis nec neque eget, pulvinar tristique leo. Duis ullamcorper purus sit amet tellus varius, id gravida risus aliquet.
+      Etiam blandit libero tristique justo accumsan, sit amet euismod purus semper. Praesent vitae felis placerat velit bibendum iaculis cursus id erat. Duis lobortis quam maximus, ullamcorper nibh nec, finibus nulla. Ut sit amet accumsan quam. Sed sit amet orci ac tellus pretium interdum. Etiam a ante auctor, volutpat libero ac, consequat tortor. Duis id lorem tempus nulla blandit hendrerit id ac nulla. Vivamus erat nulla, porttitor eget auctor sed, scelerisque vitae ante. Praesent gravida lacus sed luctus luctus.
+      Suspendisse tincidunt arcu ac enim mollis iaculis et eu massa. Mauris arcu tellus, auctor aliquet suscipit vel, fringilla eu massa. Morbi interdum quam a sapien rutrum, et lobortis libero blandit. Donec eget tellus ipsum. Vivamus rutrum odio eu odio dapibus, eu rhoncus nisl hendrerit. Integer mattis elit in neque euismod suscipit. Nulla facilisi. Nullam condimentum vehicula cursus. Maecenas vel elit enim.
+    </div>
+  </div>
+  
+</div>
+</div>
+
+
+
+<div>Block height > flex > block + block overflow auto</div>
+<div>Works</div>
+
+<div style='overflow: hidden'>
+<div style='height: 400px; width: 300px; background-color: tomato;'>
+  <div style='width: 100%; background-color: salmon;
+    max-height: 100%;
+    display: flex; flex-direction: column;
+  '>
+    
+  
+    <div style='width: 100%; background-color: steelblue;'>
+      Высота  зависит от контента<br/>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec semper lorem nec lectus tempus, non viverra justo varius. Ut aliquet nisi imperdiet metus rutrum, id ullamcorper sapien elementum.
+    </div>
+    
+    <div style='width: 100%; background-color: violet; overflow: auto;
+      flex-grow: 1;
+    '>
+      <div style='width: 100%; background-color: burlywood;'>
+        Высота  зависит от контента<br/>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec semper lorem nec lectus tempus, non viverra justo varius. Ut aliquet nisi imperdiet metus rutrum, id ullamcorper sapien elementum. Aliquam sollicitudin tempor eros, a bibendum velit mattis elementum. Nam libero nisl, venenatis ac vulputate eget, eleifend sed nisi. Ut ac volutpat lectus. Maecenas semper quam fermentum consequat commodo. Nulla vel porta velit. Etiam turpis sapien, mollis nec neque eget, pulvinar tristique leo. Duis ullamcorper purus sit amet tellus varius, id gravida risus aliquet.
+        Etiam blandit libero tristique justo accumsan, sit amet euismod purus semper. Praesent vitae felis placerat velit bibendum iaculis cursus id erat. Duis lobortis quam maximus, ullamcorper nibh nec, finibus nulla. Ut sit amet accumsan quam. Sed sit amet orci ac tellus pretium interdum. Etiam a ante auctor, volutpat libero ac, consequat tortor. Duis id lorem tempus nulla blandit hendrerit id ac nulla. Vivamus erat nulla, porttitor eget auctor sed, scelerisque vitae ante. Praesent gravida lacus sed luctus luctus.
+        Suspendisse tincidunt arcu ac enim mollis iaculis et eu massa. Mauris arcu tellus, auctor aliquet suscipit vel, fringilla eu massa. Morbi interdum quam a sapien rutrum, et lobortis libero blandit. Donec eget tellus ipsum. Vivamus rutrum odio eu odio dapibus, eu rhoncus nisl hendrerit. Integer mattis elit in neque euismod suscipit. Nulla facilisi. Nullam condimentum vehicula cursus. Maecenas vel elit enim.
+      </div>
+    </div>
+
+
+  </div>
+</div>
+</div>
+
+
+
+<div>Flex height > block + flex > block + block overflow auto</div>
+<div>Works</div>
+<div>Flex item + min-height: 0 hack</div>
+
+<div style='overflow: hidden'>
+<div style='height: 400px; width: 300px; background-color: tomato;
+  display: flex; flex-direction: column;
+'>
+  
+  <div style='width: 100%; background-color: steelblue;'>
+    Высота  зависит от контента<br/>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec semper lorem nec lectus tempus, non viverra justo varius. Ut aliquet nisi imperdiet metus rutrum, id ullamcorper sapien elementum.
+  </div>
+  
+  <div style='width: 100%; background-color: salmon;
+    flex-grow: 1;
+    min-height: 0;
+    display: flex; flex-direction: column;
+  '>
+    
+  
+    <div style='width: 100%; background-color: steelblue;'>
+      Высота  зависит от контента<br/>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec semper lorem nec lectus tempus, non viverra justo varius. Ut aliquet nisi imperdiet metus rutrum, id ullamcorper sapien elementum.
+    </div>
+    
+    <div style='width: 100%; background-color: violet; overflow: auto;
+      flex-grow: 1;
+    '>
+      <div style='width: 100%; background-color: burlywood;'>
+        Высота  зависит от контента<br/>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec semper lorem nec lectus tempus, non viverra justo varius. Ut aliquet nisi imperdiet metus rutrum, id ullamcorper sapien elementum. Aliquam sollicitudin tempor eros, a bibendum velit mattis elementum. Nam libero nisl, venenatis ac vulputate eget, eleifend sed nisi. Ut ac volutpat lectus. Maecenas semper quam fermentum consequat commodo. Nulla vel porta velit. Etiam turpis sapien, mollis nec neque eget, pulvinar tristique leo. Duis ullamcorper purus sit amet tellus varius, id gravida risus aliquet.
+        Etiam blandit libero tristique justo accumsan, sit amet euismod purus semper. Praesent vitae felis placerat velit bibendum iaculis cursus id erat. Duis lobortis quam maximus, ullamcorper nibh nec, finibus nulla. Ut sit amet accumsan quam. Sed sit amet orci ac tellus pretium interdum. Etiam a ante auctor, volutpat libero ac, consequat tortor. Duis id lorem tempus nulla blandit hendrerit id ac nulla. Vivamus erat nulla, porttitor eget auctor sed, scelerisque vitae ante. Praesent gravida lacus sed luctus luctus.
+        Suspendisse tincidunt arcu ac enim mollis iaculis et eu massa. Mauris arcu tellus, auctor aliquet suscipit vel, fringilla eu massa. Morbi interdum quam a sapien rutrum, et lobortis libero blandit. Donec eget tellus ipsum. Vivamus rutrum odio eu odio dapibus, eu rhoncus nisl hendrerit. Integer mattis elit in neque euismod suscipit. Nulla facilisi. Nullam condimentum vehicula cursus. Maecenas vel elit enim.
+      </div>
+    </div>
+
+
+  </div>
+</div>
+</div>
+
+
+
+
+<div>Grid height > block + block overflow auto</div>
+<div>Works</div>
+
+<div style='overflow: hidden'>
+<div style='height: 400px; width: 300px; background-color: tomato;
+  display: grid; grid-template-rows: auto 1fr;
+'>
+  
+  <div style='width: 100%; background-color: steelblue;'>
+    Высота  зависит от контента<br/>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec semper lorem nec lectus tempus, non viverra justo varius. Ut aliquet nisi imperdiet metus rutrum, id ullamcorper sapien elementum.
+  </div>
+  
+  <div style='width: 100%; background-color: violet; overflow: auto;'>
+    <div style='width: 100%; background-color: burlywood;'>
+      Высота  зависит от контента<br/>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec semper lorem nec lectus tempus, non viverra justo varius. Ut aliquet nisi imperdiet metus rutrum, id ullamcorper sapien elementum. Aliquam sollicitudin tempor eros, a bibendum velit mattis elementum. Nam libero nisl, venenatis ac vulputate eget, eleifend sed nisi. Ut ac volutpat lectus. Maecenas semper quam fermentum consequat commodo. Nulla vel porta velit. Etiam turpis sapien, mollis nec neque eget, pulvinar tristique leo. Duis ullamcorper purus sit amet tellus varius, id gravida risus aliquet.
+      Etiam blandit libero tristique justo accumsan, sit amet euismod purus semper. Praesent vitae felis placerat velit bibendum iaculis cursus id erat. Duis lobortis quam maximus, ullamcorper nibh nec, finibus nulla. Ut sit amet accumsan quam. Sed sit amet orci ac tellus pretium interdum. Etiam a ante auctor, volutpat libero ac, consequat tortor. Duis id lorem tempus nulla blandit hendrerit id ac nulla. Vivamus erat nulla, porttitor eget auctor sed, scelerisque vitae ante. Praesent gravida lacus sed luctus luctus.
+      Suspendisse tincidunt arcu ac enim mollis iaculis et eu massa. Mauris arcu tellus, auctor aliquet suscipit vel, fringilla eu massa. Morbi interdum quam a sapien rutrum, et lobortis libero blandit. Donec eget tellus ipsum. Vivamus rutrum odio eu odio dapibus, eu rhoncus nisl hendrerit. Integer mattis elit in neque euismod suscipit. Nulla facilisi. Nullam condimentum vehicula cursus. Maecenas vel elit enim.
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+<div>Grid height > block + grid > block + block overflow auto</div>
+<div>Works</div>
+<div>Grid item + min-height: 0 hack</div>
+
+<div style='overflow: hidden'>
+<div style='height: 400px; width: 300px; background-color: tomato;
+  display: grid; grid-template-rows: auto 1fr;
+'>
+  <div style='width: 100%; background-color: steelblue;'>
+    Высота  зависит от контента<br/>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec semper lorem nec lectus tempus, non viverra justo varius. Ut aliquet nisi imperdiet metus rutrum, id ullamcorper sapien elementum.
+  </div>
+  
+  <div style='width: 100%; background-color: salmon;
+    display: grid; grid-template-rows: auto 1fr; min-height: 0;
+  '>
+    
+  
+    <div style='width: 100%; background-color: steelblue;'>
+      Высота  зависит от контента<br/>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec semper lorem nec lectus tempus, non viverra justo varius. Ut aliquet nisi imperdiet metus rutrum, id ullamcorper sapien elementum.
+    </div>
+    
+    <div style='width: 100%; background-color: violet; overflow: auto;'>
+      <div style='width: 100%; background-color: burlywood;'>
+        Высота  зависит от контента<br/>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec semper lorem nec lectus tempus, non viverra justo varius. Ut aliquet nisi imperdiet metus rutrum, id ullamcorper sapien elementum. Aliquam sollicitudin tempor eros, a bibendum velit mattis elementum. Nam libero nisl, venenatis ac vulputate eget, eleifend sed nisi. Ut ac volutpat lectus. Maecenas semper quam fermentum consequat commodo. Nulla vel porta velit. Etiam turpis sapien, mollis nec neque eget, pulvinar tristique leo. Duis ullamcorper purus sit amet tellus varius, id gravida risus aliquet.
+        Etiam blandit libero tristique justo accumsan, sit amet euismod purus semper. Praesent vitae felis placerat velit bibendum iaculis cursus id erat. Duis lobortis quam maximus, ullamcorper nibh nec, finibus nulla. Ut sit amet accumsan quam. Sed sit amet orci ac tellus pretium interdum. Etiam a ante auctor, volutpat libero ac, consequat tortor. Duis id lorem tempus nulla blandit hendrerit id ac nulla. Vivamus erat nulla, porttitor eget auctor sed, scelerisque vitae ante. Praesent gravida lacus sed luctus luctus.
+        Suspendisse tincidunt arcu ac enim mollis iaculis et eu massa. Mauris arcu tellus, auctor aliquet suscipit vel, fringilla eu massa. Morbi interdum quam a sapien rutrum, et lobortis libero blandit. Donec eget tellus ipsum. Vivamus rutrum odio eu odio dapibus, eu rhoncus nisl hendrerit. Integer mattis elit in neque euismod suscipit. Nulla facilisi. Nullam condimentum vehicula cursus. Maecenas vel elit enim.
+      </div>
+    </div>
+
+
+  </div>
+</div>
+</div>
+
+
+
+</body>
+</html>
