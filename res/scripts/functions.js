@@ -10,7 +10,7 @@ function functions(){
 		// function?.() - check and invoke
 		let fun = undefined
 		console.log(fun?.(5))
-		fun = n=>n
+		fun = n => n
 		console.log(fun?.(56))
 	}
 
@@ -55,7 +55,7 @@ function functions(){
 
 		function f1(a){ return [this,a] }
 		const f2 = function(a){ return [this,a] }
-		const af = (a)=>[this,a] // arrow function remembered value of this as usual value during creation and it always window
+		const af = (a) => [this,a] // arrow function remembered value of this as usual value during creation and it always window
 
 		console.log('call 1: fn():')
 		console.log('f1(1)',f1(1)) // [window, 1]

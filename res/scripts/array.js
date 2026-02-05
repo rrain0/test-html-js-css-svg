@@ -13,7 +13,7 @@ function arrayTest(){
 		console.log("first arr: [<empty>, <empty>, undefined, undefined, null, null, 123]:")
 		console.log(arr)
 
-		arr = arr.map((val,idx)=>idx)
+		arr = arr.map((val,idx) => idx)
 		console.log("mapped arr: empties doesn't participate in mapping:")
 		console.log(arr)
 	}
@@ -22,7 +22,7 @@ function arrayTest(){
 		let arr = ["str1", "adsflkl", "string 3"];
 
 
-		//map( (elem, idx)=>{...} ) - возвращает новый массив, применяя функцию к каждому элементу
+		//map( (elem, idx) => {...} ) - возвращает новый массив, применяя функцию к каждому элементу
 		console.log(arr.map(elem => elem+" ABC"));
 		console.log(arr.map((elem,idx) => elem+" ABC "+idx));
 

@@ -90,8 +90,8 @@ function asyncAndLoops() {
   {
     const array = ["a","b","c"]
     console.log('for-each: starting')
-    array.forEach(it=>console.log(`for-each: elem: ${it}`))
-    array.forEach((elem,i,arr)=>console.log(`for-each: elem: ${elem}, i: ${i}, arr: ${arr}`))
+    array.forEach(it => console.log(`for-each: elem: ${it}`))
+    array.forEach((elem,i,arr) => console.log(`for-each: elem: ${elem}, i: ${i}, arr: ${arr}`))
     console.log('for-each: finished!!!')
   }
   
@@ -115,11 +115,11 @@ function asyncAndLoops() {
   // works asynchronously, wait for the result
   {
     const array = ["a","b","c"]
-    ;(async()=>{
+    ;(async() => {
     let delay = array.length*100+100
     const promises = []
     console.log('for-each save promise: starting')
-    array.forEach(it=>promises.push(delayedLog(`for-each save promise: elem: ${it}`, delay-=100)))
+    array.forEach(it => promises.push(delayedLog(`for-each save promise: elem: ${it}`, delay-=100)))
     await Promise.allSettled(promises) // wait for all promises to complete
     console.log('for-each save promise: finished!!!')
   })()
@@ -131,10 +131,10 @@ function asyncAndLoops() {
   // works asynchronously, wait for the result
   {
     const array = ["a","b","c"]
-    ;(async()=>{
+    ;(async() => {
     let delay = array.length*100+100
     console.log('map to promises: starting')
-    await Promise.allSettled(array.map(it=>delayedLog(`map to promises: elem: ${it}`, delay-=100)))
+    await Promise.allSettled(array.map(it => delayedLog(`map to promises: elem: ${it}`, delay-=100)))
     console.log('map to promises: finished!!!')
   })()
     // outputs: start -> c -> b -> a -> finish

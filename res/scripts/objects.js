@@ -30,7 +30,7 @@ function objectsTest(){
 		;({ a: 1 }).also(it => it.a = 22).also(console.log) // { a: 22 }
 		
 		// WARNING!!! this makes primitive values their object-wrappers
-		console.log('1 .also(it=>it.a=22).also(console.log)')
+		console.log('1 .also(it => it.a=22).also(console.log)')
 		;1 .let(it => it + 2).also(console.log) // Number {3}
 		
 		

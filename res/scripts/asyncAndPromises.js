@@ -6,15 +6,15 @@ function testAsyncAndPromises(){
 
 	/*
 	Асинхронность JavaScript.
-	В JavaScript есть только один поток - UI и за раз может выаоняться только одна функция.
-	Можно отложить выополнение функции напотом, но когда функция начнёт выполняться, 
+	В JavaScript есть только один поток - UI и за раз может выпоняться только одна функция.
+	Можно отложить выполнение функции напотом, но когда функция начнёт выполняться,
 	её выполнение не может быть остановлено, пока она не закончится.
 	Только после окончания функции асинхронно может быть выбрана другая функция.
 	Это и есть асинхронность однопоточного режима.
 
-	Асинхронность в JS принципе создают ТОЛЬКО ФУНКЦИИ-КОЛБЭКИ.
+	Асинхронность в JS в принципе создают ТОЛЬКО ФУНКЦИИ-КОЛБЭКИ.
 
-	Функции-колбэки от UI элементов (нажатие на кнопку напрмер) 
+	Функции-колбэки от UI элементов (например нажатие на кнопку)
 	кидаются в очередь (всегда в конец очереди) на выполнение и выполняются.
 
 	Другой вариант функций колбэков - колбэк действительно из другого потока, 
@@ -28,8 +28,8 @@ function testAsyncAndPromises(){
 	мы можем из стека вызовов сразу же положить функцию в очередь вызовов 
 	и таким образом чистый движок тоже будет работать асинхронно)
 	Окружение — надстройка над движком. NodeJS и Chrome для движка V8 и Firefox для Gecko. 
-	Иногда окружение еще называют web API.
-	Чтобы создать асинхронный вызов, в web API передается ссылка на функцию, 
+	Иногда окружение еще называют Web API.
+	Чтобы создать асинхронный вызов, в Web API передается ссылка на функцию,
 	которая выполнится позже или не выполнится вовсе.
 	У функции есть свой контекст или своя область памяти, в которой она определена. 
 	Функция имеет доступ к этой области памяти и ко всем родителям этой области памяти. 
@@ -46,7 +46,7 @@ function testAsyncAndPromises(){
 	Async functions start running immediately when you call them,
 	but when they get to an await on a Promise, that creates a closure of the current stack state,
 	with all local variables and the whole execution context,
-	and that promise + closure gets put on a list of pending functions (more detail below).
+	and that promise + closure gets put on a list of pending functions.
 	 */
 
 
@@ -104,55 +104,55 @@ function testAsyncAndPromises(){
 
 
 	// Создание промиса:
-	Promise.resolve("resolved value").then(val=>console.log(val)); // Мгновенно зарезолвить
-	Promise.reject("rejction reason").catch(val=>console.log(val)); // Мгновенно зареджектить
-	new Promise((res,rej)=>setTimeout(()=>res('timeout resolved'),3000)) // Создать, но зарезолвить через 3 секунды
-		.then(res=>console.log(res))
-	new Promise((res,rej)=>setTimeout(()=>rej('timeout rejected'),3000)) // Создать, но зареджектить через 3 секунды
-		.catch(err=>console.log(err))
-	new Promise((res,rej)=>setTimeout(res,3000,'timeout resolved 2')) // Создать, но зарезолвить через 3 секунды
-		.then(res=>console.log(res))
-	new Promise((res,rej)=>setTimeout(rej,3000,'timeout rejected 2')) // Создать, но зареджектить через 3 секунды
-		.catch(err=>console.log(err))
+	Promise.resolve("resolved value").then(val => console.log(val)) // Мгновенно зарезолвить
+	Promise.reject("rejction reason").catch(val => console.log(val)) // Мгновенно зареджектить
+	new Promise((res, rej) => setTimeout(() => res('timeout resolved'),3000)) // Создать, но зарезолвить через 3 секунды
+		.then(res => console.log(res))
+	new Promise((res, rej) => setTimeout(() => rej('timeout rejected'),3000)) // Создать, но зареджектить через 3 секунды
+		.catch(err => console.log(err))
+	new Promise((res, rej)=> setTimeout(res,3000,'timeout resolved 2')) // Создать, но зарезолвить через 3 секунды
+		.then(res => console.log(res))
+	new Promise((res, rej) => setTimeout(rej,3000,'timeout rejected 2')) // Создать, но зареджектить через 3 секунды
+		.catch(err => console.log(err))
 
 
 
 	// Код только что созданного промиса выполнится синхронно,
 	// а код следующего будет помещён в очередь микрозадач и выполнится после этой функции
-	const promiseA = new Promise((resolve, reject)=>{
+	const promiseA = new Promise((resolve, reject) => {
 		resolve("123");
 		console.log("PromiseA completed");
-	});
-	const promiseARej = new Promise((resolve, reject)=>{
+	})
+	const promiseARej = new Promise((resolve, reject) => {
 		reject("123rej");
 		console.log("PromiseARej completed");
-	});
+	})
 	// будут вызваны все then/catch/finally и создадутся по новому промису на каждого из них
 	// Т.е. каждый вызов then/catch/finally создаёт новый промис по переданному им внутрь коду
-	const promiseB = promiseA.then( val=>{
-		console.log("then B: "+val); 
-		return ("then B: "+val);
-	})//.then(val=>console.log(val+"undef"), err=>console.log(err+"undef"));
-	const promiseC = promiseA.then( val=>{
-		console.log("then C: "+val);
-		//return ("then C: "+val);
-	});
-	const promiseD = promiseARej.catch( err=>{
-		console.log("catch E: "+err);
-		return ("catch E: "+err);
-	});
+	const promiseB = promiseA.then(val => {
+		console.log("then B: "+val);
+		return ("then B: "+val)
+	})//.then(val => console.log(val+"undef"), err => console.log(err+"undef"))
+	const promiseC = promiseA.then(val => {
+		console.log("then C: "+val)
+		//return ("then C: "+val)
+	})
+	const promiseD = promiseARej.catch(err => {
+		console.log("catch E: "+err)
+		return ("catch E: "+err)
+	})
 	const promiseE = promiseA.then( 
-		val=>{
-			console.log("then D: "+val);
-			//return ("then D: "+val);
+		val => {
+			console.log("then D: "+val)
+			//return ("then D: "+val)
 		}, 
-		err=>{
-			console.log("catch D: "+err);
-			//return ("catch D: "+err);
-	});
-	const promiseF = promiseA.finally( ()=>{
-		console.log("finally I");
-	});
+		err => {
+			console.log("catch D: "+err)
+			//return ("catch D: "+err)
+	})
+	const promiseF = promiseA.finally(() => {
+		console.log("finally I")
+	})
 
 
 
@@ -162,18 +162,18 @@ function testAsyncAndPromises(){
 	// Все результаты промисов идут в массив valuesArr.
 	// Иначе кидает ошибку в catch
 	Promise.all([promiseB, promiseE, promiseF])
-		.then(valuesArr=>console.log(valuesArr))
-		.catch(oneErr=>console.log(oneErr));
+		.then(valuesArr => console.log(valuesArr))
+		.catch(oneErr => console.log(oneErr));
 
 	// Ждёт когда все промисы завершаться с любым результатом
-	Promise.allSettled([promiseB, promiseC, promiseD, promiseF]).then(allValuesArr=>console.log(allValuesArr));
+	Promise.allSettled([promiseB, promiseC, promiseD, promiseF]).then(allValuesArr => console.log(allValuesArr));
 
 	// Ждёт когда один из промисов resolved
 	// Если все rejected, возвращает AggregateError object with errors property (array).
-	Promise.any([promiseB, promiseC, promiseF]).then(oneVal=>console.log(oneVal));
+	Promise.any([promiseB, promiseC, promiseF]).then(oneVal => console.log(oneVal));
 
 	// Ждёт, когда хоть один станет settled
-	Promise.race([promiseB, promiseC, promiseF]).then(oneVal=>console.log(oneVal));
+	Promise.race([promiseB, promiseC, promiseF]).then(oneVal => console.log(oneVal));
 
 
 
@@ -211,10 +211,10 @@ function testAsyncAndPromises(){
 		.then(resolve => console.log("log (5)")); // выполнится по цепочке ПОСЛЕ получения данных из fetch
 
 	(async () => { // async await
-	  const res = await fetch(`https://api.github.com/users/RainFourth`);
-	  const json = await res.json();
-	  console.log("count of public repos (6): "+json.public_repos);
-	  console.log("log (6)"); // тоже выполнится по цепочке ПОСЛЕ получения данных из fetch
+	  const res = await fetch(`https://api.github.com/users/RainFourth`)
+	  const json = await res.json()
+	  console.log("count of public repos (6): "+json.public_repos)
+	  console.log("log (6)") // тоже выполнится по цепочке ПОСЛЕ получения данных из fetch
 	})();
 
 
@@ -252,7 +252,7 @@ function testAsyncAndPromises(){
 	// ОТМЕНА таймера:
 	// clearTimeout(timerId);
 	const deferFunctionExecution = () => {
-		window.setTimeout( ()=>console.warn("было отложено на 3000 мс"), 3000);
+		window.setTimeout( () => console.warn("было отложено на 3000 мс"), 3000);
 	}
 	deferFunctionExecution();
 

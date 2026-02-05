@@ -85,7 +85,7 @@ function typesTest() {
 		// function
 		// !!!!!! специальное поведение у typeof => function
 		function fun1(){}
-		let fun2 = ()=>{}
+		let fun2 = () => {}
 		console.log(`typeof ${fun1}: ` + typeof fun1) // => function
 		console.log(`${fun1} instanceof Object: ` + (fun1 instanceof Object)) // => true
 		console.log(`typeof ${fun2}: ` + typeof fun2) // => function

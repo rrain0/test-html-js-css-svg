@@ -6,7 +6,7 @@
     не дожидаясь окончания загрузки таблиц стилей, изображений и фреймов.
     Значительно отличающееся от него событие load используется для отслеживания только полностью загруженной страницы.
  */
-document.addEventListener('DOMContentLoaded', ()=>{
+document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM Content Loaded event')
 
     // создание не привязанного ни к чему элемента
