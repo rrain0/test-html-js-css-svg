@@ -31,22 +31,22 @@ If after current task execution there is created another higher-priority task, t
 */
 
 function asyncMacroMicroTasksTest() {
-	console.log('script start');
+	console.log('script start')
 
-	setTimeout( () => console.log('setTimeout'), 0); // создание МАКРОзадачи
+	setTimeout( () => console.log('setTimeout'), 0) // создание МАКРОзадачи
 
 	Promise.resolve() // создание МИКРОЗАДАЧИ
 	.then( () => console.log('promise1') )
-	.then( () => console.log('promise2') );
+	.then( () => console.log('promise2') )
 
-	console.log('script end');
+	console.log('script end')
 }
 
 
 /*
 ВЫВОД в консоль:
-	script start // MACROtask started
-	script end // MACROtask completed
+	script start // CURRENT task started
+	script end // CURRENT task completed
 	promise1 // MICROtask completed
 	promise2 // MICROtask completed
 	// rendering UI (run rafs then render)
