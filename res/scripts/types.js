@@ -6,10 +6,17 @@ function typesTest() {
 // https://learn.javascript.ru/instanceof
 	{
 
-		// Примитивные типы && typeof && instanceof
+		// Примитивные типы & typeof & instanceof
+		
 		// Primitives: number string boolean null undefined bigint symbol
 		// Objects: object, function, array
+		
+		// У примитивов нет методов,
+		// а вызов метода через точку у них создаёт врменный объект класса-обёртки
+		// и у этого объекта вызывается метод, потом объект удаляется.
 
+		
+		
 		// number
 		let n = 123
 		console.log(`typeof ${n}: ` + typeof n) // => number
@@ -71,7 +78,7 @@ function typesTest() {
 		console.log(`${obj} instanceof Object: ` + (obj instanceof Object)) // => true
 
 		// класс-обёртка для примитива
-		let strObj = new String("strObj") 
+		let strObj = new String('strObj')
 		console.log(`typeof ${strObj}: ` + typeof strObj) // => object
 		console.log(`${strObj} instanceof Object: ` + (strObj instanceof Object)) // => true
 
@@ -84,8 +91,8 @@ function typesTest() {
 
 		// function
 		// !!!!!! специальное поведение у typeof => function
-		function fun1(){}
-		let fun2 = () => {}
+		function fun1() { }
+		let fun2 = () => { }
 		console.log(`typeof ${fun1}: ` + typeof fun1) // => function
 		console.log(`${fun1} instanceof Object: ` + (fun1 instanceof Object)) // => true
 		console.log(`typeof ${fun2}: ` + typeof fun2) // => function
