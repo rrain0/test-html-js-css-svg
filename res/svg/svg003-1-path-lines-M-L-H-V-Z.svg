@@ -14,7 +14,7 @@
 			первая точка - последняя команда move или начало пути
 	 -->
 	 <!-- два одинаковых квадрата: -->
-	<path d="M10 10 H90 V90 L10 90 Z" stroke="black" fill="transparent" />
-	<path d="M10 100 l 80 0 v80 h-80 z" stroke="black" fill="transparent" />
+	<path d="M10 10 H90 V90 L10 90 Z" stroke="black" fill="none" />
+	<path d="M10 100 l 80 0 v80 h-80 z" stroke="black" fill="none" />
 
 </svg>

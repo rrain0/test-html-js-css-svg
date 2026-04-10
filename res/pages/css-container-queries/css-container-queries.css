@@ -72,3 +72,21 @@
     background: #f39aba;
   }
 }
+
+
+
+@container wide (width >= 20em) {
+  /* styles applied to descendants of wide .sizeContainer */
+}
+@container narrow (width < 20em) {
+  /* styles applied to descendants of narrow .sizeContainer */
+}
+.sizeContainer {
+  container-type: size;
+  container-name: wide narrow;
+}
+/*
+In the above example, the element has two container names, wide and narrow.
+The descendants of any elements with class="sizeContainer" will get
+the styles from the wide or narrow query applied.
+ */
