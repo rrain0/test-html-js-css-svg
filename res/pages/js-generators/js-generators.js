@@ -22,6 +22,73 @@
 async function jsGeneratorsTest() {
   
   {
+    function *generatorFun(v) {
+      v = `yield ${v}`
+      console.log('GENERATOR: yield[1]:', v)
+      v = yield v
+      
+      v = `yield ${v}`
+      console.log('GENERATOR: yield[2]:', v)
+      v = yield v
+      
+      v = `return ${v}`
+      console.log('GENERATOR: return:', v)
+      return v
+    }
+    
+    console.log('ℹ️ Call of generator fun does not run code inside fun at all and just returns Generator object')
+    console.log('MAIN: generator creation generatorFun(0)')
+    const generator = generatorFun(0)
+    console.log('')
+    console.log('ℹ️ First next() executes generator fun from start to first [... yield value] (or [return value])')
+    console.log('⚠️ Value passed to first next() is ignored')
+    console.log('MAIN: call generator.next(1)')
+    console.log('MAIN: generator.next(1) =>', generator.next(1))
+    console.log('')
+    console.log('ℹ️ Subsequent next()s execute generator fun from [value = yield ...] to [... yield value] (or [return value])')
+    console.log('MAIN: call generator.next(2)')
+    console.log('MAIN: generator.next(2) =>', generator.next(2))
+    console.log('')
+    console.log('MAIN: call generator.next(3)')
+    console.log('MAIN: generator.next(3) =>', generator.next(3))
+    console.log('')
+    console.log('ℹ️ Next value after any return call is undefined, but done remains true')
+    console.log('MAIN: call generator.next(4)')
+    console.log('MAIN: generator.next(4) =>', generator.next(4))
+    console.log('')
+    
+    console.log('● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ●')
+    console.log('')
+    
+    /* OUTPUT:
+    ℹ️ Call of generator fun does not run code inside fun at all and just returns Generator object
+    MAIN: generator creation generatorFun(0)
+    
+    ℹ️ First next() executes generator fun from start to first [... yield value] (or [return value])
+    ⚠️ Value passed to first next() is ignored
+    MAIN: call generator.next(1)
+    GENERATOR: yield[1]: yield 0
+    MAIN: generator.next(1) => {value: 'yield 0', done: false}
+    
+    ℹ️ Subsequent next()s execute generator fun from [value = yield ...] to [... yield value] (or [return value])
+    MAIN: call generator.next(2)
+    GENERATOR: yield[2]: yield 2
+    MAIN: generator.next(2) => {value: 'yield 2', done: false}
+    
+    MAIN: call generator.next(3)
+    GENERATOR: return: return 3
+    MAIN: generator.next(3) => {value: 'return 3', done: true}
+    
+    ℹ️ Next value after any return call is undefined, but done remains true
+    MAIN: call generator.next(4)
+    MAIN: generator.next(4) => {value: undefined, done: true}
+    
+    ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ●
+    
+     */
+  }
+  
+  {
     // Range generator
     function *range(start, end) {
       for (let i = start; i <= end; i++) {
